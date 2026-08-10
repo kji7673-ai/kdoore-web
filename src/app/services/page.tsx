@@ -1,214 +1,125 @@
 import Image from "next/image";
 import Link from "next/link";
-
-const services = [
-  { title: "경비/보안관리", img: "/images/legacy/1626229925.jpg", icon: "🛡️", desc: "시설물 안전과 보안을 책임지는 24시간 전문 경비 서비스. 숙련된 경비원이 상주하여 불법 침입, 도난, 사고를 예방합니다." },
-  { title: "청소미화", img: "/images/legacy/1626229930.jpg", icon: "✨", desc: "청결하고 쾌적한 환경을 위한 전문 미화 서비스. 정기 청소부터 특수 청소까지 체계적으로 운영합니다." },
-  { title: "시설관리(유지보수)", img: "/images/legacy/1626229933.jpg", icon: "🔧", desc: "건물의 가치를 높이는 체계적인 시설 유지보수. 전기·설비·소방 전문 인력이 신속하게 대응합니다." },
-  { title: "공동주택관리", img: "/images/legacy/1626229940.jpg", icon: "🏢", desc: "입주민의 편의와 주거 환경 향상을 위한 통합 관리. 아파트, 주상복합 등 다양한 형태의 공동주택을 담당합니다." },
-  { title: "CCTV 관제", img: "/images/legacy/1626229949.jpg", icon: "📹", desc: "24시간 스마트 영상 모니터링 서비스. 실시간 감시와 즉각적인 경보 대응으로 안전을 지킵니다." },
-  { title: "주차관리", img: "/images/legacy/1626229956.jpg", icon: "🚗", desc: "안전하고 효율적인 주차장 운영 및 관리. 입출차 통제부터 요금 관리까지 원스톱 서비스를 제공합니다." },
-  { title: "콜센터", img: "/images/legacy/1626229964.jpg", icon: "📞", desc: "신속하고 친절한 고객 응대 및 민원 처리. 전문 상담원이 고객의 불편을 즉시 해결합니다." },
-  { title: "근로자파견", img: "/images/legacy/1626229968.jpg", icon: "👥", desc: "적재적소에 필요한 우수 인력을 신속하게 파견. 다양한 직종의 검증된 인재를 보유하고 있습니다." },
-  { title: "안내서비스", img: "/images/legacy/1626229972.jpg", icon: "🎯", desc: "방문객을 위한 전문적인 안내 데스크 운영. 친절한 안내원이 첫인상부터 다릅니다." },
-];
+import { ArrowRight, CheckCircle2, ShieldCheck, SprayCan, HardHat, Droplets, Users2, Shield, Wrench } from "lucide-react";
 
 export default function ServicesPage() {
+  const services = [
+    {
+      id: '1626228315',
+      title: '경비보안 솔루션',
+      icon: Shield,
+      desc: '철저한 출입통제 및 방범 서비스로 고객의 안전과 자산을 완벽하게 보호합니다.',
+      features: ['24시간 상주 경비', '첨단 방범 시스템 운영', '내방객 출입 통제', '시설물 순찰 및 점검'],
+      details: '전문적인 교육을 이수한 보안 요원들이 현장에 배치되어 각종 사고를 미연에 방지하며, 신속한 초기 대응 체계를 구축하고 있습니다. 국가중요시설 및 일반 상업시설 모두 맞춤형 보안 계획을 수립합니다.'
+    },
+    {
+      id: '1626228350',
+      title: '시설유지관리',
+      icon: Wrench,
+      desc: '건축물 및 각종 설비의 체계적이고 안정적인 유지보수를 통해 건축물의 수명을 연장합니다.',
+      features: ['전기/기계/소방설비 관리', '법정 점검 대행', '에너지 효율화 컨설팅', '긴급 출동 보수'],
+      details: '전기, 소방, 기계 등 분야별 전문 기사들이 24시간 안전하게 시설물을 관리합니다. 정기적인 예방 점검을 통해 돌발적인 고장을 최소화하고 최적의 운전 상태를 유지합니다.'
+    },
+    {
+      id: '1626228355',
+      title: '환경미화',
+      icon: SprayCan,
+      desc: '첨단 장비와 친환경 세제를 활용하여 언제나 쾌적하고 청결한 공간을 조성합니다.',
+      features: ['일상/정기 청소', '외벽 및 유리창 청소', '바닥 왁스 코팅', '입주/준공 청소'],
+      details: '인체에 무해한 친환경 세제와 전문 장비를 사용하여 눈에 보이지 않는 유해물질까지 제거합니다. 병원, 관공서, 상업시설 등 공간 특성에 맞는 맞춤형 미화 메뉴얼을 적용합니다.'
+    },
+    {
+      id: '1626228361',
+      title: '근로자파견',
+      icon: Users2,
+      desc: '기업이 필요로 하는 검증된 우수 인력을 신속하고 정확하게 적재적소에 파견합니다.',
+      features: ['사무/행정 보조', '생산/제조 인력', '물류/포장 인원', '콜센터/CS 상담원'],
+      details: '체계적인 인재 풀(Pool)과 엄격한 선발 과정을 거친 인재만을 파견합니다. 노무 리스크를 최소화하고 고객사의 핵심 비즈니스 역량 강화를 지원하는 든든한 HR 파트너입니다.'
+    },
+    {
+      id: '1626228413',
+      title: '소독방역',
+      icon: ShieldCheck,
+      desc: '감염병 예방 및 체계적인 해충방제를 통해 안전하고 위생적인 생활 환경을 보장합니다.',
+      features: ['법정 의무소독', '해충/쥐 방제', '바이러스 살균소독', '수목 소독'],
+      details: '식약처 승인을 받은 안전한 약품만을 사용하며, 대상 시설의 구조와 특성에 따른 1:1 맞춤형 방제 솔루션을 제공합니다. 정기적인 모니터링으로 해충의 서식과 유입을 원천 차단합니다.'
+    },
+    {
+      id: '1626228418',
+      title: '저수조청소',
+      icon: Droplets,
+      desc: '안전하고 깨끗한 식수 공급을 위해 관련 법규에 따른 전문적인 수조 관리를 실시합니다.',
+      features: ['반기 1회 정기청소', '수질 검사 대행', '물탱크 시설 점검', '녹조/슬러지 완벽제거'],
+      details: '전문 교육을 이수한 작업자가 고압 세척 장비를 사용하여 저수조 내부의 이물질과 물때를 완벽하게 제거합니다. 청소 후 소독 작업을 통해 먹는 물의 안전성을 확보합니다.'
+    },
+  ];
+
   return (
-    <div style={{ backgroundColor: "#f7f9fc" }}>
-      {/* ─── HERO ──────────────────────────────────────────────── */}
-      <section
-        style={{
-          background: "linear-gradient(150deg, #001a4d 0%, #003087 50%, #0055cc 100%)",
-          padding: "120px 24px 80px",
-          textAlign: "center",
-          position: "relative",
-          overflow: "hidden",
-        }}
-      >
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background: "radial-gradient(ellipse 80% 50% at 50% 20%, rgba(74,144,226,0.2) 0%, transparent 70%)",
-            pointerEvents: "none",
-          }}
-        />
-        <div style={{ position: "relative", zIndex: 1 }}>
-          <span className="section-badge-dark">Services</span>
-          <h1 className="text-display fade-up" style={{ color: "#ffffff", marginBottom: "16px" }}>
-            빌딩토탈케어서비스
-          </h1>
-          <p className="text-lead fade-up-delay-1" style={{ color: "#c5d8f5", maxWidth: "540px", margin: "0 auto" }}>
-            경비·미화·시설관리부터 CCTV 관제, 근로자 파견까지<br />
-            모든 건물 관리 솔루션을 하나로 제공합니다
+    <main className="min-h-screen bg-gray-50 pt-24 pb-12">
+      {/* 1. 헤더 */}
+      <div className="bg-blue-600 text-white py-20 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <Image src="/images/legacy/banner_1626171431.jpg" alt="Services Banner" fill className="object-cover" />
+        </div>
+        <div className="container mx-auto px-4 max-w-5xl relative z-10 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">사업분야</h1>
+          <p className="text-xl md:text-2xl font-light opacity-90 max-w-2xl mx-auto">
+            전문적이고 체계적인 케이두레만의 맞춤형 종합 관리 솔루션
           </p>
         </div>
-      </section>
+      </div>
 
-      {/* ─── SERVICE CARDS ─────────────────────────────────────── */}
-      <section style={{ backgroundColor: "#ffffff", padding: "80px 24px" }}>
-        <div className="container-wide">
-          <div style={{ textAlign: "center", marginBottom: "48px" }}>
-            <span className="section-badge">9가지 전문 서비스</span>
-            <h2 className="text-display" style={{ color: "#0d1117" }}>
-              전문 서비스 분야
-            </h2>
-            <div className="divider" style={{ margin: "12px auto 0" }} />
-          </div>
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gap: "24px",
-            }}
-            className="services-grid"
-          >
-            {services.map((svc, i) => (
-              <div key={i} className="card">
-                <div style={{ position: "relative", aspectRatio: "16/9", overflow: "hidden" }}>
-                  <Image
-                    src={svc.img}
-                    alt={svc.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    style={{ transition: "transform 0.5s ease" }}
-                  />
-                  <div
-                    style={{
-                      position: "absolute",
-                      top: "12px",
-                      left: "12px",
-                      fontSize: "28px",
-                      filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.4))",
-                    }}
-                  >
-                    {svc.icon}
-                  </div>
-                </div>
-                <div style={{ padding: "24px" }}>
-                  <h3
-                    style={{
-                      fontSize: "17px",
-                      fontWeight: 700,
-                      color: "#003087",
-                      marginBottom: "10px",
-                    }}
-                  >
-                    {svc.title}
-                  </h3>
-                  <p className="text-caption" style={{ color: "#4a5568", lineHeight: 1.7 }}>
-                    {svc.desc}
-                  </p>
+      {/* 2. 서비스 상세 목록 */}
+      <section className="py-20">
+        <div className="container mx-auto px-4 max-w-6xl space-y-16">
+          {services.map((svc, index) => (
+            <div key={svc.id} id={svc.id} className={`flex flex-col md:flex-row gap-8 md:gap-12 items-center ${index % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}>
+              
+              <div className="w-full md:w-1/2 relative">
+                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl group">
+                  <Image src={`/images/legacy/gallery_${svc.id}.jpg`} alt={svc.title} fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                  <div className="absolute inset-0 bg-blue-900/10 group-hover:bg-transparent transition-colors duration-500"></div>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* ─── DOOREMALL ─────────────────────────────────────────── */}
-      <section
-        style={{
-          backgroundColor: "#f7f9fc",
-          padding: "80px 24px",
-          borderTop: "1px solid #d0dae8",
-        }}
-      >
-        <div className="container-wide">
-          <div
-            style={{
-              background: "linear-gradient(135deg, #001a4d 0%, #003087 100%)",
-              borderRadius: "24px",
-              padding: "64px",
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: "48px",
-              alignItems: "center",
-            }}
-            className="dooremall-grid"
-          >
-            <div>
-              <span className="section-badge-dark">Online Shop</span>
-              <h2 className="text-display" style={{ color: "#ffffff", marginBottom: "16px" }}>
-                온라인 쇼핑몰<br />두레몰
-              </h2>
-              <p className="text-lead" style={{ color: "#c5d8f5", marginBottom: "32px" }}>
-                케이두레의 온라인 쇼핑몰에서 청소용품, 소모품 등
-                다양한 제품을 편리하게 구매하세요.
-              </p>
-              <a
-                href="http://www.dooremall.kr"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "8px",
-                  padding: "14px 28px",
-                  backgroundColor: "#ffffff",
-                  color: "#003087",
-                  fontWeight: 700,
-                  fontSize: "15px",
-                  borderRadius: "10px",
-                  textDecoration: "none",
-                }}
-              >
-                두레몰 방문하기 →
-              </a>
+              <div className="w-full md:w-1/2 space-y-6">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-100 text-blue-600 mb-2">
+                  <svc.icon className="w-8 h-8" />
+                </div>
+                <h2 className="text-3xl font-bold text-gray-900">{svc.title}</h2>
+                <p className="text-xl text-blue-600 font-medium">{svc.desc}</p>
+                <p className="text-gray-600 leading-relaxed text-lg">{svc.details}</p>
+                
+                <div className="pt-6 border-t border-gray-200">
+                  <h4 className="font-bold text-gray-900 mb-4">주요 서비스 내용</h4>
+                  <ul className="grid grid-cols-2 gap-3">
+                    {svc.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-center text-gray-700">
+                        <CheckCircle2 className="w-5 h-5 text-blue-500 mr-2 flex-shrink-0" />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
             </div>
-            <div style={{ textAlign: "center" }}>
-              <p
-                style={{
-                  fontSize: "clamp(36px, 5vw, 60px)",
-                  fontWeight: 900,
-                  letterSpacing: "-0.04em",
-                  margin: 0,
-                  lineHeight: 1,
-                }}
-              >
-                <span style={{ color: "#7ab4ff" }}>DOORE</span>
-                <span style={{ color: "#ffffff" }}>MALL</span>
-              </p>
-              <p style={{ fontSize: "14px", color: "#a0b8e0", marginTop: "12px" }}>
-                www.dooremall.kr
-              </p>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
-      {/* ─── CTA ───────────────────────────────────────────────── */}
-      <section style={{ backgroundColor: "#003087", padding: "60px 24px", textAlign: "center" }}>
-        <div className="container-default">
-          <h2 className="text-title" style={{ color: "#ffffff", marginBottom: "12px" }}>
-            서비스 도입을 검토 중이신가요?
-          </h2>
-          <p className="text-body" style={{ color: "#c5d8f5", marginBottom: "28px" }}>
-            맞춤형 제안서를 무료로 받아보세요
-          </p>
-          <div style={{ display: "flex", gap: "14px", justifyContent: "center", flexWrap: "wrap" }}>
-            <a href="tel:02-2668-0311" className="btn-primary" style={{ background: "#ffffff", color: "#003087" }}>
-              📞 02-2668-0311
-            </a>
-            <Link href="/contact" className="btn-ghost-dark">이메일 문의</Link>
+      {/* 3. 하단 CTA */}
+      <section className="py-20 bg-gray-900 text-white mt-12 text-center">
+        <div className="container mx-auto px-4 max-w-3xl">
+          <h2 className="text-3xl font-bold mb-6">전문적인 관리가 필요하신가요?</h2>
+          <p className="text-gray-400 mb-10 text-lg">케이두레의 전문가가 귀하의 시설에 최적화된 맞춤형 관리 솔루션을 제안해 드립니다.</p>
+          <div className="flex justify-center gap-4">
+            <Link href="/about#contact" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-bold transition-colors">
+              상담 문의하기
+            </Link>
           </div>
         </div>
       </section>
-
-      <style>{`
-        @media (max-width: 900px) {
-          .services-grid { grid-template-columns: repeat(2, 1fr) !important; }
-          .dooremall-grid { grid-template-columns: 1fr !important; }
-        }
-        @media (max-width: 580px) {
-          .services-grid { grid-template-columns: 1fr !important; }
-          .dooremall-grid { padding: 36px 24px !important; }
-        }
-        .card:hover img { transform: scale(1.05); }
-      `}</style>
-    </div>
+    </main>
   );
 }
