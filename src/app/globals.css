@@ -54,6 +54,9 @@
   --spacing-container-max: 1440px;
   --spacing-gutter: 32px;
   --spacing-section-gap: 128px;
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.05);
+  --shadow-glow: 0 0 10px var(--color-primary);
+
 }
 
 @layer utilities {
