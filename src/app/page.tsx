@@ -264,19 +264,25 @@ export default function Home() {
           <div className="animate-marquee flex whitespace-nowrap items-center min-w-full">
             {[
               '1625722183', '1625722188', '1625722194', '1625722199', 
-              '1625722208', '1625722213', '1625722219', '1625722227'
+              '1625722208', '1625722213', '1625722219', '1625722227',
+              '1626228315', '1626228350', '1626228355', '1626228361',
+              '1626228413', '1626228418', '1626228423', '1626228429',
+              '1626228436'
             ].map((id, idx) => (
               <div key={idx} className="flex-shrink-0 w-48 h-24 relative mx-6 grayscale hover:grayscale-0 transition-all duration-300">
-                <Image src={`/images/legacy/gallery_${id}.jpg`} alt={`Partner ${idx}`} fill className="object-contain" />
+                <Image src={`/partners/gallery_${id}.jpg`} alt={`Partner ${idx}`} fill className="object-contain" />
               </div>
             ))}
             {/* Seamless loop duplication */}
             {[
               '1625722183', '1625722188', '1625722194', '1625722199', 
-              '1625722208', '1625722213', '1625722219', '1625722227'
+              '1625722208', '1625722213', '1625722219', '1625722227',
+              '1626228315', '1626228350', '1626228355', '1626228361',
+              '1626228413', '1626228418', '1626228423', '1626228429',
+              '1626228436'
             ].map((id, idx) => (
               <div key={`dup-${idx}`} className="flex-shrink-0 w-48 h-24 relative mx-6 grayscale hover:grayscale-0 transition-all duration-300">
-                <Image src={`/images/legacy/gallery_${id}.jpg`} alt={`Partner ${idx}`} fill className="object-contain" />
+                <Image src={`/partners/gallery_${id}.jpg`} alt={`Partner ${idx}`} fill className="object-contain" />
               </div>
             ))}
           </div>
