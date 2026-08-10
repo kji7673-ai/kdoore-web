@@ -3,178 +3,146 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
+const navLinks = [
+  { href: "/", label: "홈" },
+  { href: "/about", label: "회사소개" },
+  { href: "/services", label: "사업분야" },
+  { href: "/contact", label: "오시는 길" },
+];
+
 export default function TopNavBar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Dark mode state
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
   useEffect(() => {
-    // Check initial dark mode preference
-    if (typeof window !== "undefined") {
-      const isDark = document.documentElement.classList.contains("dark") || 
-                     localStorage.getItem("theme") === "dark";
-      setIsDarkMode(isDark);
-      if (isDark) {
-        document.documentElement.classList.add("dark");
-      }
-    }
-
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-    if (!isDarkMode) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  };
 
   const closeMenu = () => setMobileMenuOpen(false);
 
   return (
     <>
-      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled 
-          ? "bg-surface/90 dark:bg-surface-container-highest/90 backdrop-blur-md shadow-sm" 
-          : "bg-transparent"
-      }`}>
-        <div className="flex justify-between items-center max-w-container-max mx-auto px-6 md:px-margin-desktop h-20">
-          {/* Brand Logo */}
-          <Link 
-            href="/" 
-            className={`font-headline-md text-headline-md font-bold tracking-tighter transition-colors ${
-              scrolled || mobileMenuOpen ? "text-primary dark:text-inverse-primary" : "text-white drop-shadow-md"
-            }`}
+      <nav
+        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+          scrolled || mobileMenuOpen ? "nav-frosted-light" : "nav-frosted"
+        }`}
+        style={{ height: "44px" }}
+      >
+        <div
+          className="flex justify-between items-center h-full"
+          style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px" }}
+        >
+          {/* Brand */}
+          <Link
+            href="/"
+            className="font-bold tracking-tight transition-colors"
+            style={{
+              fontFamily: "'SF Pro Display', system-ui, -apple-system, sans-serif",
+              fontSize: "17px",
+              fontWeight: 600,
+              color: scrolled || mobileMenuOpen ? "#1d1d1f" : "#ffffff",
+              textDecoration: "none",
+            }}
           >
-            KDoore
+            케이두레
           </Link>
-          
-          {/* Desktop Navigation Links */}
-          <div className="hidden md:flex space-x-8 items-center">
-            <Link href="/" className={`pb-1 font-title-lg text-title-lg transition-colors border-b-2 hover:border-primary ${
-              scrolled 
-                ? "text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-inverse-primary border-transparent" 
-                : "text-white/80 hover:text-white border-transparent hover:border-white drop-shadow-sm"
-            }`}>
-              Home
-            </Link>
-            <Link href="/services" className={`pb-1 font-title-lg text-title-lg transition-colors border-b-2 border-transparent hover:border-primary ${
-              scrolled 
-                ? "text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-inverse-primary" 
-                : "text-white/80 hover:text-white hover:border-white drop-shadow-sm"
-            }`}>
-              Services
-            </Link>
-            <Link href="/about" className={`pb-1 font-title-lg text-title-lg transition-colors border-b-2 border-transparent hover:border-primary ${
-              scrolled 
-                ? "text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-inverse-primary" 
-                : "text-white/80 hover:text-white hover:border-white drop-shadow-sm"
-            }`}>
-              About
-            </Link>
-            <Link href="/contact" className={`pb-1 font-title-lg text-title-lg transition-colors border-b-2 border-transparent hover:border-primary ${
-              scrolled 
-                ? "text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-inverse-primary" 
-                : "text-white/80 hover:text-white hover:border-white drop-shadow-sm"
-            }`}>
-              Contact
-            </Link>
-            
-            {/* Dark Mode Toggle */}
-            <button 
-              onClick={toggleDarkMode} 
-              aria-label="Toggle Dark Mode"
-              className={`p-2 rounded-full transition-colors ${
-                scrolled ? "text-on-surface-variant hover:bg-surface-variant" : "text-white hover:bg-white/20"
-              }`}
-            >
-              <span className="material-symbols-outlined">
-                {isDarkMode ? "light_mode" : "dark_mode"}
-              </span>
-            </button>
+
+          {/* Desktop Nav */}
+          <div className="hidden md:flex items-center" style={{ gap: "28px" }}>
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-nav transition-opacity hover:opacity-60"
+                style={{
+                  color: scrolled ? "#1d1d1f" : "#f5f5f7",
+                  textDecoration: "none",
+                  fontSize: "12px",
+                  letterSpacing: "-0.01em",
+                }}
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
 
-          {/* Desktop Trailing Actions */}
-          <div className="hidden md:flex items-center space-x-4">
-            <button className={`px-6 py-2 border font-label-md rounded transition-all hover:scale-105 ${
-              scrolled 
-                ? "border-secondary text-secondary hover:bg-secondary/10"
-                : "border-white text-white hover:bg-white/20"
-            }`}>
-              Emergency
-            </button>
-            <button className={`px-6 py-2 font-label-md rounded transition-all shadow-sm hover:scale-105 ${
-              scrolled 
-                ? "bg-primary text-on-primary hover:bg-primary/90"
-                : "bg-white text-primary hover:bg-white/90"
-            }`}>
-              Portal Access
-            </button>
+          {/* Desktop CTA */}
+          <div className="hidden md:flex items-center" style={{ gap: "12px" }}>
+            <Link
+              href="/contact"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                padding: "6px 16px",
+                backgroundColor: "#0066cc",
+                color: "#ffffff",
+                borderRadius: "9999px",
+                fontSize: "12px",
+                fontWeight: 400,
+                letterSpacing: "-0.01em",
+                textDecoration: "none",
+                transition: "background-color 0.2s ease",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#0071e3")}
+              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#0066cc")}
+            >
+              문의하기
+            </Link>
           </div>
 
-          {/* Mobile Menu Toggle */}
-          <div className="md:hidden flex items-center space-x-4">
-            <button 
-              onClick={toggleDarkMode} 
-              aria-label="Toggle Dark Mode"
-              className={`p-2 rounded-full transition-colors ${
-                scrolled || mobileMenuOpen ? "text-on-surface-variant" : "text-white"
-              }`}
-            >
-              <span className="material-symbols-outlined">
-                {isDarkMode ? "light_mode" : "dark_mode"}
-              </span>
-            </button>
-            <button 
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle Menu"
-              className={`p-2 focus:outline-none transition-colors ${
-                scrolled || mobileMenuOpen ? "text-on-surface-variant" : "text-white"
-              }`}
-            >
-              <span className="material-symbols-outlined text-3xl">
-                {mobileMenuOpen ? "close" : "menu"}
-              </span>
-            </button>
-          </div>
+          {/* Mobile Hamburger */}
+          <button
+            className="md:hidden p-2"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle Menu"
+            style={{ color: scrolled || mobileMenuOpen ? "#1d1d1f" : "#ffffff" }}
+          >
+            <span className="material-symbols-outlined" style={{ fontSize: "20px" }}>
+              {mobileMenuOpen ? "close" : "menu"}
+            </span>
+          </button>
         </div>
       </nav>
 
-      {/* Mobile Drawer Overlay */}
+      {/* Mobile Fullscreen Menu */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-surface dark:bg-inverse-surface pt-24 px-6 flex flex-col md:hidden">
-          <div className="flex flex-col space-y-6">
-            <Link href="/" onClick={closeMenu} className="font-title-lg text-title-lg text-on-surface-variant dark:text-inverse-on-surface hover:text-primary transition-colors">
-              Home
-            </Link>
-            <Link href="/services" onClick={closeMenu} className="font-title-lg text-title-lg text-on-surface-variant dark:text-inverse-on-surface hover:text-primary transition-colors">
-              Services
-            </Link>
-            <Link href="/about" onClick={closeMenu} className="font-title-lg text-title-lg text-on-surface-variant dark:text-inverse-on-surface hover:text-primary transition-colors">
-              About
-            </Link>
-            <Link href="/contact" onClick={closeMenu} className="font-title-lg text-title-lg text-on-surface-variant dark:text-inverse-on-surface hover:text-primary transition-colors">
-              Contact
-            </Link>
-            
-            <hr className="border-outline-variant my-4" />
-            
-            <button className="w-full px-6 py-3 border border-secondary text-secondary font-label-md rounded hover:bg-secondary/10 transition-colors">
-              Emergency
-            </button>
-            <button className="w-full px-6 py-3 bg-primary text-on-primary font-label-md rounded hover:bg-primary/90 transition-colors shadow-sm">
-              Portal Access
-            </button>
+        <div
+          className="fixed inset-0 z-40 flex flex-col pt-16"
+          style={{ backgroundColor: "#ffffff" }}
+        >
+          <div className="flex flex-col" style={{ padding: "24px" }}>
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={closeMenu}
+                style={{
+                  display: "block",
+                  padding: "16px 0",
+                  fontSize: "21px",
+                  fontWeight: 600,
+                  color: "#1d1d1f",
+                  textDecoration: "none",
+                  borderBottom: "1px solid #f0f0f0",
+                  fontFamily: "'SF Pro Display', system-ui, -apple-system, sans-serif",
+                  letterSpacing: "-0.01em",
+                }}
+              >
+                {link.label}
+              </Link>
+            ))}
+            <div style={{ marginTop: "32px" }}>
+              <Link
+                href="/contact"
+                onClick={closeMenu}
+                className="btn-primary"
+                style={{ width: "100%", textAlign: "center" }}
+              >
+                문의하기
+              </Link>
+            </div>
           </div>
         </div>
       )}

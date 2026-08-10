@@ -7,91 +7,180 @@ export default function Footer() {
   const router = useRouter();
 
   return (
-    <>
-      <footer className="bg-surface-container-highest dark:bg-inverse-surface w-full border-t border-outline-variant dark:border-outline">
-        <div className="max-w-container-max mx-auto px-6 md:px-margin-desktop py-16">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
-            {/* Brand & Left Info */}
-            <div className="md:col-span-5 flex flex-col space-y-6">
-              <div>
-                {/* SVG Logo placeholder for footer_logo_ko */}
-                <h2 className="font-display-md text-display-md text-on-surface dark:text-inverse-on-surface tracking-tight mb-2">
-                  주식회사 케이두레
-                </h2>
-              </div>
-              <div className="flex flex-wrap gap-4">
-                <button 
-                  onClick={() => window.open('http://www.ftc.go.kr/info/bizinfo/communicationViewPopup.jsp?wrkr_no=107-88-37994', 'onpopup', 'width=750, height=700, scrollbars=yes')}
-                  className="px-4 py-2 border border-outline rounded-lg text-sm font-label-md text-on-surface-variant hover:bg-surface-container-lowest transition-colors"
-                >
-                  사업자정보확인
-                </button>
-                <button 
-                  className="px-4 py-2 border border-outline rounded-lg text-sm font-label-md text-on-surface-variant hover:bg-surface-container-lowest transition-colors"
-                >
-                  이메일무단수집거부
-                </button>
-              </div>
-            </div>
+    <footer style={{ backgroundColor: "#f5f5f7", borderTop: "1px solid #e0e0e0" }}>
+      <div
+        style={{
+          maxWidth: "980px",
+          margin: "0 auto",
+          padding: "48px 24px",
+        }}
+      >
+        {/* Main footer grid */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+            gap: "40px",
+            marginBottom: "40px",
+          }}
+        >
+          {/* Brand column */}
+          <div>
+            <h2
+              style={{
+                fontFamily: "'SF Pro Display', system-ui, -apple-system, sans-serif",
+                fontSize: "17px",
+                fontWeight: 600,
+                color: "#1d1d1f",
+                marginBottom: "12px",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              주식회사 케이두레
+            </h2>
+            <p style={{ fontSize: "12px", color: "#6e6e73", lineHeight: 1.6, marginBottom: "8px" }}>
+              서울특별시 강서구 강서로 468<br />7층 701호 (등촌동)
+            </p>
+            <p style={{ fontSize: "12px", color: "#6e6e73", lineHeight: 1.6 }}>
+              AM 09:00 ~ PM 18:00<br />(토·공휴일 휴무)
+            </p>
+          </div>
 
-            {/* Customer Info */}
-            <div className="md:col-span-7 flex flex-col space-y-4">
-              <h3 className="font-title-lg text-title-lg text-on-surface dark:text-inverse-on-surface font-bold">CUSTOMER</h3>
-              
-              <div className="text-on-surface-variant space-y-2 font-body-md text-body-md">
-                <p>서울특별시 강서구 강서로 468 7층 701호 (등촌동)</p>
-                <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-6 pt-2">
-                  <div className="flex items-center gap-2">
-                    <span className="material-symbols-outlined text-xl" style={{ fontVariationSettings: "'FILL' 1" }}>phone_in_talk</span>
-                    <span>02-2668-0311</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="material-symbols-outlined text-xl" style={{ fontVariationSettings: "'FILL' 1" }}>fax</span>
-                    <span>02-3661-0311</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="material-symbols-outlined text-xl" style={{ fontVariationSettings: "'FILL' 1" }}>mail</span>
-                    <span>kedure@hanmail.net</span>
-                  </div>
-                </div>
-                <p className="pt-2">AM:09:00 ~ PM:18:00 (토요일, 공휴일 휴무)</p>
-              </div>
+          {/* Contact column */}
+          <div>
+            <h3
+              style={{
+                fontSize: "12px",
+                fontWeight: 600,
+                color: "#1d1d1f",
+                marginBottom: "12px",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              연락처
+            </h3>
+            <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+              <li style={{ marginBottom: "6px" }}>
+                <a href="tel:02-2668-0311" className="link-blue" style={{ fontSize: "12px" }}>
+                  📞 02-2668-0311
+                </a>
+              </li>
+              <li style={{ marginBottom: "6px" }}>
+                <span style={{ fontSize: "12px", color: "#6e6e73" }}>팩스: 02-3661-0311</span>
+              </li>
+              <li>
+                <a href="mailto:kedure@hanmail.net" className="link-blue" style={{ fontSize: "12px" }}>
+                  ✉️ kedure@hanmail.net
+                </a>
+              </li>
+            </ul>
+          </div>
 
-              {/* Social Links */}
-              <div className="flex gap-6 pt-4 text-on-surface-variant">
-                <Link href="http://www.youtube.com" target="_blank" className="flex items-center gap-2 hover:text-primary transition-colors">
-                  <span className="material-symbols-outlined text-2xl">smart_display</span>
-                  <span className="text-sm">Youtube</span>
-                </Link>
-                <Link href="http://twitter.com" target="_blank" className="flex items-center gap-2 hover:text-primary transition-colors">
-                  <span className="material-symbols-outlined text-2xl">flutter_dash</span>
-                  <span className="text-sm">Twitter</span>
-                </Link>
-                <Link href="http://www.facebook.com" target="_blank" className="flex items-center gap-2 hover:text-primary transition-colors">
-                  <span className="material-symbols-outlined text-2xl">thumb_up</span>
-                  <span className="text-sm">Facebook</span>
-                </Link>
-                <Link href="http://www.instagram.com" target="_blank" className="flex items-center gap-2 hover:text-primary transition-colors">
-                  <span className="material-symbols-outlined text-2xl">photo_camera</span>
-                  <span className="text-sm">Instagram</span>
-                </Link>
-              </div>
-            </div>
+          {/* Links column */}
+          <div>
+            <h3
+              style={{
+                fontSize: "12px",
+                fontWeight: 600,
+                color: "#1d1d1f",
+                marginBottom: "12px",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              바로가기
+            </h3>
+            <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+              {[
+                { href: "/about", label: "회사소개" },
+                { href: "/services", label: "사업분야" },
+                { href: "/contact", label: "오시는 길" },
+                { href: "http://www.dooremall.kr", label: "두레몰 (온라인쇼핑)", external: true },
+              ].map((link) => (
+                <li key={link.href} style={{ marginBottom: "6px" }}>
+                  <Link
+                    href={link.href}
+                    target={link.external ? "_blank" : undefined}
+                    rel={link.external ? "noopener noreferrer" : undefined}
+                    className="link-blue"
+                    style={{ fontSize: "12px" }}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Info column */}
+          <div>
+            <h3
+              style={{
+                fontSize: "12px",
+                fontWeight: 600,
+                color: "#1d1d1f",
+                marginBottom: "12px",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              사업자 정보
+            </h3>
+            <p style={{ fontSize: "12px", color: "#6e6e73", lineHeight: 1.8 }}>
+              사업자등록번호: 107-88-37994<br />
+              대표이사: 임준길
+            </p>
+            <button
+              onClick={() =>
+                window.open(
+                  "http://www.ftc.go.kr/info/bizinfo/communicationViewPopup.jsp?wrkr_no=107-88-37994",
+                  "onpopup",
+                  "width=750, height=700, scrollbars=yes"
+                )
+              }
+              className="link-blue"
+              style={{
+                fontSize: "12px",
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                padding: 0,
+                marginTop: "8px",
+              }}
+            >
+              사업자정보 확인 →
+            </button>
           </div>
         </div>
-        
-        <div className="w-full bg-on-surface text-surface-container-highest py-6 text-center text-sm">
-          <p>powerd by DOORE CO., LTD.</p>
-          <button 
-            onClick={() => router.push('/admin')}
-            className="text-surface-container-highest/40 hover:text-white transition-colors mt-2"
-            title="Admin Portal"
-            aria-label="Open admin portal"
-          >
-            <span className="material-symbols-outlined text-sm" aria-hidden="true">key</span>
-          </button>
+
+        {/* Bottom bar */}
+        <div
+          style={{
+            borderTop: "1px solid #e0e0e0",
+            paddingTop: "20px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: "8px",
+          }}
+        >
+          <p style={{ fontSize: "12px", color: "#6e6e73" }}>
+            Copyright © {new Date().getFullYear()} 주식회사 케이두레. All rights reserved.
+          </p>
+          <div style={{ display: "flex", gap: "16px", alignItems: "center" }}>
+            <span style={{ fontSize: "12px", color: "#6e6e73" }}>이메일무단수집거부</span>
+            <button
+              onClick={() => router.push("/admin")}
+              title="Admin Portal"
+              aria-label="Open admin portal"
+              style={{ background: "none", border: "none", cursor: "pointer", color: "#c6c6cc", padding: "2px" }}
+            >
+              <span className="material-symbols-outlined" style={{ fontSize: "14px" }} aria-hidden="true">
+                key
+              </span>
+            </button>
+          </div>
         </div>
-      </footer>
-    </>
+      </div>
+    </footer>
   );
 }

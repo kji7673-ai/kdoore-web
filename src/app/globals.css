@@ -1,92 +1,252 @@
 @import "tailwindcss";
 
 @theme {
-  --color-inverse-primary: #bec6e0;
-  --color-inverse-on-surface: #eaf1ff;
-  --color-tertiary-fixed: #dde3eb;
-  --color-background: #f8f9ff;
-  --color-on-background: #0b1c30;
-  --color-on-secondary-fixed: #281900;
-  --color-inverse-surface: #213145;
-  --color-on-secondary-container: #78581c;
-  --color-surface-container: #e5eeff;
-  --color-surface-container-high: #dce9ff;
-  --color-tertiary-fixed-dim: #c1c7cf;
-  --color-surface-container-highest: #d3e4fe;
+  /* ─── Apple-style Color System ─────────────────────────────────── */
+  /* Action Blue */
+  --color-primary: #0066cc;
+  --color-primary-focus: #0071e3;
+  --color-primary-on-dark: #2997ff;
   --color-on-primary: #ffffff;
-  --color-secondary-fixed: #ffdeac;
-  --color-surface-tint: #565e74;
-  --color-on-primary-fixed-variant: #3f465c;
-  --color-on-error: #ffffff;
-  --color-secondary-container: #fdd089;
-  --color-tertiary: #000000;
-  --color-primary-fixed-dim: #bec6e0;
-  --color-on-primary-fixed: #131b2e;
-  --color-surface-dim: #cbdbf5;
-  --color-primary: #000000;
-  --color-surface-container-lowest: #ffffff;
-  --color-surface: #f8f9ff;
-  --color-error: #ba1a1a;
-  --color-on-primary-container: #7c839b;
-  --color-primary-fixed: #dae2fd;
-  --color-on-tertiary-fixed: #161c22;
-  --color-on-surface-variant: #45464d;
-  --color-outline: #76777d;
-  --color-on-tertiary-container: #7e848c;
-  --color-on-surface: #0b1c30;
-  --color-tertiary-container: #161c22;
-  --color-on-tertiary: #ffffff;
-  --color-surface-container-low: #eff4ff;
-  --color-outline-variant: #c6c6cd;
-  --color-error-container: #ffdad6;
-  --color-secondary: #79591d;
-  --color-on-error-container: #93000a;
-  --color-secondary-fixed-dim: #ebc07a;
-  --color-on-secondary-fixed-variant: #5f4105;
-  --color-surface-bright: #f8f9ff;
-  --color-primary-container: #131b2e;
-  --color-surface-variant: #d3e4fe;
-  --color-on-secondary: #ffffff;
-  --color-on-tertiary-fixed-variant: #41474e;
 
+  /* Ink / Text */
+  --color-ink: #1d1d1f;
+  --color-ink-muted: #6e6e73;
+  --color-ink-on-dark: #f5f5f7;
+
+  /* Surfaces */
+  --color-canvas: #ffffff;
+  --color-canvas-parchment: #f5f5f7;
+  --color-surface-pearl: #fafafc;
+  --color-surface-tile-dark: #1d1d1f;
+  --color-surface-tile-dark-2: #272729;
+  --color-surface-black: #000000;
+
+  /* Legacy mapped tokens for backward compat */
+  --color-background: #f5f5f7;
+  --color-on-background: #1d1d1f;
+  --color-surface: #ffffff;
+  --color-on-surface: #1d1d1f;
+  --color-on-surface-variant: #6e6e73;
+  --color-surface-variant: #f5f5f7;
+  --color-outline-variant: #e0e0e0;
+  --color-outline: #c6c6cc;
+  --color-secondary: #0066cc;
+  --color-on-secondary: #ffffff;
+  --color-error: #ff3b30;
+
+  /* ─── Spacing ──────────────────────────────────────────────────── */
   --spacing-unit: 8px;
-  --spacing-margin-desktop: 64px;
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 17px;
+  --spacing-lg: 24px;
+  --spacing-xl: 48px;
+  --spacing-section: 80px;
+  --spacing-margin-desktop: 80px;
   --spacing-container-max: 1440px;
-  --spacing-gutter: 32px;
+  --spacing-gutter: 24px;
   --spacing-section-gap: 128px;
-  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.05);
+
+  /* ─── Shadows ──────────────────────────────────────────────────── */
+  --shadow-product: rgba(0, 0, 0, 0.22) 3px 5px 30px 0;
+  --shadow-soft: 0 2px 20px rgba(0, 0, 0, 0.06);
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.08);
   --shadow-glow: 0 0 10px var(--color-primary);
 
+  /* ─── Border Radius ─────────────────────────────────────────────── */
+  --radius-none: 0px;
+  --radius-xs: 5px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-pill: 9999px;
 }
 
-@layer utilities {
-    .glass-card {
-        @apply bg-surface/80 backdrop-blur-md border border-outline-variant/30 shadow-soft;
-    }
-    .input-glow:focus-within {
-        @apply shadow-glow border-primary/50;
-    }
-    
-    .text-balance {
-        text-wrap: balance;
-    }
-}
-
+/* ─── Base ──────────────────────────────────────────────────────── */
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  font-family: "SF Pro Text", system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #ffffff;
+  color: #1d1d1f;
+  overflow-x: hidden;
 }
 
-/* Material Symbols - using Google Fonts directly via next/font is complex for icons, we will just keep standard classes if we use the icon font */
+/* ─── Typography Scale ──────────────────────────────────────────── */
+.text-hero {
+  font-family: "SF Pro Display", system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+  font-size: clamp(40px, 6vw, 80px);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.text-display {
+  font-family: "SF Pro Display", system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+  font-size: clamp(28px, 4vw, 56px);
+  font-weight: 600;
+  line-height: 1.07;
+  letter-spacing: -0.015em;
+}
+
+.text-title {
+  font-family: "SF Pro Display", system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+  font-size: clamp(20px, 2.5vw, 32px);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.text-tagline {
+  font-family: "SF Pro Display", system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.19;
+  letter-spacing: 0.01em;
+}
+
+.text-lead {
+  font-family: "SF Pro Text", system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+  font-size: clamp(16px, 1.8vw, 24px);
+  font-weight: 300;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+.text-body {
+  font-family: "SF Pro Text", system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.47;
+  letter-spacing: -0.022em;
+}
+
+.text-caption {
+  font-family: "SF Pro Text", system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.43;
+  letter-spacing: -0.016em;
+}
+
+.text-nav {
+  font-family: "SF Pro Text", system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+/* Legacy compat tokens */
+.font-headline-md { font-size: 20px; font-weight: 700; line-height: 1.2; }
+.font-title-lg { font-size: 18px; font-weight: 600; line-height: 1.3; }
+.font-label-md { font-size: 14px; font-weight: 500; line-height: 1.4; }
+.text-headline-md { font-size: 20px; }
+.text-title-lg { font-size: 18px; }
+
+/* ─── Button System ──────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  background-color: #0066cc;
+  color: #ffffff;
+  font-family: "SF Pro Text", system-ui, -apple-system, sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: -0.022em;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  text-decoration: none;
+}
+.btn-primary:hover { background-color: #0071e3; }
+.btn-primary:active { transform: scale(0.98); }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  background-color: transparent;
+  color: #0066cc;
+  font-family: "SF Pro Text", system-ui, -apple-system, sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: -0.022em;
+  border-radius: 9999px;
+  border: 1.5px solid #0066cc;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  text-decoration: none;
+}
+.btn-secondary:hover { background-color: rgba(0, 102, 204, 0.05); }
+
+.btn-ghost-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background-color: rgba(255,255,255,0.12);
+  color: #ffffff;
+  font-family: "SF Pro Text", system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.016em;
+  border-radius: 9999px;
+  border: 1px solid rgba(255,255,255,0.25);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  backdrop-filter: blur(8px);
+  text-decoration: none;
+}
+.btn-ghost-dark:hover { background-color: rgba(255,255,255,0.2); }
+
+/* ─── Nav ────────────────────────────────────────────────────────── */
+.nav-frosted {
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+}
+
+.nav-frosted-light {
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+/* ─── Section Tiles ──────────────────────────────────────────────── */
+.tile-white { background-color: #ffffff; color: #1d1d1f; }
+.tile-parchment { background-color: #f5f5f7; color: #1d1d1f; }
+.tile-dark { background-color: #1d1d1f; color: #f5f5f7; }
+.tile-darker { background-color: #000000; color: #f5f5f7; }
+
+/* ─── Cards ──────────────────────────────────────────────────────── */
+.card-service {
+  background-color: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid #e0e0e0;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.card-service:hover {
+  box-shadow: var(--shadow-product);
+  transform: translateY(-2px);
+}
+
+/* ─── Material Symbols ───────────────────────────────────────────── */
 .material-symbols-outlined {
   font-family: 'Material Symbols Outlined';
   font-weight: normal;
   font-style: normal;
-  font-size: 24px;  /* Preferred icon size */
+  font-size: 24px;
   display: inline-block;
   line-height: 1;
   text-transform: none;
@@ -94,12 +254,65 @@ body {
   word-wrap: normal;
   white-space: nowrap;
   direction: ltr;
-  /* Support for all WebKit browsers. */
   -webkit-font-smoothing: antialiased;
-  /* Support for Safari and Chrome. */
   text-rendering: optimizeLegibility;
-  /* Support for Firefox. */
   -moz-osx-font-smoothing: grayscale;
-  /* Support for IE. */
   font-feature-settings: 'liga';
 }
+
+/* ─── Animations ────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.7s ease both; }
+.fade-up-delay-1 { animation: fadeUp 0.7s ease 0.15s both; }
+.fade-up-delay-2 { animation: fadeUp 0.7s ease 0.3s both; }
+
+/* ─── Utilities ─────────────────────────────────────────────────── */
+.container-default {
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.container-wide {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.divider {
+  width: 48px;
+  height: 4px;
+  border-radius: 9999px;
+  background-color: #0066cc;
+  margin: 16px auto;
+}
+
+.link-blue {
+  color: #0066cc;
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+.link-blue:hover { opacity: 0.75; }
+
+.link-blue-dark {
+  color: #2997ff;
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+.link-blue-dark:hover { opacity: 0.75; }
+
+/* Legacy compat */
+.glass-card {
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+.text-balance { text-wrap: balance; }
