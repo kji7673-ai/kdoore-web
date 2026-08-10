@@ -18,32 +18,26 @@ export default function Home() {
     }
   };
 
+  const businessLines = [
+    { title: "경비/보안관리", icon: "security", image: "/assets/gallery_1626228315.jpg" },
+    { title: "청소미화", icon: "cleaning_services", image: "/assets/gallery_1626228350.jpg" },
+    { title: "시설관리(유지보수)", icon: "handyman", image: "/assets/gallery_1626228361.jpg" },
+    { title: "공동주택관리", icon: "apartment", image: "/assets/gallery_1626228413.jpg" },
+    { title: "CCTV관제", icon: "videocam", image: "/assets/gallery_1626228418.jpg" },
+    { title: "주차관리", icon: "local_parking", image: "/assets/gallery_1626228423.jpg" },
+    { title: "콜센터", icon: "headset_mic", image: "/assets/gallery_1626228429.jpg" },
+    { title: "근로자파견", icon: "group", image: "/assets/gallery_1626228436.jpg" },
+    { title: "안내서비스", icon: "support_agent", image: "/assets/1626227909.jpg" },
+  ];
+
   return (
     <>
-      <style dangerouslySetInnerHTML={{__html: `
-        .harmony-pattern {
-            background-image: radial-gradient(#000000 1px, transparent 1px);
-            background-size: 24px 24px;
-            opacity: 0.05;
-        }
-        @keyframes rotateLoop {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        .ganggang-ring {
-            border: 1px dashed rgba(255,255,255,0.2);
-            border-radius: 50%;
-            animation: rotateLoop 60s linear infinite;
-        }
-      `}} />
-
       {/* Hero Section */}
-      <header className="relative w-full min-h-[100svh] flex items-center justify-center overflow-hidden bg-inverse-surface">
-        {/* Background Image & Overlay */}
+      <header className="relative w-full min-h-[90svh] flex items-center justify-center overflow-hidden bg-inverse-surface">
         <div className="absolute inset-0 z-0">
           <Image 
             alt="KDoore Main Background" 
-            className="object-cover opacity-60" 
+            className="object-cover opacity-50" 
             src="/assets/main_banner.png"
             fill
             priority
@@ -51,61 +45,29 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-t from-inverse-surface via-inverse-surface/80 to-transparent"></div>
         </div>
 
-        {/* Abstract Animated Rings (Ganggangsullae Concept) */}
-        <div className="absolute inset-0 z-0 flex items-center justify-center opacity-30 pointer-events-none">
-          <div className="w-[800px] h-[800px] ganggang-ring absolute"></div>
-          <div className="w-[1000px] h-[1000px] ganggang-ring absolute" style={{ animationDirection: 'reverse', animationDuration: '90s' }}></div>
-          <div className="w-[1200px] h-[1200px] ganggang-ring absolute" style={{ animationDuration: '120s' }}></div>
-        </div>
-
         <motion.div 
           initial="hidden" 
           animate="visible" 
           variants={staggerContainer} 
-          className="relative z-10 max-w-container-max mx-auto px-6 md:px-margin-desktop grid grid-cols-12 gap-gutter w-full mt-20"
+          className="relative z-10 max-w-container-max mx-auto px-6 md:px-margin-desktop w-full mt-20 text-center"
         >
-          {/* Text Content */}
-          <motion.div variants={revealVariants} className="col-span-12 md:col-span-7 flex flex-col justify-center">
-            <span className="text-secondary-container font-label-md tracking-[0.2em] uppercase mb-4">Institutional Trust & Harmonious Cooperation</span>
-            <h1 className="font-display-lg text-display-lg text-inverse-on-surface mb-6 leading-tight">
-                상생과 협력으로<br/>만드는 새로운 가치
+          <motion.div variants={revealVariants} className="flex flex-col items-center justify-center">
+            <span className="text-secondary font-label-md tracking-[0.2em] uppercase mb-4">더 멀리 함께 하는 기업</span>
+            <h1 className="font-display-lg text-display-lg text-inverse-on-surface mb-6 leading-tight max-w-4xl">
+                고객만족을 위하고<br/>새로운 도약을 준비하는 케이두레
             </h1>
             <p className="font-body-lg text-body-lg text-inverse-on-surface/80 max-w-xl mb-10">
-                KDoore는 단순한 시설 관리를 넘어, 사람과 공간이 조화롭게 공존하는 지속 가능한 환경을 창조하는 사회적 기업입니다.
+                사회적 기업 및 장애인표준사업장으로 국가인증기업
             </p>
-            <div className="flex space-x-4">
-              <Link href="/about" className="inline-flex px-8 py-4 bg-secondary-container text-on-secondary-container font-label-md rounded hover:bg-secondary-container/90 transition-all hover:scale-105 shadow-sm text-center">
-                우리의 비전 (Our Vision)
-              </Link>
-            </div>
-          </motion.div>
-          
-          {/* Certificate Showcase */}
-          <motion.div variants={revealVariants} className="col-span-12 md:col-span-5 relative mt-16 md:mt-0">
-            <div className="relative w-full aspect-[3/4] rounded-xl overflow-hidden shadow-float border border-white/10 transform md:rotate-3 md:hover:rotate-0 transition-transform duration-500 bg-white/5 backdrop-blur-sm p-4 group">
-              <div className="relative w-full h-full">
-                <Image 
-                  alt="Commendation Certificate showcasing institutional trust" 
-                  className="object-cover rounded-lg shadow-inner group-hover:scale-105 transition-transform duration-700" 
-                  src="/assets/1626227895.jpg"
-                  fill
-                />
-              </div>
-              <div className="absolute -bottom-6 -right-6 md:bottom-4 md:-left-12 bg-surface text-on-surface px-6 py-4 rounded-lg shadow-lg border border-tertiary-fixed flex items-center space-x-3">
-                <span className="material-symbols-outlined text-secondary text-3xl" aria-hidden="true" style={{ fontVariationSettings: "'FILL' 1" }}>verified</span>
-                <div>
-                  <p className="font-label-md text-label-md">국무총리 표창</p>
-                  <p className="text-xs text-on-surface-variant">사회적 가치 창출 부문</p>
-                </div>
-              </div>
-            </div>
+            <Link href="/about" className="inline-flex px-8 py-4 bg-primary text-on-primary font-label-md rounded-full hover:bg-primary/90 transition-all hover:scale-105 shadow-sm text-center">
+              자세히 보기
+            </Link>
           </motion.div>
         </motion.div>
       </header>
 
-      {/* Social Value Section */}
-      <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 harmony-pattern z-0"></div>
+      {/* About Us Section */}
+      <section className="py-24 bg-surface relative overflow-hidden">
         <motion.div 
           initial="hidden" 
           whileInView="visible" 
@@ -114,47 +76,26 @@ export default function Home() {
           className="max-w-container-max mx-auto px-6 md:px-margin-desktop relative z-10"
         >
           <motion.div variants={revealVariants} className="text-center mb-16">
-            <h2 className="font-headline-lg text-headline-lg text-primary mb-4">Social Value</h2>
-            <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">사회적 책임을 다하며, 지역사회와 함께 성장하는 상생의 길을 걷습니다.</p>
+            <h2 className="font-headline-lg text-headline-lg text-primary mb-4 tracking-tight">About Us</h2>
+            <div className="font-body-lg text-body-lg text-on-surface-variant max-w-3xl mx-auto space-y-6 leading-relaxed">
+              <p className="text-xl font-bold text-on-surface">케이두레 홈페이지 방문을 환영합니다.</p>
+              <p>케이두레는 사회적 기업, 장애인표준사업장으로 정부인증 기업임과 동시에 서울시교육청 학교시설용역, 관공서 / 일반 건물 종합관리 등 우수한 수행능력 및 책임 있는 관리와 전문성을 겸비한 건물종합관리 및 근로자파견 전문기업 입니다.</p>
+              <p>저희 케이두레는 미래지향적인 "빌딩케어토탈서비스"로 경비, 미화, 시설, 공공주택관리, 근로자파견, 콜센터 등 성공적인 서비스를 제공해 드릴 것을 약속드립니다.</p>
+            </div>
           </motion.div>
-          <div className="grid grid-cols-12 gap-8 auto-rows-[240px]">
-            {/* Bento Item 1 */}
-            <motion.div variants={revealVariants} className="col-span-12 md:col-span-8 row-span-2 bg-surface-container rounded-xl p-8 border border-tertiary-fixed relative overflow-hidden flex flex-col justify-between group hover:shadow-float transition-all duration-300">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-secondary/10 rounded-full blur-3xl -mr-10 -mt-10 transition-all duration-500 group-hover:scale-110"></div>
-              <div className="relative z-10">
-                <span className="material-symbols-outlined text-secondary text-4xl mb-4" aria-hidden="true" style={{ fontVariationSettings: "'FILL' 1" }}>handshake</span>
-                <h3 className="font-headline-md text-headline-md text-primary mb-2">함께 일하는 기쁨</h3>
-                <p className="font-body-md text-body-md text-on-surface-variant max-w-md">취약계층의 안정적인 일자리 창출을 최우선 목표로 삼아, 경제적 자립과 사회 참여를 적극적으로 지원합니다.</p>
-              </div>
-              <div className="relative self-end mt-8 w-full max-w-md h-48 rounded-lg shadow-sm overflow-hidden z-10">
-                <Image 
-                  className="object-cover group-hover:scale-105 transition-transform duration-700" 
-                  alt="Staff smiling" 
-                  src="/assets/gallery_1625722219.jpg"
-                  fill
-                />
-              </div>
-            </motion.div>
-            
-            {/* Bento Item 2 */}
-            <motion.div variants={revealVariants} className="col-span-12 md:col-span-4 row-span-1 bg-primary-container text-on-primary-container rounded-xl p-8 flex flex-col justify-center hover:shadow-float transition-all duration-300 transform hover:-translate-y-1">
-              <span className="material-symbols-outlined text-secondary-container text-3xl mb-3" aria-hidden="true" style={{ fontVariationSettings: "'FILL' 1" }}>eco</span>
-              <h3 className="font-title-lg text-title-lg mb-2">지속가능한 환경</h3>
-              <p className="text-sm opacity-80">친환경 자재 사용 및 에너지 효율적인 관리 시스템 도입으로 녹색 경영을 실천합니다.</p>
-            </motion.div>
-            
-            {/* Bento Item 3 */}
-            <motion.div variants={revealVariants} className="col-span-12 md:col-span-4 row-span-1 border border-outline-variant bg-surface rounded-xl p-8 flex flex-col justify-center hover:shadow-float transition-all duration-300 transform hover:-translate-y-1">
-              <h3 className="font-display-lg text-display-lg text-primary mb-1">45%</h3>
-              <p className="font-label-md text-label-md text-secondary uppercase tracking-wider">취약계층 고용률</p>
-              <p className="text-sm text-on-surface-variant mt-2">법정 의무 비율을 상회하는 자발적 상생 실천.</p>
-            </motion.div>
-          </div>
+
+          <motion.div variants={revealVariants} className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+            {['회사연혁', '사업분야', '인증및허가', '두레몰'].map((item) => (
+              <Link href="#" key={item} className="flex items-center justify-center p-6 rounded-2xl bg-surface-container hover:bg-surface-container-highest transition-colors border border-outline-variant shadow-sm hover:shadow-md">
+                <span className="font-title-md text-title-md text-primary">{item}</span>
+              </Link>
+            ))}
+          </motion.div>
         </motion.div>
       </section>
 
-      {/* Expertise Section */}
-      <section className="py-24 bg-surface-container-lowest border-t border-tertiary/10 overflow-hidden">
+      {/* Business Line Section */}
+      <section className="py-24 bg-surface-container-lowest border-y border-outline-variant">
         <motion.div 
           initial="hidden" 
           whileInView="visible" 
@@ -162,47 +103,122 @@ export default function Home() {
           variants={staggerContainer}
           className="max-w-container-max mx-auto px-6 md:px-margin-desktop"
         >
-          <div className="grid grid-cols-12 gap-8 items-center">
-            <motion.div variants={revealVariants} className="col-span-12 md:col-span-5">
-              <h2 className="font-headline-lg text-headline-lg text-primary mb-6">Expertise &<br/>Professionalism</h2>
-              <p className="font-body-lg text-body-lg text-on-surface-variant mb-8">
-                국가 공공기관 및 대규모 시설물의 통합 관리 경험을 바탕으로, 체계적이고 신뢰할 수 있는 최상의 솔루션을 제공합니다.
-              </p>
-              <ul className="space-y-6">
-                <li className="flex items-start group">
-                  <span className="material-symbols-outlined text-secondary mt-1 mr-4 transition-transform group-hover:scale-110" aria-hidden="true">domain_verification</span>
-                  <div>
-                    <h4 className="font-title-lg text-title-lg text-primary">통합 시설 관리 (FM)</h4>
-                    <p className="font-body-md text-body-md text-on-surface-variant mt-1">건물의 생애주기를 고려한 과학적인 유지보수 및 자산 가치 극대화.</p>
-                  </div>
-                </li>
-                <li className="flex items-start group">
-                  <span className="material-symbols-outlined text-secondary mt-1 mr-4 transition-transform group-hover:scale-110" aria-hidden="true">security</span>
-                  <div>
-                    <h4 className="font-title-lg text-title-lg text-primary">첨단 보안 및 미화</h4>
-                    <p className="font-body-md text-body-md text-on-surface-variant mt-1">스마트 모니터링 시스템과 친환경 미화 공법을 결합한 쾌적한 환경 조성.</p>
-                  </div>
-                </li>
-              </ul>
-            </motion.div>
-            
-            <motion.div variants={revealVariants} className="col-span-12 md:col-span-6 md:col-start-7 relative mt-12 md:mt-0 group">
-              <div className="absolute inset-0 bg-surface-container-highest transform translate-x-4 translate-y-4 rounded-xl border border-tertiary-fixed-dim z-0 transition-transform group-hover:translate-x-2 group-hover:translate-y-2"></div>
-              <div className="relative z-10 rounded-xl overflow-hidden shadow-float border border-tertiary/10 bg-white w-full aspect-[4/3]">
-                <Image 
-                  className="object-cover transition-transform duration-700 group-hover:scale-105" 
-                  alt="Professional facility management" 
-                  src="/assets/gallery_1626228361.jpg"
-                  fill
-                />
-              </div>
-            </motion.div>
+          <motion.div variants={revealVariants} className="text-center mb-16">
+            <h2 className="font-headline-lg text-headline-lg text-primary mb-4 tracking-tight">빌딩토탈케어서비스</h2>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {businessLines.map((line, idx) => (
+              <motion.div key={idx} variants={revealVariants} className="group relative rounded-2xl overflow-hidden bg-surface shadow-sm hover:shadow-float transition-all duration-300 border border-outline-variant h-64">
+                <div className="absolute inset-0 z-0">
+                  <Image 
+                    src={line.image} 
+                    alt={line.title} 
+                    fill 
+                    className="object-cover opacity-40 group-hover:opacity-50 group-hover:scale-105 transition-all duration-700"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = '/assets/main_banner.png';
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/80 to-transparent"></div>
+                </div>
+                <div className="relative z-10 h-full p-6 flex flex-col justify-end">
+                  <span className="material-symbols-outlined text-secondary text-3xl mb-2" style={{ fontVariationSettings: "'FILL' 1" }}>{line.icon}</span>
+                  <h3 className="font-title-lg text-title-lg text-on-surface">{line.title}</h3>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       </section>
 
+      {/* Government Certification Section */}
+      <section className="py-24 bg-inverse-surface text-inverse-on-surface">
+        <motion.div 
+          initial="hidden" 
+          whileInView="visible" 
+          viewport={{ once: true, margin: "-100px" }}
+          variants={staggerContainer}
+          className="max-w-container-max mx-auto px-6 md:px-margin-desktop"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <motion.div variants={revealVariants} className="space-y-6">
+              <h2 className="font-headline-lg text-headline-lg text-inverse-primary tracking-tight">사회적기업 및 장애인표준사업장</h2>
+              <div className="font-body-lg text-body-lg text-inverse-on-surface/90 space-y-4">
+                <p>사회적 기업으로 공공기관 우선구매 기업. 기업들의 장애인 의무고용부담금을 해결해 주는 정부지원 기업.</p>
+                <div className="p-6 bg-white/5 rounded-2xl border border-white/10">
+                  <h4 className="font-title-md text-title-md text-inverse-primary mb-2">★ 사회적 기업으로 공공기관 우선구매 기업</h4>
+                  <ul className="list-disc list-inside text-sm text-inverse-on-surface/80 space-y-1">
+                    <li>관공서, 공기업·준정부기관에 건물종합관리 용역도급, 생산품 등 제공</li>
+                    <li>취약계층에게 일자리를 제공하여 사회적 목적을 추구</li>
+                  </ul>
+                </div>
+                <div className="p-6 bg-white/5 rounded-2xl border border-white/10">
+                  <h4 className="font-title-md text-title-md text-inverse-primary mb-2">★ 장애인표준사업장 연계고용</h4>
+                  <ul className="list-disc list-inside text-sm text-inverse-on-surface/80 space-y-1">
+                    <li>계약은 1년 기준</li>
+                    <li>종류는 도급 (경비, 미화 등 용역), 생산품 (위생지, 피복류)</li>
+                    <li>감면액은 도급 매출액의 50%, 고용부담금 총액의 60%</li>
+                  </ul>
+                </div>
+              </div>
+            </motion.div>
+            <motion.div variants={revealVariants} className="w-full aspect-video rounded-2xl overflow-hidden shadow-float border border-white/10">
+              <iframe 
+                className="w-full h-full" 
+                src="https://www.youtube.com/embed/DKPkOXFlY10?rel=0&autoplay=0&controls=1&fs=1&loop=0&modestbranding=1&autohide=1" 
+                title="KDoore YouTube Video" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowFullScreen
+              ></iframe>
+            </motion.div>
+          </div>
+        </motion.div>
+      </section>
+      
+      {/* Notice & Employment Boards Preview */}
+      <section className="py-24 bg-surface">
+        <motion.div 
+          initial="hidden" 
+          whileInView="visible" 
+          viewport={{ once: true, margin: "-100px" }}
+          variants={staggerContainer}
+          className="max-w-container-max mx-auto px-6 md:px-margin-desktop grid grid-cols-1 md:grid-cols-2 gap-12"
+        >
+          <motion.div variants={revealVariants}>
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="font-title-lg text-title-lg text-primary">케이두레뉴스</h3>
+              <Link href="#" className="text-sm text-secondary hover:underline">더보기 +</Link>
+            </div>
+            <ul className="space-y-4">
+              {[1, 2, 3].map((i) => (
+                <li key={i} className="flex justify-between items-center p-4 rounded-xl hover:bg-surface-container-lowest transition-colors border-b border-outline-variant/50">
+                  <span className="text-on-surface truncate pr-4">케이두레의 새로운 소식을 알려드립니다.</span>
+                  <span className="text-sm text-on-surface-variant flex-shrink-0">2023-01-0{i}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          <motion.div variants={revealVariants}>
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="font-title-lg text-title-lg text-primary">채용공고</h3>
+              <Link href="#" className="text-sm text-secondary hover:underline">더보기 +</Link>
+            </div>
+            <ul className="space-y-4">
+              {[1, 2, 3].map((i) => (
+                <li key={i} className="flex justify-between items-center p-4 rounded-xl hover:bg-surface-container-lowest transition-colors border-b border-outline-variant/50">
+                  <span className="text-on-surface truncate pr-4">경비/미화/시설관리 채용공고</span>
+                  <span className="text-sm text-on-surface-variant flex-shrink-0">2023-01-0{i}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        </motion.div>
+      </section>
+
       {/* Partnership List */}
-      <section className="py-24 bg-surface overflow-hidden">
+      <section className="py-16 bg-surface-container-lowest overflow-hidden border-t border-outline-variant">
         <motion.div 
           initial="hidden" 
           whileInView="visible" 
@@ -210,20 +226,12 @@ export default function Home() {
           variants={staggerContainer}
           className="max-w-container-max mx-auto px-6 md:px-margin-desktop text-center"
         >
-          <motion.h2 variants={revealVariants} className="font-headline-lg text-headline-lg text-primary mb-12">Trusted by Institutions</motion.h2>
-          <motion.div variants={revealVariants} className="grid grid-cols-2 md:grid-cols-4 gap-4 border-t border-l border-tertiary/10">
-            <div className="border-b border-r border-tertiary/10 p-8 flex items-center justify-center h-32 hover:bg-surface-container-lowest transition-all hover:scale-105 grayscale hover:grayscale-0 shadow-sm hover:shadow-md cursor-default">
-              <span className="font-title-lg text-title-lg text-on-surface-variant text-center">서울특별시교육청<br/><span className="text-sm font-normal">Seoul Education</span></span>
-            </div>
-            <div className="border-b border-r border-tertiary/10 p-8 flex items-center justify-center h-32 hover:bg-surface-container-lowest transition-all hover:scale-105 grayscale hover:grayscale-0 shadow-sm hover:shadow-md cursor-default">
-              <span className="font-title-lg text-title-lg text-on-surface-variant text-center">한국장애인고용공단<br/><span className="text-sm font-normal">KEAD</span></span>
-            </div>
-            <div className="border-b border-r border-tertiary/10 p-8 flex items-center justify-center h-32 hover:bg-surface-container-lowest transition-all hover:scale-105 grayscale hover:grayscale-0 shadow-sm hover:shadow-md cursor-default">
-              <span className="font-title-lg text-title-lg text-on-surface-variant text-center">보건복지부<br/><span className="text-sm font-normal">MOHW</span></span>
-            </div>
-            <div className="border-b border-r border-tertiary/10 p-8 flex items-center justify-center h-32 hover:bg-surface-container-lowest transition-all hover:scale-105 grayscale hover:grayscale-0 shadow-sm hover:shadow-md cursor-default">
-              <span className="font-title-lg text-title-lg text-on-surface-variant text-center">고용노동부<br/><span className="text-sm font-normal">MOEL</span></span>
-            </div>
+          <motion.div variants={revealVariants} className="flex flex-wrap justify-center gap-8 opacity-60">
+            {['서울특별시교육청', '한국장애인고용공단', '보건복지부', '고용노동부', '한국주택금융공사', '건강보험심사평가원'].map((partner, idx) => (
+              <div key={idx} className="font-label-lg text-label-lg text-on-surface-variant whitespace-nowrap px-4">
+                {partner}
+              </div>
+            ))}
           </motion.div>
         </motion.div>
       </section>
