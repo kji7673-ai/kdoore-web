@@ -1,0 +1,61 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: rgba(245, 245, 247, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.navbar {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+}
+
+.navContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.logo {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+  font-size: 21px;
+  font-weight: 600;
+  color: #1d1d1f;
+  text-decoration: none;
+  letter-spacing: -0.2px;
+}
+
+.links {
+  display: flex;
+  gap: 24px;
+}
+
+.navLink {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+  font-size: 14px;
+  color: #1d1d1f;
+  text-decoration: none;
+  font-weight: 400;
+  letter-spacing: -0.2px;
+  transition: color 0.2s ease;
+}
+
+.navLink:hover {
+  color: #0066cc; /* Action Blue */
+}
+
+@media (max-width: 768px) {
+  .links {
+    display: none; /* simple mobile hide for now */
+  }
+}

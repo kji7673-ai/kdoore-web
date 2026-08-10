@@ -1,0 +1,137 @@
+.scrollContainer {
+  /* 스크롤 가능한 높이를 충분히 주어 롱 스크롤(Long-scroll) 효과 생성 */
+  height: 400vh;
+  position: relative;
+  background-color: #f5f5f7;
+}
+
+.stickyWrapper {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1000px;
+}
+
+.scene {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* 살짝 눕혀서 강강술래 형태(비스듬한 원판)로 렌더링 */
+  transform: rotateX(-15deg);
+  transform-style: preserve-3d;
+}
+
+.circle {
+  position: relative;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+}
+
+.cardWrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -150px;
+  margin-left: -125px;
+  width: 250px;
+  height: 300px;
+  transform-style: preserve-3d;
+}
+
+.cardContent {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+  overflow: hidden;
+}
+
+.imageWrapper {
+  width: 100%;
+  height: 50%;
+  overflow: hidden;
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.textWrapper {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 50%;
+}
+
+.cardTitle {
+  font-size: 1.5rem;
+  color: #333;
+  margin: 0 0 1rem 0;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.cardDescription {
+  font-size: 1rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.5;
+  word-break: keep-all;
+}
+
+.card p {
+  font-family: "SF Pro Text", sans-serif;
+  font-size: 15px;
+  color: #7a7a7a;
+  line-height: 1.5;
+}
+
+.overlayText {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 10;
+}
+
+.overlayText h2 {
+  font-size: 48px;
+  color: #1d1d1f;
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+}
+
+.overlayText p {
+  font-size: 18px;
+  color: #1d1d1f;
+}
+
+@media (max-width: 768px) {
+  .cardWrapper {
+    width: 200px;
+    height: 240px;
+    margin-top: -120px;
+    margin-left: -100px;
+    /* 모바일에서는 원의 반지름(translateZ)을 줄임 */
+  }
+}

@@ -1,0 +1,84 @@
+.heroSection {
+  padding: 160px 24px 80px 24px;
+  text-align: center;
+}
+
+.heroTitle {
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 24px;
+  letter-spacing: -0.374px;
+}
+
+.heroSubtitle {
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--ink-muted-80);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .heroTitle {
+    font-size: 56px;
+    letter-spacing: -0.28px;
+    line-height: 1.07;
+  }
+  .heroSubtitle {
+    font-size: 24px;
+  }
+}
+
+.gallerySection {
+  padding: 80px 24px 120px 24px;
+}
+
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.galleryItem {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 24px 0px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: var(--canvas);
+}
+
+.galleryItem:hover {
+  transform: translateY(-8px);
+  box-shadow: rgba(0, 0, 0, 0.22) 0px 12px 30px 0px;
+}
+
+.galleryImage {
+  transition: transform 0.6s ease;
+}
+
+.galleryItem:hover .galleryImage {
+  transform: scale(1.05);
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 24px;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.galleryItem:hover .overlay {
+  opacity: 1;
+}
+
+.overlayTitle {
+  font-size: 17px;
+  font-weight: 600;
+  margin: 0;
+}
