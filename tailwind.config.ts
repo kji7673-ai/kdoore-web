@@ -9,6 +9,28 @@ const config: Config = {
   darkMode: "class",
   theme: {
     extend: {
+      animation: {
+        "marquee": "marquee 35s linear infinite",
+        "fade-in-up": "fade-in-up 0.8s ease-out forwards",
+        "hero-slide": "hero-slide 20s infinite"
+      },
+      keyframes: {
+        marquee: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-50%)" }
+        },
+        "fade-in-up": {
+          "0%": { opacity: "0", transform: "translateY(20px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" }
+        },
+        "hero-slide": {
+          "0%, 20%": { transform: "translateX(0)" },
+          "25%, 45%": { transform: "translateX(-25%)" },
+          "50%, 70%": { transform: "translateX(-50%)" },
+          "75%, 95%": { transform: "translateX(-75%)" },
+          "100%": { transform: "translateX(0)" }
+        }
+      },
       colors: {
         "inverse-primary": "#bec6e0",
         "inverse-on-surface": "#eaf1ff",
