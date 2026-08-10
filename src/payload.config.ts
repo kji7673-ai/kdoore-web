@@ -39,6 +39,50 @@ export default buildConfig({
         },
       ],
     },
+    {
+      slug: 'news',
+      admin: {
+        useAsTitle: 'title',
+      },
+      fields: [
+        {
+          name: 'title',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'content',
+          type: 'richText',
+        },
+        {
+          name: 'date',
+          type: 'date',
+          required: true,
+        },
+      ],
+    },
+    {
+      slug: 'recruitment',
+      admin: {
+        useAsTitle: 'title',
+      },
+      fields: [
+        {
+          name: 'title',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'content',
+          type: 'richText',
+        },
+        {
+          name: 'date',
+          type: 'date',
+          required: true,
+        },
+      ],
+    },
   ],
   editor: lexicalEditor({}),
   secret: process.env.PAYLOAD_SECRET || 'fallback-secret-for-kdoore-dev',

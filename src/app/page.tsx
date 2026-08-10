@@ -3,6 +3,101 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+
+function NewsBoard() {
+  const [news, setNews] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('/api/news?limit=3&sort=-date')
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.docs) {
+          setNews(data.docs);
+        }
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, []);
+
+  return (
+    <motion.div>
+      <div className="flex justify-between items-center mb-6">
+        <h3 className="font-title-lg text-title-lg text-primary">케이두레뉴스</h3>
+        <Link href="#" className="text-sm text-secondary hover:underline">더보기 +</Link>
+      </div>
+      <ul className="space-y-4">
+        {loading ? (
+          <li className="text-on-surface-variant text-sm">로딩 중...</li>
+        ) : news.length > 0 ? (
+          news.map((item, i) => (
+            <li key={i} className="flex justify-between items-center p-4 rounded-xl hover:bg-surface-container-lowest transition-colors border-b border-outline-variant/50">
+              <span className="text-on-surface truncate pr-4">{item.title}</span>
+              <span className="text-sm text-on-surface-variant flex-shrink-0">
+                {new Date(item.date).toISOString().split('T')[0]}
+              </span>
+            </li>
+          ))
+        ) : (
+          [1, 2, 3].map((i) => (
+            <li key={i} className="flex justify-between items-center p-4 rounded-xl hover:bg-surface-container-lowest transition-colors border-b border-outline-variant/50">
+              <span className="text-on-surface truncate pr-4">케이두레의 새로운 소식을 알려드립니다.</span>
+              <span className="text-sm text-on-surface-variant flex-shrink-0">2023-01-0{i}</span>
+            </li>
+          ))
+        )}
+      </ul>
+    </motion.div>
+  );
+}
+
+function RecruitmentBoard() {
+  const [recruitments, setRecruitments] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('/api/recruitment?limit=3&sort=-date')
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.docs) {
+          setRecruitments(data.docs);
+        }
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, []);
+
+  return (
+    <motion.div>
+      <div className="flex justify-between items-center mb-6">
+        <h3 className="font-title-lg text-title-lg text-primary">채용공고</h3>
+        <Link href="#" className="text-sm text-secondary hover:underline">더보기 +</Link>
+      </div>
+      <ul className="space-y-4">
+        {loading ? (
+          <li className="text-on-surface-variant text-sm">로딩 중...</li>
+        ) : recruitments.length > 0 ? (
+          recruitments.map((item, i) => (
+            <li key={i} className="flex justify-between items-center p-4 rounded-xl hover:bg-surface-container-lowest transition-colors border-b border-outline-variant/50">
+              <span className="text-on-surface truncate pr-4">{item.title}</span>
+              <span className="text-sm text-on-surface-variant flex-shrink-0">
+                {new Date(item.date).toISOString().split('T')[0]}
+              </span>
+            </li>
+          ))
+        ) : (
+          [1, 2, 3].map((i) => (
+            <li key={i} className="flex justify-between items-center p-4 rounded-xl hover:bg-surface-container-lowest transition-colors border-b border-outline-variant/50">
+              <span className="text-on-surface truncate pr-4">경비/미화/시설관리 채용공고</span>
+              <span className="text-sm text-on-surface-variant flex-shrink-0">2023-01-0{i}</span>
+            </li>
+          ))
+        )}
+      </ul>
+    </motion.div>
+  );
+}
 
 export default function Home() {
   const revealVariants = {
@@ -185,35 +280,8 @@ export default function Home() {
           variants={staggerContainer}
           className="max-w-container-max mx-auto px-6 md:px-margin-desktop grid grid-cols-1 md:grid-cols-2 gap-12"
         >
-          <motion.div variants={revealVariants}>
-            <div className="flex justify-between items-center mb-6">
-              <h3 className="font-title-lg text-title-lg text-primary">케이두레뉴스</h3>
-              <Link href="#" className="text-sm text-secondary hover:underline">더보기 +</Link>
-            </div>
-            <ul className="space-y-4">
-              {[1, 2, 3].map((i) => (
-                <li key={i} className="flex justify-between items-center p-4 rounded-xl hover:bg-surface-container-lowest transition-colors border-b border-outline-variant/50">
-                  <span className="text-on-surface truncate pr-4">케이두레의 새로운 소식을 알려드립니다.</span>
-                  <span className="text-sm text-on-surface-variant flex-shrink-0">2023-01-0{i}</span>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-
-          <motion.div variants={revealVariants}>
-            <div className="flex justify-between items-center mb-6">
-              <h3 className="font-title-lg text-title-lg text-primary">채용공고</h3>
-              <Link href="#" className="text-sm text-secondary hover:underline">더보기 +</Link>
-            </div>
-            <ul className="space-y-4">
-              {[1, 2, 3].map((i) => (
-                <li key={i} className="flex justify-between items-center p-4 rounded-xl hover:bg-surface-container-lowest transition-colors border-b border-outline-variant/50">
-                  <span className="text-on-surface truncate pr-4">경비/미화/시설관리 채용공고</span>
-                  <span className="text-sm text-on-surface-variant flex-shrink-0">2023-01-0{i}</span>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
+          <NewsBoard />
+          <RecruitmentBoard />
         </motion.div>
       </section>
 
