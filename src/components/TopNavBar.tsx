@@ -15,52 +15,103 @@ export default function TopNavBar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 10);
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const closeMenu = () => setMobileMenuOpen(false);
+  const isLight = scrolled || mobileMenuOpen;
 
   return (
     <>
       <nav
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-          scrolled || mobileMenuOpen ? "nav-frosted-light" : "nav-frosted"
-        }`}
-        style={{ height: "44px" }}
+        className={isLight ? "nav-frosted-light" : "nav-frosted"}
+        style={{
+          position: "fixed",
+          top: 0,
+          width: "100%",
+          zIndex: 50,
+          transition: "all 0.3s ease",
+          height: "60px",
+        }}
       >
         <div
-          className="flex justify-between items-center h-full"
-          style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px" }}
+          className="container-wide"
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            height: "100%",
+          }}
         >
           {/* Brand */}
           <Link
             href="/"
-            className="font-bold tracking-tight transition-colors"
             style={{
-              fontFamily: "'SF Pro Display', system-ui, -apple-system, sans-serif",
-              fontSize: "17px",
-              fontWeight: 600,
-              color: scrolled || mobileMenuOpen ? "#1d1d1f" : "#ffffff",
+              display: "flex",
+              alignItems: "center",
+              gap: "10px",
               textDecoration: "none",
             }}
           >
-            케이두레
+            <div
+              style={{
+                width: "32px",
+                height: "32px",
+                borderRadius: "8px",
+                background: isLight
+                  ? "linear-gradient(135deg,#003087,#0055cc)"
+                  : "linear-gradient(135deg,#4a90e2,#7ab4ff)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "#fff",
+                fontWeight: 800,
+                fontSize: "14px",
+                letterSpacing: "-0.05em",
+                flexShrink: 0,
+              }}
+            >
+              K
+            </div>
+            <span
+              style={{
+                fontWeight: 700,
+                fontSize: "16px",
+                letterSpacing: "-0.02em",
+                color: isLight ? "#003087" : "#f0f4ff",
+              }}
+            >
+              케이두레
+            </span>
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center" style={{ gap: "28px" }}>
+          <div className="hidden md:flex items-center" style={{ gap: "8px" }}>
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-nav transition-opacity hover:opacity-60"
+                className="text-nav"
                 style={{
-                  color: scrolled ? "#1d1d1f" : "#f5f5f7",
+                  color: isLight ? "#4a5568" : "rgba(240,244,255,0.8)",
                   textDecoration: "none",
-                  fontSize: "12px",
-                  letterSpacing: "-0.01em",
+                  padding: "6px 14px",
+                  borderRadius: "8px",
+                  transition: "background 0.15s ease, color 0.15s ease",
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLElement).style.background = isLight
+                    ? "#eef3fc"
+                    : "rgba(255,255,255,0.1)";
+                  (e.currentTarget as HTMLElement).style.color = isLight ? "#003087" : "#fff";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLElement).style.background = "transparent";
+                  (e.currentTarget as HTMLElement).style.color = isLight
+                    ? "#4a5568"
+                    : "rgba(240,244,255,0.8)";
                 }}
               >
                 {link.label}
@@ -68,79 +119,92 @@ export default function TopNavBar() {
             ))}
           </div>
 
-          {/* Desktop CTA */}
-          <div className="hidden md:flex items-center" style={{ gap: "12px" }}>
-            <Link
-              href="/contact"
+          {/* CTA */}
+          <div className="hidden md:flex items-center" style={{ gap: "10px" }}>
+            <a
+              href="tel:02-2668-0311"
               style={{
-                display: "inline-flex",
+                display: "flex",
                 alignItems: "center",
-                padding: "6px 16px",
-                backgroundColor: "#0066cc",
-                color: "#ffffff",
-                borderRadius: "9999px",
-                fontSize: "12px",
-                fontWeight: 400,
-                letterSpacing: "-0.01em",
+                gap: "6px",
+                padding: "8px 16px",
+                borderRadius: "8px",
+                border: isLight ? "1.5px solid #003087" : "1.5px solid rgba(255,255,255,0.3)",
+                color: isLight ? "#003087" : "#f0f4ff",
+                fontSize: "13px",
+                fontWeight: 600,
                 textDecoration: "none",
-                transition: "background-color 0.2s ease",
+                transition: "all 0.2s ease",
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#0071e3")}
-              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#0066cc")}
             >
+              📞 02-2668-0311
+            </a>
+            <Link href="/contact" className="btn-primary" style={{ padding: "8px 20px", fontSize: "13px" }}>
               문의하기
             </Link>
           </div>
 
           {/* Mobile Hamburger */}
           <button
-            className="md:hidden p-2"
+            className="md:hidden"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle Menu"
-            style={{ color: scrolled || mobileMenuOpen ? "#1d1d1f" : "#ffffff" }}
+            style={{
+              color: isLight ? "#003087" : "#f0f4ff",
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              padding: "8px",
+            }}
           >
-            <span className="material-symbols-outlined" style={{ fontSize: "20px" }}>
+            <span className="material-symbols-outlined" style={{ fontSize: "24px" }}>
               {mobileMenuOpen ? "close" : "menu"}
             </span>
           </button>
         </div>
       </nav>
 
-      {/* Mobile Fullscreen Menu */}
+      {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div
-          className="fixed inset-0 z-40 flex flex-col pt-16"
-          style={{ backgroundColor: "#ffffff" }}
+          style={{
+            position: "fixed",
+            inset: 0,
+            zIndex: 40,
+            backgroundColor: "#ffffff",
+            paddingTop: "70px",
+            display: "flex",
+            flexDirection: "column",
+          }}
         >
-          <div className="flex flex-col" style={{ padding: "24px" }}>
+          <div style={{ padding: "16px 24px", flex: 1 }}>
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={closeMenu}
                 style={{
-                  display: "block",
-                  padding: "16px 0",
-                  fontSize: "21px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  padding: "18px 4px",
+                  fontSize: "18px",
                   fontWeight: 600,
-                  color: "#1d1d1f",
+                  color: "#0d1117",
                   textDecoration: "none",
-                  borderBottom: "1px solid #f0f0f0",
-                  fontFamily: "'SF Pro Display', system-ui, -apple-system, sans-serif",
-                  letterSpacing: "-0.01em",
+                  borderBottom: "1px solid #eef3fc",
                 }}
               >
                 {link.label}
+                <span style={{ color: "#003087", fontSize: "18px" }}>›</span>
               </Link>
             ))}
-            <div style={{ marginTop: "32px" }}>
-              <Link
-                href="/contact"
-                onClick={closeMenu}
-                className="btn-primary"
-                style={{ width: "100%", textAlign: "center" }}
-              >
-                문의하기
+            <div style={{ marginTop: "32px", display: "flex", flexDirection: "column", gap: "12px" }}>
+              <a href="tel:02-2668-0311" className="btn-secondary" style={{ textAlign: "center" }}>
+                📞 02-2668-0311 전화하기
+              </a>
+              <Link href="/contact" onClick={closeMenu} className="btn-primary" style={{ textAlign: "center" }}>
+                온라인 문의하기
               </Link>
             </div>
           </div>
