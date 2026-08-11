@@ -19,15 +19,15 @@ export default async function Home() {
       
       {/* ─── 1. HERO SECTION ─── */}
       <section className="relative w-full h-[90vh] min-h-[800px] flex flex-col justify-center bg-apple-surface-tile-1 pt-20 pb-32">
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 bg-apple-surface-tile-1">
           <Image 
             src="/images/legacy/main_banner_1.jpg" 
             alt="Hero Background" 
             fill 
-            className="object-cover object-center opacity-30 mix-blend-multiply" 
+            className="object-cover object-center opacity-40 mix-blend-luminosity" 
             priority 
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-apple-surface-tile-1 via-apple-surface-tile-1/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-apple-surface-tile-1 via-apple-surface-tile-1/90 to-apple-surface-tile-1/20" />
         </div>
 
         <div className="relative z-10 container mx-auto px-6 lg:px-12 mt-12 flex flex-col items-start text-left">
@@ -86,9 +86,9 @@ export default async function Home() {
             엄격한 심사와 검증을 거쳐 대한민국 주요 공공기관 및 대기업의 시설 관리를 전담하고 있습니다.
           </p>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12 max-w-5xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6 max-w-5xl mx-auto">
             {partners.map((partner, idx) => (
-              <div key={idx} className="flex flex-col items-center justify-center p-6 bg-white rounded-apple-sm border border-apple-divider-soft shadow-[0_4px_12px_rgba(10,37,64,0.03)] hover:shadow-[0_8px_24px_rgba(10,37,64,0.08)] transition-all hover:-translate-y-1 cursor-pointer">
+              <div key={idx} className="flex flex-col items-center justify-center py-8 px-4 bg-white rounded-apple-sm border border-apple-divider-soft shadow-sm hover:shadow-md transition-all hover:-translate-y-1 cursor-pointer">
                 <div className="relative w-28 h-12 mb-4">
                   <Image src={`/partners/gallery_${partner.id}.jpg`} alt={partner.name} fill className="object-contain" />
                 </div>

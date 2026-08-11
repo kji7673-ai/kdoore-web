@@ -46,9 +46,9 @@ const config: Config = {
         "apple-canvas": "#ffffff",
         "apple-canvas-parchment": "#f5f5f7",
         "apple-surface-pearl": "#fafafc",
-        "apple-surface-tile-1": "#272729",
-        "apple-surface-tile-2": "#2a2a2c",
-        "apple-surface-tile-3": "#252527",
+        "apple-surface-tile-1": "#0A2540",
+        "apple-surface-tile-2": "#112F4E",
+        "apple-surface-tile-3": "#1A3B5C",
         "apple-surface-black": "#000000",
         "apple-surface-chip-translucent": "#d2d2d7",
         
