@@ -76,43 +76,56 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. 새로운 비전 및 가치 섹션 (NEW) */}
-      <section className="py-20 bg-gray-50">
+      {/* 3. By the Numbers & Major Partners (NEW) */}
+      <section className="py-20 bg-gray-50 border-t border-gray-100">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">우리의 가치와 비전</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">케이두레는 최고의 서비스로 고객의 자산가치를 높이고, 사회적 약자와 함께하는 따뜻한 일터를 만들어갑니다.</p>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">숫자로 증명하는 케이두레의 역량</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              안정적인 규모와 탄탄한 네트워크를 바탕으로 최고의 서비스를 제공합니다.
+            </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-              <div className="w-14 h-14 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-6">
-                <Star className="w-7 h-7" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">최고의 품질 서비스</h3>
-              <p className="text-gray-600 leading-relaxed">
-                다년간 축적된 노하우와 전문 인력을 바탕으로 고객의 니즈를 정확히 파악하고, 최적화된 맞춤형 솔루션을 제공합니다.
-              </p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center hover:-translate-y-1 transition-transform">
+              <div className="text-blue-600 font-bold text-4xl mb-2">198<span className="text-2xl">억</span></div>
+              <p className="text-gray-600 font-medium">연간 매출규모</p>
             </div>
-            
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-              <div className="w-14 h-14 bg-green-100 text-green-600 rounded-lg flex items-center justify-center mb-6">
-                <Users className="w-7 h-7" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">사회적 가치 실현</h3>
-              <p className="text-gray-600 leading-relaxed">
-                사회적 기업 및 장애인표준사업장으로서 취약계층의 안정적인 일자리 창출에 앞장서며 동반성장을 추구합니다.
-              </p>
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center hover:-translate-y-1 transition-transform">
+              <div className="text-blue-600 font-bold text-4xl mb-2">720<span className="text-2xl">명</span></div>
+              <p className="text-gray-600 font-medium">전문 임직원</p>
             </div>
-            
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-              <div className="w-14 h-14 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center mb-6">
-                <Lightbulb className="w-7 h-7" />
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center hover:-translate-y-1 transition-transform">
+              <div className="text-blue-600 font-bold text-4xl mb-2">317<span className="text-2xl">개</span></div>
+              <p className="text-gray-600 font-medium">전국 관리 현장</p>
+            </div>
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center hover:-translate-y-1 transition-transform">
+              <div className="text-blue-600 font-bold text-4xl mb-2">29<span className="text-2xl">개</span></div>
+              <p className="text-gray-600 font-medium">기업 고객사</p>
+            </div>
+          </div>
+
+          <div className="bg-blue-600 rounded-3xl p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 opacity-10">
+              <Star className="w-64 h-64 -mt-16 -mr-16" />
+            </div>
+            <div className="relative z-10 grid md:grid-cols-2 gap-8 items-center">
+              <div>
+                <h3 className="text-3xl font-bold mb-4">글로벌 리딩 기업이 선택한 파트너</h3>
+                <p className="text-blue-100 text-lg leading-relaxed mb-6">
+                  대통령 표창 수상 및 사회적가치(SVI) 우수 기업으로서, 삼성바이오로직스 협력사 평가 우수를 비롯해 수많은 최고 수준의 기업들과 동반 성장하고 있습니다.
+                </p>
+                <Link href="/about" className="inline-flex items-center font-medium bg-white text-blue-600 px-6 py-3 rounded-full hover:bg-blue-50 transition-colors">
+                  회사소개 자세히 보기 <ArrowRight className="ml-2 w-4 h-4" />
+                </Link>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">지속적인 혁신</h3>
-              <p className="text-gray-600 leading-relaxed">
-                변화하는 시장 환경에 발맞추어 끊임없이 연구하고 혁신하여, 고객에게 새로운 가치와 만족을 선사합니다.
-              </p>
+              <div className="grid grid-cols-2 gap-4">
+                {['삼성바이오로직스', '메르세데스-벤츠', 'SK시그넷', '매일유업', '동희산업', '서울시교육청'].map((partner, i) => (
+                  <div key={i} className="bg-blue-700/50 backdrop-blur border border-blue-500/30 rounded-xl p-4 flex items-center justify-center text-center font-bold text-lg hover:bg-blue-700 transition-colors">
+                    {partner}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
