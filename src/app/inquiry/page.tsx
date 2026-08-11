@@ -3,10 +3,10 @@ import { MessageSquare, Send } from "lucide-react";
 export default function InquiryPage() {
   return (
     <main className="min-h-screen bg-gray-50 pt-24 pb-12">
-      <div className="bg-blue-600 text-white py-20 relative overflow-hidden">
-        <div className="container mx-auto px-4 max-w-5xl relative z-10 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">고객문의</h1>
-          <p className="text-xl font-light opacity-90 max-w-2xl mx-auto">
+      <div className="bg-apple-surface-tile-1 text-white py-24 relative overflow-hidden">
+        <div className="container mx-auto px-6 max-w-5xl relative z-10 text-center">
+          <h1 className="text-apple-display-lg md:text-apple-hero-display font-bold mb-6">고객문의</h1>
+          <p className="text-apple-lead-airy text-apple-body-muted max-w-2xl mx-auto">
             궁금하신 사항을 남겨주시면 신속하고 친절하게 답변해 드리겠습니다
           </p>
         </div>

@@ -10,10 +10,10 @@ export default function PRCenterPage() {
 
   return (
     <main className="min-h-screen bg-gray-50 pt-24 pb-12">
-      <div className="bg-blue-600 text-white py-20 relative overflow-hidden">
-        <div className="container mx-auto px-4 max-w-5xl relative z-10 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">홍보센터</h1>
-          <p className="text-xl font-light opacity-90 max-w-2xl mx-auto">
+      <div className="bg-apple-surface-tile-1 text-white py-24 relative overflow-hidden">
+        <div className="container mx-auto px-6 max-w-5xl relative z-10 text-center">
+          <h1 className="text-apple-display-lg md:text-apple-hero-display font-bold mb-6">홍보센터</h1>
+          <p className="text-apple-lead-airy text-apple-body-muted max-w-2xl mx-auto">
             케이두레의 새로운 소식과 채용 정보를 알려드립니다
           </p>
         </div>
