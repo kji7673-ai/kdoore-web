@@ -34,7 +34,7 @@ export default async function Home() {
           <div className="flex flex-col md:flex-row items-start md:items-center gap-6 mb-8 animate-fade-in-up">
             <div className="relative w-20 h-24 sm:w-24 sm:h-32 rounded-sm overflow-hidden shadow-lg border border-white/20">
                {/* Note: using a placeholder for the actual citation image if exact ID is unknown, assuming cert_1626230357.jpg */}
-               <Image src="/images/legacy/cert_1626230357.jpg" alt="대통령 표창" fill className="object-cover" />
+               <Image src="/certifications/unnamed (9).jpg" alt="대통령 표창" fill className="object-cover" />
             </div>
             <div className="flex flex-col">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-apple-pill bg-white/10 backdrop-blur-md border border-white/20 mb-2">

@@ -63,13 +63,14 @@ export default function ServicesPage() {
   return (
     <main className="min-h-screen bg-gray-50 pt-24 pb-12">
       {/* 1. 헤더 */}
-      <div className="bg-blue-600 text-white py-20 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <Image src="/images/legacy/banner_1626171431.jpg" alt="Services Banner" fill className="object-cover" />
+      <div className="bg-apple-surface-tile-1 text-white py-24 relative overflow-hidden">
+        <div className="absolute inset-0 z-0 bg-apple-surface-tile-1">
+          <Image src="/images/legacy/banner_1626171431.jpg" alt="Services Banner" fill className="object-cover opacity-40 mix-blend-luminosity" priority />
+          <div className="absolute inset-0 bg-gradient-to-t from-apple-surface-tile-1 via-apple-surface-tile-1/80 to-transparent" />
         </div>
-        <div className="container mx-auto px-4 max-w-5xl relative z-10 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">사업분야</h1>
-          <p className="text-xl md:text-2xl font-light opacity-90 max-w-2xl mx-auto">
+        <div className="container mx-auto px-6 max-w-5xl relative z-10 text-center">
+          <h1 className="text-apple-display-lg md:text-apple-hero-display font-bold mb-6">사업분야</h1>
+          <p className="text-apple-lead-airy text-apple-body-muted max-w-2xl mx-auto">
             전문적이고 체계적인 케이두레만의 맞춤형 종합 관리 솔루션
           </p>
         </div>

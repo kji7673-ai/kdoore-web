@@ -6,13 +6,14 @@ export default function AboutPage() {
   return (
     <main className="min-h-screen bg-gray-50 pt-24 pb-12">
       {/* 1. 히어로 배너 */}
-      <div className="bg-blue-600 text-white py-20 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <Image src="/images/legacy/slide_about.jpg" alt="About Banner" fill className="object-cover" />
+      <div className="bg-apple-surface-tile-1 text-white py-24 relative overflow-hidden">
+        <div className="absolute inset-0 z-0 bg-apple-surface-tile-1">
+          <Image src="/images/legacy/slide_about.jpg" alt="About Banner" fill className="object-cover opacity-40 mix-blend-luminosity" priority />
+          <div className="absolute inset-0 bg-gradient-to-t from-apple-surface-tile-1 via-apple-surface-tile-1/80 to-transparent" />
         </div>
-        <div className="container mx-auto px-4 max-w-5xl relative z-10 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">더 멀리 함께하는 기업! 케이두레</h1>
-          <p className="text-xl md:text-2xl font-light opacity-90 max-w-2xl mx-auto">
+        <div className="container mx-auto px-6 max-w-5xl relative z-10 text-center">
+          <h1 className="text-apple-display-lg md:text-apple-hero-display font-bold mb-6">더 멀리 함께하는 기업! 케이두레</h1>
+          <p className="text-apple-lead-airy text-apple-body-muted max-w-2xl mx-auto">
             고객만족을 위하고 새로운 도약을 준비하는 케이두레
           </p>
         </div>
@@ -102,25 +103,24 @@ export default function AboutPage() {
             <h2 className="text-3xl font-bold text-gray-900">보유 인증 및 허가</h2>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
             {[
-              { id: '1626230357', name: '건물위생관리업 신고증' },
-              { id: '1626230359', name: '경비업 허가증' },
-              { id: '1626230361', name: '근로자파견사업 허가증' },
-              { id: '1626230363', name: '소독업 신고증' },
-              { id: '1626230366', name: '위생관리용역업 신고증' },
-              { id: '1626230368', name: '저수조청소업 신고증' },
-              { id: '1626230371', name: '사회적기업 인증서' },
-              { id: '1626230373', name: '장애인표준사업장 인증서' },
-              { id: '1626230376', name: 'ISO 9001 인증서' },
-              { id: '1626230379', name: 'ISO 14001 인증서' },
-              { id: '1626230381', name: '직접생산증명서' },
+              { id: '2.png', name: '인증/허가 1' },
+              { id: '3.png', name: '인증/허가 2' },
+              { id: '4.png', name: '인증/허가 3' },
+              { id: '5.png', name: '인증/허가 4' },
+              { id: '6.png', name: '인증/허가 5' },
+              { id: '7.png', name: '인증/허가 6' },
+              { id: '8.png', name: '인증/허가 7' },
+              { id: '9.jpg', name: '인증/허가 8' },
+              { id: 'unnamed (9).jpg', name: '인증/허가 9' },
+              { id: '그림1.png', name: '인증/허가 10' },
             ].map((cert) => (
-              <div key={cert.id} className="bg-white border border-gray-200 p-3 rounded-xl shadow-sm flex flex-col items-center">
+              <div key={cert.id} className="bg-white border border-gray-200 p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow flex flex-col items-center">
                 <div className="relative w-full aspect-[3/4] mb-3">
-                  <Image src={`/images/legacy/cert_${cert.id}.jpg`} alt={cert.name} fill className="object-contain" />
+                  <Image src={`/certifications/${cert.id}`} alt={cert.name} fill className="object-contain" />
                 </div>
-                <h4 className="text-xs font-bold text-gray-800 text-center leading-snug">{cert.name}</h4>
+                <h4 className="text-sm font-bold text-gray-800 text-center leading-snug">{cert.name}</h4>
               </div>
             ))}
           </div>
