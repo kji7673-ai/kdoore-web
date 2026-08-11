@@ -6,6 +6,8 @@ type Args = {
   children: React.ReactNode
 }
 
+const dummyImportMap = {} as any;
+
 export default function Layout({ children }: Args) {
-  return <RootLayout config={config}>{children}</RootLayout>
+  return <RootLayout config={config} importMap={dummyImportMap} serverFunction={async () => {}}>{children}</RootLayout>
 }
