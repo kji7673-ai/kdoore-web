@@ -127,16 +127,14 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
             {[
-              { id: '2.png', name: '인증/허가 1' },
-              { id: '3.png', name: '인증/허가 2' },
-              { id: '4.png', name: '인증/허가 3' },
-              { id: '5.png', name: '인증/허가 4' },
-              { id: '6.png', name: '인증/허가 5' },
-              { id: '7.png', name: '인증/허가 6' },
-              { id: '8.png', name: '인증/허가 7' },
-              { id: '9.jpg', name: '인증/허가 8' },
-              { id: 'cert_main.jpg', name: '인증/허가 9' },
-              { id: 'cert_10.png', name: '인증/허가 10' },
+              { id: '8.png', name: '대통령 표창' },
+              { id: '2.png', name: '사회적가치 측정 우수' },
+              { id: '3.png', name: '장애인 표준사업장' },
+              { id: '4.png', name: '사회적기업 인증' },
+              { id: '5.png', name: '주택관리업 등록' },
+              { id: '6.png', name: '영업신고증' },
+              { id: '7.png', name: '허가증' },
+              { id: '9.jpg', name: '기타 인증' },
             ].map((cert) => (
               <div key={cert.id} className="bg-white border border-gray-200 p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow flex flex-col items-center">
                 <div className="relative w-full aspect-[3/4] mb-3">
