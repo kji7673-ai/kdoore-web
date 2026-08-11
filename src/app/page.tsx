@@ -24,11 +24,13 @@ export default async function Home() {
         
         <div className="relative z-10 container mx-auto px-6 flex flex-col items-center text-center mt-10">
           {/* Elegant Badge */}
-          <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-apple-surface-tile-2 border border-white/10 mb-10 animate-fade-in-up">
-            <div className="relative w-6 h-6">
-              <Image src="/certifications/8.png" alt="대통령 표창" fill className="object-contain" />
+          <div className="flex flex-col items-center gap-4 mb-10 animate-fade-in-up">
+            <div className="relative w-32 h-44 shadow-2xl shadow-black/50 rounded-sm overflow-hidden border border-white/20">
+              <Image src="/certifications/8.png" alt="대통령 표창" fill className="object-contain bg-white" />
             </div>
-            <span className="text-white text-sm font-medium tracking-wide">대통령 표창 및 사회적 가치 우수기업</span>
+            <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-apple-surface-tile-2 border border-white/10">
+              <span className="text-white text-sm font-medium tracking-wide">대통령 표창 및 사회적 가치 우수기업</span>
+            </div>
           </div>
           
           {/* Main Headline */}
