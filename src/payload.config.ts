@@ -4,9 +4,6 @@ import { lexicalEditor } from '@payloadcms/richtext-lexical';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import { Media } from './payload/collections/Media';
-import { Pages } from './payload/collections/Pages';
-
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
@@ -25,8 +22,77 @@ export default buildConfig({
         // Email added by default
       ],
     },
-    Media,
-    Pages,
+    {
+      slug: 'media',
+      upload: {
+        staticDir: 'public/media',
+        adminThumbnail: 'thumbnail',
+        mimeTypes: ['image/*'],
+      },
+      fields: [
+        {
+          name: 'alt',
+          type: 'text',
+        },
+      ],
+    },
+    {
+      slug: 'pages',
+      admin: {
+        useAsTitle: 'title',
+        defaultColumns: ['title', 'slug', 'updatedAt'],
+      },
+      fields: [
+        {
+          name: 'title',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'slug',
+          type: 'text',
+          required: true,
+          unique: true,
+          admin: {
+            position: 'sidebar',
+          },
+        },
+        {
+          name: 'layout',
+          type: 'blocks',
+          required: true,
+          blocks: [
+            {
+              slug: 'hero',
+              labels: {
+                singular: 'Hero Section',
+                plural: 'Hero Sections',
+              },
+              fields: [
+                {
+                  name: 'title',
+                  type: 'text',
+                  required: true,
+                },
+                {
+                  name: 'subtitle',
+                  type: 'text',
+                },
+                {
+                  name: 'badgeText',
+                  type: 'text',
+                },
+                {
+                  name: 'backgroundImage',
+                  type: 'upload',
+                  relationTo: 'media',
+                },
+              ],
+            }
+          ],
+        },
+      ],
+    },
     {
       slug: 'news',
       admin: {
@@ -83,3 +149,4 @@ export default buildConfig({
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
 });
+

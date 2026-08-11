@@ -1,40 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { getPayload } from 'payload';
-import configPromise from '@/payload.config';
-import { BlockRenderer } from "@/components/blocks/BlockRenderer";
 
 export default async function Home() {
-  let cmsPage = null;
-  
-  try {
-    const payload = await getPayload({ config: configPromise });
-    const result = await payload.find({
-      collection: 'pages',
-      where: {
-        slug: {
-          equals: 'home'
-        }
-      }
-    });
-    
-    if (result.docs.length > 0) {
-      cmsPage = result.docs[0];
-    }
-  } catch(e) {
-    console.error("Payload DB not initialized yet or query failed", e);
-  }
-
-  // If a CMS page with slug 'home' is created, render its dynamic blocks!
-  if (cmsPage && cmsPage.layout && cmsPage.layout.length > 0) {
-    return (
-      <main className="min-h-screen bg-apple-canvas font-apple-text text-apple-ink overflow-x-hidden selection:bg-apple-primary selection:text-white">
-        <BlockRenderer blocks={cmsPage.layout} />
-      </main>
-    );
-  }
-
   // FALLBACK: If DB is empty, render the hardcoded Apple-style design
   return (
     <main className="min-h-screen bg-apple-canvas font-apple-text text-apple-ink overflow-x-hidden selection:bg-apple-primary selection:text-white">
