@@ -18,108 +18,75 @@ export default async function Home() {
     <main className="min-h-screen bg-apple-canvas-parchment font-apple-text text-apple-ink overflow-x-hidden selection:bg-apple-primary selection:text-white">
       
       {/* ─── 1. HERO SECTION ─── */}
-      <section className="relative w-full h-[90vh] min-h-[800px] flex flex-col justify-center bg-apple-surface-tile-1 pt-20 pb-32">
-        <div className="absolute inset-0 z-0 bg-apple-surface-tile-1">
-          <Image 
-            src="/images/legacy/main_banner_1.jpg" 
-            alt="Hero Background" 
-            fill 
-            className="object-cover object-center opacity-40 mix-blend-luminosity" 
-            priority 
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-apple-surface-tile-1 via-apple-surface-tile-1/90 to-apple-surface-tile-1/20" />
-        </div>
-
-        <div className="relative z-10 container mx-auto px-6 lg:px-12 mt-12 flex flex-col items-start text-left">
-          <div className="flex flex-col md:flex-row items-start md:items-center gap-6 mb-8 animate-fade-in-up">
-            <div className="relative w-20 h-24 sm:w-24 sm:h-32 rounded-sm overflow-hidden shadow-lg border border-white/20">
-               {/* Note: using a placeholder for the actual citation image if exact ID is unknown, assuming cert_1626230357.jpg */}
-               <Image src="/certifications/cert_main.jpg" alt="대통령 표창" fill className="object-cover" />
-            </div>
-            <div className="flex flex-col">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-apple-pill bg-white/10 backdrop-blur-md border border-white/20 mb-2">
-                <span className="text-white text-sm font-semibold tracking-wide">🏆 대통령 표창 및 사회적 가치 우수기업</span>
-              </div>
-              <p className="text-apple-caption text-apple-body-muted">국가가 인정한 최고의 시설관리 전문기업</p>
-            </div>
+      <section className="relative w-full h-[85vh] min-h-[700px] flex flex-col justify-center items-center bg-apple-surface-black pt-20 overflow-hidden">
+        {/* Subtle radial gradient for depth, no distracting photos */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-apple-surface-tile-1 to-apple-surface-black opacity-90" />
+        
+        <div className="relative z-10 container mx-auto px-6 flex flex-col items-center text-center mt-10">
+          {/* Elegant Badge */}
+          <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-apple-surface-tile-2 border border-white/10 mb-10 animate-fade-in-up">
+            <span className="text-xl">🏆</span>
+            <span className="text-white text-sm font-medium tracking-wide">대통령 표창 및 사회적 가치 우수기업</span>
           </div>
           
-          <h1 className="text-apple-hero-display text-white mb-6 animate-fade-in-up animation-delay-200 max-w-4xl leading-tight">
+          {/* Main Headline */}
+          <h1 className="text-apple-hero-display text-white mb-8 animate-fade-in-up animation-delay-200 leading-[1.1]">
             세계적인 기업이 신뢰하는<br />
-            <span className="text-apple-primary-on-dark">프리미엄 공간 관리 솔루션.</span>
+            <span className="text-apple-primary-on-dark">프리미엄 공간 관리.</span>
           </h1>
-          <p className="text-apple-lead text-apple-body-muted max-w-2xl mb-12 animate-fade-in-up animation-delay-400 font-light">
-            삼성바이오로직스, 벤츠 코리아 등 글로벌 기업과 주요 공공기관이 선택한 케이두레. 압도적인 전문성으로 당신의 자산 가치를 극대화합니다.
+          
+          {/* Subheadline */}
+          <p className="text-apple-lead-airy text-apple-body-muted max-w-2xl mb-14 animate-fade-in-up animation-delay-400">
+            삼성바이오로직스, 벤츠 코리아 등 글로벌 기업과 주요 공공기관이 선택한 케이두레. 압도적인 전문성으로 귀하의 자산 가치를 극대화합니다.
           </p>
 
-          <div className="flex flex-col sm:flex-row justify-start gap-4 animate-fade-in-up animation-delay-600">
-            <Link href="/services" className="bg-white text-apple-surface-tile-1 hover:bg-gray-100 px-8 py-4 rounded-apple-sm text-apple-body-strong transition-all flex items-center gap-2">
-              솔루션 자세히 보기 <ChevronRight className="w-5 h-5" />
+          {/* Action Buttons */}
+          <div className="flex flex-col sm:flex-row justify-center gap-5 animate-fade-in-up animation-delay-600">
+            <Link href="/services" className="bg-apple-primary text-white hover:bg-apple-primary-focus px-8 py-4 rounded-full text-[17px] font-medium transition-colors">
+              솔루션 자세히 보기
             </Link>
-            <Link href="/about#contact" className="bg-transparent text-white border border-white/40 hover:bg-white/10 px-8 py-4 rounded-apple-sm text-apple-body-strong transition-all flex items-center gap-2">
+            <Link href="/about#contact" className="bg-apple-surface-tile-2 text-white hover:bg-apple-surface-tile-1 border border-white/10 px-8 py-4 rounded-full text-[17px] font-medium transition-colors">
               전문가 상담 신청
             </Link>
           </div>
         </div>
+      </section>
 
-        {/* Graphical KPI Dashboard */}
-        <div className="absolute left-0 right-0 -bottom-32 z-20 container mx-auto px-6 lg:px-12 animate-fade-in-up animation-delay-800">
-          <div className="bg-white rounded-apple-lg shadow-[0_20px_40px_rgba(10,37,64,0.12)] border border-apple-hairline p-8 md:p-10">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-4 divide-y md:divide-y-0 md:divide-x divide-apple-divider-soft">
+      {/* ─── 2. KPI DASHBOARD SECTION ─── */}
+      <section className="relative w-full py-24 bg-apple-canvas-parchment">
+        <div className="container mx-auto px-6 lg:px-12">
+          <div className="bg-white rounded-apple-lg shadow-sm border border-apple-hairline p-10 md:p-14">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 divide-y md:divide-y-0 md:divide-x divide-apple-divider-soft">
               
-              <div className="flex flex-col items-center md:items-start md:px-6 pt-4 md:pt-0">
-                <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mb-4">
-                  <BarChart className="w-6 h-6 text-apple-primary" />
-                </div>
-                <span className="text-apple-caption-strong text-apple-ink-muted-80 mb-1 uppercase tracking-wider">연간 매출규모</span>
+              <div className="flex flex-col items-center md:items-start md:px-8 pt-6 md:pt-0">
+                <span className="text-apple-caption-strong text-apple-ink-muted-80 mb-2 tracking-[0.1em]">연간 매출규모</span>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-apple-display-lg text-apple-primary font-bold">198</span>
-                  <span className="text-apple-body-strong text-apple-ink-muted-80">억원</span>
-                </div>
-                <div className="w-full h-1.5 bg-gray-100 rounded-full mt-3 overflow-hidden">
-                  <div className="h-full bg-apple-primary w-[85%] rounded-full"></div>
+                  <span className="text-[56px] font-semibold text-apple-ink leading-none tracking-tight">198</span>
+                  <span className="text-apple-body-strong text-apple-ink-muted-80 ml-1">억원</span>
                 </div>
               </div>
 
-              <div className="flex flex-col items-center md:items-start md:px-6 pt-4 md:pt-0">
-                <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mb-4">
-                  <Users className="w-6 h-6 text-apple-primary" />
-                </div>
-                <span className="text-apple-caption-strong text-apple-ink-muted-80 mb-1 uppercase tracking-wider">전문 임직원</span>
+              <div className="flex flex-col items-center md:items-start md:px-8 pt-6 md:pt-0">
+                <span className="text-apple-caption-strong text-apple-ink-muted-80 mb-2 tracking-[0.1em]">전문 임직원</span>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-apple-display-lg text-apple-primary font-bold">720</span>
-                  <span className="text-apple-body-strong text-apple-ink-muted-80">명</span>
-                </div>
-                <div className="w-full h-1.5 bg-gray-100 rounded-full mt-3 overflow-hidden">
-                  <div className="h-full bg-apple-primary w-[90%] rounded-full"></div>
+                  <span className="text-[56px] font-semibold text-apple-ink leading-none tracking-tight">720</span>
+                  <span className="text-apple-body-strong text-apple-ink-muted-80 ml-1">명</span>
                 </div>
               </div>
 
-              <div className="flex flex-col items-center md:items-start md:px-6 pt-4 md:pt-0">
-                <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mb-4">
-                  <Building className="w-6 h-6 text-apple-primary" />
-                </div>
-                <span className="text-apple-caption-strong text-apple-ink-muted-80 mb-1 uppercase tracking-wider">전국 관리 현장</span>
+              <div className="flex flex-col items-center md:items-start md:px-8 pt-6 md:pt-0">
+                <span className="text-apple-caption-strong text-apple-ink-muted-80 mb-2 tracking-[0.1em]">전국 관리 현장</span>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-apple-display-lg text-apple-primary font-bold">317</span>
-                  <span className="text-apple-body-strong text-apple-ink-muted-80">곳</span>
-                </div>
-                <div className="w-full h-1.5 bg-gray-100 rounded-full mt-3 overflow-hidden">
-                  <div className="h-full bg-apple-primary w-[75%] rounded-full"></div>
+                  <span className="text-[56px] font-semibold text-apple-ink leading-none tracking-tight">317</span>
+                  <span className="text-apple-body-strong text-apple-ink-muted-80 ml-1">곳</span>
                 </div>
               </div>
 
-              <div className="flex flex-col items-center md:items-start md:px-6 pt-4 md:pt-0">
-                <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mb-4">
-                  <Award className="w-6 h-6 text-apple-primary" />
-                </div>
-                <span className="text-apple-caption-strong text-apple-ink-muted-80 mb-1 uppercase tracking-wider">글로벌·공공 고객사</span>
+              <div className="flex flex-col items-center md:items-start md:px-8 pt-6 md:pt-0">
+                <span className="text-apple-caption-strong text-apple-ink-muted-80 mb-2 tracking-[0.1em]">글로벌·공공 고객사</span>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-apple-display-lg text-apple-primary font-bold">29</span>
-                  <span className="text-apple-body-strong text-apple-ink-muted-80">개사</span>
-                </div>
-                <div className="w-full h-1.5 bg-gray-100 rounded-full mt-3 overflow-hidden">
-                  <div className="h-full bg-apple-primary w-[100%] rounded-full"></div>
+                  <span className="text-[56px] font-semibold text-apple-ink leading-none tracking-tight">29</span>
+                  <span className="text-apple-body-strong text-apple-ink-muted-80 ml-1">개사</span>
                 </div>
               </div>
 
@@ -128,8 +95,8 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* ─── 2. TRUST & PARTNERS SECTION ─── */}
-      <section className="relative w-full pt-56 pb-24 bg-apple-canvas-parchment overflow-hidden">
+      {/* ─── 3. TRUST & PARTNERS SECTION ─── */}
+      <section className="relative w-full pt-16 pb-32 bg-apple-canvas-parchment overflow-hidden">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-apple-display-md text-apple-ink font-semibold mb-4">최고의 기업들이 증명합니다</h2>
           <p className="text-apple-body text-apple-ink-muted-80 mb-16">
@@ -143,10 +110,10 @@ export default async function Home() {
           
           <div className="flex w-max animate-marquee hover:[animation-play-state:paused]">
             {[1, 2, 3].map((set) => (
-              <div key={set} className="flex items-center gap-6 px-3">
+              <div key={set} className="flex items-center gap-8 px-4">
                 {partners.map((partner, idx) => (
-                  <div key={`${set}-${idx}`} className="flex flex-col items-center justify-center w-56 h-32 bg-white rounded-apple-sm border border-apple-divider-soft shadow-sm hover:shadow-md transition-all hover:-translate-y-1 cursor-pointer">
-                    <div className="relative w-36 h-16 mb-2">
+                  <div key={`${set}-${idx}`} className="flex flex-col items-center justify-center w-64 h-36 bg-white rounded-apple-lg border border-apple-hairline shadow-sm hover:shadow-md transition-all duration-500 cursor-pointer group">
+                    <div className="relative w-40 h-20 mb-3 grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">
                       <Image src={`/partners/gallery_${partner.id}.jpg`} alt={partner.name} fill className="object-contain" />
                     </div>
                     <span className="text-apple-caption text-apple-ink-muted-80 font-medium tracking-wide">
