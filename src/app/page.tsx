@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Shield, Building, Sparkles, CheckCircle2, Users, Award, TrendingUp, Phone, ChevronRight, BarChart } from "lucide-react";
-
+import KPIDashboard from "@/components/KPIDashboard";
+import PromotionalFeatures from "@/components/PromotionalFeatures";
 export default async function Home() {
   const partners = [
     { id: '1625722183', name: '서울특별시교육청' },
@@ -19,8 +20,12 @@ export default async function Home() {
       
       {/* ─── 1. HERO SECTION ─── */}
       <section className="relative w-full h-[85vh] min-h-[700px] flex flex-col justify-center items-center bg-apple-surface-black pt-20 overflow-hidden">
-        {/* Subtle radial gradient for depth, no distracting photos */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-apple-surface-tile-1 to-apple-surface-black opacity-90" />
+        {/* Impactful Background Image with Overlay */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
+          style={{ backgroundImage: "url('/images/legacy/main_banner_1.jpg')" }}
+        />
+        <div className="absolute inset-0 bg-apple-surface-black/80" />
         
         <div className="relative z-10 container mx-auto px-6 flex flex-col items-center text-center mt-10">
           {/* Elegant Badge */}
@@ -59,43 +64,7 @@ export default async function Home() {
       {/* ─── 2. KPI DASHBOARD SECTION ─── */}
       <section className="relative w-full py-24 bg-apple-canvas-parchment">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="bg-white rounded-apple-lg shadow-sm border border-apple-hairline p-10 md:p-14">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 divide-y md:divide-y-0 md:divide-x divide-apple-divider-soft">
-              
-              <div className="flex flex-col items-center md:items-start md:px-8 pt-6 md:pt-0">
-                <span className="text-apple-caption-strong text-apple-ink-muted-80 mb-2 tracking-[0.1em]">연간 매출규모</span>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-[56px] font-semibold text-apple-ink leading-none tracking-tight">198</span>
-                  <span className="text-apple-body-strong text-apple-ink-muted-80 ml-1">억원</span>
-                </div>
-              </div>
-
-              <div className="flex flex-col items-center md:items-start md:px-8 pt-6 md:pt-0">
-                <span className="text-apple-caption-strong text-apple-ink-muted-80 mb-2 tracking-[0.1em]">전문 임직원</span>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-[56px] font-semibold text-apple-ink leading-none tracking-tight">720</span>
-                  <span className="text-apple-body-strong text-apple-ink-muted-80 ml-1">명</span>
-                </div>
-              </div>
-
-              <div className="flex flex-col items-center md:items-start md:px-8 pt-6 md:pt-0">
-                <span className="text-apple-caption-strong text-apple-ink-muted-80 mb-2 tracking-[0.1em]">전국 관리 현장</span>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-[56px] font-semibold text-apple-ink leading-none tracking-tight">317</span>
-                  <span className="text-apple-body-strong text-apple-ink-muted-80 ml-1">곳</span>
-                </div>
-              </div>
-
-              <div className="flex flex-col items-center md:items-start md:px-8 pt-6 md:pt-0">
-                <span className="text-apple-caption-strong text-apple-ink-muted-80 mb-2 tracking-[0.1em]">글로벌·공공 고객사</span>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-[56px] font-semibold text-apple-ink leading-none tracking-tight">29</span>
-                  <span className="text-apple-body-strong text-apple-ink-muted-80 ml-1">개사</span>
-                </div>
-              </div>
-
-            </div>
-          </div>
+          <KPIDashboard />
         </div>
       </section>
 
@@ -181,49 +150,7 @@ export default async function Home() {
       {/* ─── 4. DIFFERENTIATION SECTION ─── */}
       <section className="relative w-full py-32 bg-apple-canvas-parchment border-y border-apple-divider-soft">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="text-center mb-16">
-            <h2 className="text-apple-display-lg text-apple-ink font-bold mb-4">왜 케이두레인가?</h2>
-            <p className="text-apple-body text-apple-ink-muted-80">수많은 공공기관과 대기업이 신뢰할 수밖에 없는 4가지 핵심 경쟁력</p>
-          </div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="bg-white p-8 rounded-apple-sm shadow-[0_4px_12px_rgba(10,37,64,0.04)]">
-              <div className="w-12 h-12 bg-apple-surface-pearl rounded-full flex items-center justify-center mb-6">
-                <Award className="w-6 h-6 text-apple-primary" />
-              </div>
-              <h4 className="text-apple-body-strong text-apple-ink mb-3">압도적인 공공·기업 경험</h4>
-              <p className="text-apple-caption text-apple-ink-muted-80 leading-relaxed">
-                엄격한 보안과 체계가 요구되는 대규모 공공기관 및 대기업 사업장의 전담 운영 노하우를 보유하고 있습니다.
-              </p>
-            </div>
-            <div className="bg-white p-8 rounded-apple-sm shadow-[0_4px_12px_rgba(10,37,64,0.04)]">
-              <div className="w-12 h-12 bg-apple-surface-pearl rounded-full flex items-center justify-center mb-6">
-                <Users className="w-6 h-6 text-apple-primary" />
-              </div>
-              <h4 className="text-apple-body-strong text-apple-ink mb-3">검증된 전문 인력 운영</h4>
-              <p className="text-apple-caption text-apple-ink-muted-80 leading-relaxed">
-                분야별 국가 기술 자격증을 보유한 720명의 정예 임직원이 체계적인 교육을 이수하고 현장에 투입됩니다.
-              </p>
-            </div>
-            <div className="bg-white p-8 rounded-apple-sm shadow-[0_4px_12px_rgba(10,37,64,0.04)]">
-              <div className="w-12 h-12 bg-apple-surface-pearl rounded-full flex items-center justify-center mb-6">
-                <TrendingUp className="w-6 h-6 text-apple-primary" />
-              </div>
-              <h4 className="text-apple-body-strong text-apple-ink mb-3">신속한 현장 대응력</h4>
-              <p className="text-apple-caption text-apple-ink-muted-80 leading-relaxed">
-                전국 317개 관리 현장을 유기적으로 연결하여 긴급 상황 발생 시 24시간 즉각적인 대처가 가능합니다.
-              </p>
-            </div>
-            <div className="bg-white p-8 rounded-apple-sm shadow-[0_4px_12px_rgba(10,37,64,0.04)]">
-              <div className="w-12 h-12 bg-apple-surface-pearl rounded-full flex items-center justify-center mb-6">
-                <CheckCircle2 className="w-6 h-6 text-apple-primary" />
-              </div>
-              <h4 className="text-apple-body-strong text-apple-ink mb-3">체계적 품질 관리 프로세스</h4>
-              <p className="text-apple-caption text-apple-ink-muted-80 leading-relaxed">
-                정기적인 본사 순회 점검 및 KPI 기반의 객관적 서비스 평가를 통해 무결점 품질을 유지합니다.
-              </p>
-            </div>
-          </div>
+          <PromotionalFeatures />
         </div>
       </section>
 
