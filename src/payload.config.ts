@@ -4,6 +4,9 @@ import { lexicalEditor } from '@payloadcms/richtext-lexical';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
+import { Media } from './payload/collections/Media';
+import { Pages } from './payload/collections/Pages';
+
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
@@ -22,23 +25,8 @@ export default buildConfig({
         // Email added by default
       ],
     },
-    {
-      slug: 'pages',
-      admin: {
-        useAsTitle: 'title',
-      },
-      fields: [
-        {
-          name: 'title',
-          type: 'text',
-          required: true,
-        },
-        {
-          name: 'content',
-          type: 'richText',
-        },
-      ],
-    },
+    Media,
+    Pages,
     {
       slug: 'news',
       admin: {
@@ -88,7 +76,7 @@ export default buildConfig({
   secret: process.env.PAYLOAD_SECRET || 'fallback-secret-for-kdoore-dev',
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.POSTGRES_URL,
+      connectionString: process.env.POSTGRES_URL || 'postgres://placeholder:placeholder@localhost/placeholder',
     },
   }),
   typescript: {

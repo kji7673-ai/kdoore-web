@@ -1,14 +1,46 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { getPayload } from 'payload';
+import configPromise from '@/payload.config';
+import { BlockRenderer } from "@/components/blocks/BlockRenderer";
 
-export default function Home() {
+export default async function Home() {
+  let cmsPage = null;
+  
+  try {
+    const payload = await getPayload({ config: configPromise });
+    const result = await payload.find({
+      collection: 'pages',
+      where: {
+        slug: {
+          equals: 'home'
+        }
+      }
+    });
+    
+    if (result.docs.length > 0) {
+      cmsPage = result.docs[0];
+    }
+  } catch(e) {
+    console.error("Payload DB not initialized yet or query failed", e);
+  }
+
+  // If a CMS page with slug 'home' is created, render its dynamic blocks!
+  if (cmsPage && cmsPage.layout && cmsPage.layout.length > 0) {
+    return (
+      <main className="min-h-screen bg-apple-canvas font-apple-text text-apple-ink overflow-x-hidden selection:bg-apple-primary selection:text-white">
+        <BlockRenderer blocks={cmsPage.layout} />
+      </main>
+    );
+  }
+
+  // FALLBACK: If DB is empty, render the hardcoded Apple-style design
   return (
     <main className="min-h-screen bg-apple-canvas font-apple-text text-apple-ink overflow-x-hidden selection:bg-apple-primary selection:text-white">
       
       {/* TILE 1: Light Hero & Scale (Full Bleed Light Canvas) */}
       <section className="relative w-full h-screen min-h-[800px] flex flex-col justify-between bg-apple-canvas-parchment pt-32 pb-16">
-        {/* Background Image Layer with very subtle opacity for the "museum gallery" feel */}
         <div className="absolute inset-0 z-0">
           <Image 
             src="/images/legacy/main_banner_1.jpg" 
@@ -17,11 +49,9 @@ export default function Home() {
             className="object-cover object-center opacity-40 mix-blend-multiply" 
             priority 
           />
-          {/* Faint gradient to ensure text readability at the top */}
           <div className="absolute inset-0 bg-gradient-to-b from-apple-canvas-parchment via-transparent to-apple-canvas-parchment/90" />
         </div>
 
-        {/* Hero Copy & Partners */}
         <div className="relative z-10 container mx-auto px-6 text-center mt-8">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-apple-pill bg-apple-surface-pearl border border-apple-divider-soft mb-6 animate-fade-in-up">
             <span className="text-apple-primary">🏆</span>
@@ -56,7 +86,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* The "By the Numbers" Scale Sub-Nav (Minimalist) */}
         <div className="relative z-10 w-full mt-auto pt-16">
           <div className="container mx-auto px-6">
             <div className="flex flex-col md:flex-row justify-between items-center py-8 border-t border-apple-hairline">
@@ -109,7 +138,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Alternating Edge-to-Edge Service Grid without traditional cards */}
         <div className="w-full max-w-[1440px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 mb-16">
           <div className="flex flex-col items-start justify-center">
             <h3 className="text-apple-display-md mb-4">경비 및 보안</h3>
@@ -146,8 +174,6 @@ export default function Home() {
            </Link>
         </div>
       </section>
-
-
 
       {/* TILE 4: Clean Footer CTA (White Canvas) */}
       <section className="relative w-full py-24 bg-apple-canvas flex flex-col items-center border-t border-apple-hairline">
