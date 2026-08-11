@@ -65,6 +65,10 @@ export default function Home() {
                 <span className="text-apple-display-md text-apple-ink">198억</span>
               </div>
               <div className="text-center md:text-left mb-6 md:mb-0">
+                <span className="block text-apple-caption text-apple-ink-muted-80 mb-1">납입 자본금</span>
+                <span className="text-apple-display-md text-apple-ink">5억</span>
+              </div>
+              <div className="text-center md:text-left mb-6 md:mb-0">
                 <span className="block text-apple-caption text-apple-ink-muted-80 mb-1">전문 임직원</span>
                 <span className="text-apple-display-md text-apple-ink">720명</span>
               </div>
@@ -83,11 +87,26 @@ export default function Home() {
 
       {/* TILE 2: Services (Near-Black Tile 1) */}
       <section className="relative w-full py-apple-section bg-apple-surface-tile-1 text-apple-body-on-dark flex flex-col items-center">
-        <div className="container mx-auto px-6 text-center mb-24">
+        <div className="container mx-auto px-6 text-center mb-16">
           <h2 className="text-apple-display-lg mb-6">시설 관리의 새로운 기준.</h2>
-          <p className="text-apple-lead-airy text-apple-body-muted max-w-2xl mx-auto">
+          <p className="text-apple-lead-airy text-apple-body-muted max-w-2xl mx-auto mb-16">
             첨단 장비와 숙련된 전문가가 제공하는 무결점 종합 관리 서비스. 케이두레가 당신의 공간 가치를 극대화합니다.
           </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto border-t border-apple-surface-tile-2 pt-12">
+            <div className="text-center">
+              <span className="block text-apple-display-lg text-apple-primary-on-dark mb-2">49%</span>
+              <span className="text-apple-body-strong text-apple-body-on-dark">학교 및 공공기관 관리 비중</span>
+            </div>
+            <div className="text-center">
+              <span className="block text-apple-display-lg text-apple-primary-on-dark mb-2">28%</span>
+              <span className="text-apple-body-strong text-apple-body-on-dark">바이오/복지/주차 시설</span>
+            </div>
+            <div className="text-center">
+              <span className="block text-apple-display-lg text-apple-primary-on-dark mb-2">20%</span>
+              <span className="text-apple-body-strong text-apple-body-on-dark">건물시설종합관리(FM)</span>
+            </div>
+          </div>
         </div>
 
         {/* Alternating Edge-to-Edge Service Grid without traditional cards */}
