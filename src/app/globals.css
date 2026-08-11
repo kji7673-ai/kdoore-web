@@ -44,6 +44,14 @@
   --spacing-container-max: 1440px;
   --spacing-section-gap: 100px;
   --spacing-gutter: 24px;
+
+  /* ─── Animations ────────────────────────────────────────────── */
+  --animate-marquee: marquee 40s linear infinite;
+  
+  @keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
 }
 
 /* ─── Base ──────────────────────────────────────────────────────── */

@@ -33,15 +33,37 @@ export default async function Home() {
             삼성바이오로직스, 메르세데스-벤츠 등 세계적인 기업들이<br/>케이두레의 압도적인 전문성과 신뢰를 선택했습니다.
           </p>
 
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 opacity-80 mix-blend-multiply animate-fade-in-up animation-delay-600 mb-12">
-            {[
-              '1625722183', '1625722188', '1625722194', '1625722199', 
-              '1625722208', '1625722213', '1625722219', '1625722227'
-            ].map((id, idx) => (
-              <div key={idx} className="relative w-24 h-8 md:w-32 md:h-12 grayscale hover:grayscale-0 transition-all duration-500">
-                <Image src={`/partners/gallery_${id}.jpg`} alt={`Partner`} fill className="object-contain" />
-              </div>
-            ))}
+          <div className="relative w-full overflow-hidden opacity-80 mix-blend-multiply animate-fade-in-up animation-delay-600 mb-12">
+            {/* Fade gradients for smooth edge transition */}
+            <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-apple-canvas-parchment to-transparent z-10 pointer-events-none" />
+            <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-apple-canvas-parchment to-transparent z-10 pointer-events-none" />
+            
+            <div className="flex w-max animate-marquee hover:[animation-play-state:paused]">
+              {/* Duplicate the list 3 times for infinite scroll effect */}
+              {[1, 2, 3].map((set) => (
+                <div key={set} className="flex items-center gap-12 md:gap-16 px-6 md:px-8">
+                  {[
+                    { id: '1625722183', name: '서울특별시교육청' },
+                    { id: '1625722188', name: '사회적경제지원센터' },
+                    { id: '1625722194', name: '한국공항공사' },
+                    { id: '1625722199', name: '해양환경공단' },
+                    { id: '1625722208', name: '한국사회복지협의회' },
+                    { id: '1625722213', name: '한국사회적기업진흥원' },
+                    { id: '1625722219', name: '한국장애인고용공단' },
+                    { id: '1625722227', name: '삼성바이오로직스' } // Placeholder for Samsung Biologics/Mercedes
+                  ].map((partner, idx) => (
+                    <div key={`${set}-${idx}`} className="flex flex-col items-center gap-3 group cursor-pointer">
+                      <div className="relative w-24 h-10 md:w-32 md:h-12 grayscale group-hover:grayscale-0 transition-all duration-500">
+                        <Image src={`/partners/gallery_${partner.id}.jpg`} alt={partner.name} fill className="object-contain" />
+                      </div>
+                      <span className="text-apple-caption text-apple-ink-muted-80 font-medium tracking-wide mt-1">
+                        {partner.name}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
           </div>
 
           <div className="flex justify-center gap-4 animate-fade-in-up animation-delay-800">
