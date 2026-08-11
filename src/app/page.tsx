@@ -3,6 +3,10 @@ import Link from "next/link";
 import { ArrowRight, Shield, Building, Sparkles, CheckCircle2, Users, Award, TrendingUp, Phone, ChevronRight, BarChart } from "lucide-react";
 import KPIDashboard from "@/components/KPIDashboard";
 import PromotionalFeatures from "@/components/PromotionalFeatures";
+import DiagramBrandIdentity from "@/components/DiagramBrandIdentity";
+import DiagramSafetyLoop from "@/components/DiagramSafetyLoop";
+import DiagramTalent from "@/components/DiagramTalent";
+import CompanyTimeline from "@/components/CompanyTimeline";
 export default async function Home() {
   const partners = [
     { id: '1625722183', name: '서울특별시교육청' },
@@ -61,6 +65,17 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* ─── 1.5 BRAND IDENTITY SECTION ─── */}
+      <section className="relative w-full py-24 bg-white border-b border-apple-divider-soft">
+        <div className="container mx-auto px-6 lg:px-12">
+          <div className="text-center mb-16">
+            <h2 className="text-apple-display-lg text-apple-ink font-bold mb-4">브랜드 아이덴티티: 케이두레의 의미</h2>
+            <p className="text-apple-body text-apple-ink-muted-80">일하는 즐거움, 함께하는 직장, 함께 멀리 가는 공동체 정신</p>
+          </div>
+          <DiagramBrandIdentity />
+        </div>
+      </section>
+
       {/* ─── 2. KPI DASHBOARD SECTION ─── */}
       <section className="relative w-full py-24 bg-apple-canvas-parchment">
         <div className="container mx-auto px-6 lg:px-12">
@@ -86,7 +101,7 @@ export default async function Home() {
               <div key={set} className="flex items-center gap-8 px-4">
                 {partners.map((partner, idx) => (
                   <div key={`${set}-${idx}`} className="flex flex-col items-center justify-center w-64 h-36 bg-white rounded-apple-lg border border-apple-hairline shadow-sm hover:shadow-md transition-all duration-500 cursor-pointer group">
-                    <div className="relative w-40 h-20 mb-3 grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">
+                    <div className="relative w-40 h-20 mb-3 transition-all duration-500">
                       <Image src={`/partners/gallery_${partner.id}.jpg`} alt={partner.name} fill className="object-contain" />
                     </div>
                     <span className="text-apple-caption text-apple-ink-muted-80 font-medium tracking-wide">
@@ -147,10 +162,24 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* ─── 4. DIFFERENTIATION SECTION ─── */}
-      <section className="relative w-full py-32 bg-apple-canvas-parchment border-y border-apple-divider-soft">
+      {/* ─── 4. CORE COMPETENCIES SECTION ─── */}
+      <section className="relative w-full py-32 bg-apple-canvas-parchment border-y border-apple-divider-soft flex flex-col gap-32">
         <div className="container mx-auto px-6 lg:px-12">
-          <PromotionalFeatures />
+          <div className="text-center mb-16">
+            <h2 className="text-apple-display-lg text-apple-ink font-bold mb-4">왜 케이두레인가?</h2>
+            <p className="text-apple-body text-apple-ink-muted-80 mb-12">수많은 공공기관과 대기업이 신뢰할 수밖에 없는 핵심 경쟁력</p>
+            <PromotionalFeatures />
+          </div>
+          
+          <div className="mt-32">
+            <h2 className="text-apple-display-md text-apple-ink font-bold mb-12 text-center">핵심 경쟁력 I : 빈틈없는 안전보건 아키텍처</h2>
+            <DiagramSafetyLoop />
+          </div>
+
+          <div className="mt-32">
+            <h2 className="text-apple-display-md text-apple-ink font-bold mb-12 text-center">핵심 경쟁력 II : 전문성과 만족도를 높이는 인재 양성 시스템</h2>
+            <DiagramTalent />
+          </div>
         </div>
       </section>
 
@@ -182,12 +211,29 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* ─── 6. CONVERSION CTA SECTION ─── */}
+      {/* ─── 5.5 COMPANY TIMELINE SECTION ─── */}
+      <section className="relative w-full py-32 bg-white">
+        <div className="container mx-auto px-6 lg:px-12">
+          <div className="text-center mb-16">
+            <h2 className="text-apple-display-lg text-apple-ink font-bold mb-4">연혁: 끊임없는 성장과 가치 창출의 발자취</h2>
+          </div>
+          <CompanyTimeline />
+        </div>
+      </section>
+
+      {/* ─── 6. VISION QUOTE & CONVERSION CTA SECTION ─── */}
       <section className="relative w-full py-32 bg-apple-surface-tile-1 flex flex-col items-center">
         <div className="container mx-auto px-6 text-center">
-          <h2 className="text-apple-display-lg text-white font-bold mb-6">검증된 시설관리 파트너가 필요하신가요?</h2>
+          <div className="mb-20 max-w-4xl mx-auto border-b border-white/20 pb-16">
+            <h2 className="text-apple-display-lg text-white font-bold mb-4 leading-tight">
+              "고객 신뢰를 최우선으로, <br className="md:hidden" />
+              나눔과 상생을 실천하며 <br className="md:hidden" />
+              함께 멀리 가겠습니다."
+            </h2>
+          </div>
+          <h2 className="text-apple-display-md text-white font-bold mb-6">검증된 시설관리 파트너가 필요하신가요?</h2>
           <p className="text-apple-lead text-apple-body-muted mb-12 max-w-2xl mx-auto">
-            자산 가치를 높이는 가장 확실한 선택, 케이두레 전문가 그룹과 지금 바로 상담해 보세요.
+            삼성바이오로직스 등 글로벌 수준의 현장에서 입증된 역량으로 고객사의 가치를 높이겠습니다.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <a href="tel:02-2668-0311" className="bg-white text-apple-primary px-10 py-4 rounded-apple-sm text-apple-body-strong hover:bg-gray-100 transition-colors flex items-center justify-center gap-2">

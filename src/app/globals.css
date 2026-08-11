@@ -60,7 +60,7 @@
   --spacing-apple-section: 120px;
 
   /* ─── Animations ────────────────────────────────────────────── */
-  --animate-marquee: marquee 40s linear infinite;
+  --animate-marquee: marquee 20s linear infinite;
   
   @keyframes marquee {
     0% { transform: translateX(0%); }
