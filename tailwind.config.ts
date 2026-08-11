@@ -32,6 +32,27 @@ const config: Config = {
         }
       },
       colors: {
+        "apple-primary": "#0066cc",
+        "apple-primary-focus": "#0071e3",
+        "apple-primary-on-dark": "#2997ff",
+        "apple-ink": "#1d1d1f",
+        "apple-body": "#1d1d1f",
+        "apple-body-on-dark": "#ffffff",
+        "apple-body-muted": "#cccccc",
+        "apple-ink-muted-80": "#333333",
+        "apple-ink-muted-48": "#7a7a7a",
+        "apple-divider-soft": "#f0f0f0",
+        "apple-hairline": "#e0e0e0",
+        "apple-canvas": "#ffffff",
+        "apple-canvas-parchment": "#f5f5f7",
+        "apple-surface-pearl": "#fafafc",
+        "apple-surface-tile-1": "#272729",
+        "apple-surface-tile-2": "#2a2a2c",
+        "apple-surface-tile-3": "#252527",
+        "apple-surface-black": "#000000",
+        "apple-surface-chip-translucent": "#d2d2d7",
+        
+        // Material tokens
         "inverse-primary": "#bec6e0",
         "inverse-on-surface": "#eaf1ff",
         "tertiary-fixed": "#dde3eb",
@@ -84,16 +105,34 @@ const config: Config = {
         "DEFAULT": "0.125rem",
         "lg": "0.25rem",
         "xl": "0.5rem",
-        "full": "0.75rem"
+        "full": "0.75rem",
+        "apple-none": "0px",
+        "apple-xs": "5px",
+        "apple-sm": "8px",
+        "apple-md": "11px",
+        "apple-lg": "18px",
+        "apple-pill": "9999px",
+        "apple-full": "9999px"
       },
       spacing: {
         "unit": "8px",
         "margin-desktop": "64px",
         "container-max": "1440px",
         "gutter": "32px",
-        "section-gap": "128px"
+        "section-gap": "128px",
+        "apple-xxs": "4px",
+        "apple-xs": "8px",
+        "apple-sm": "12px",
+        "apple-md": "17px",
+        "apple-lg": "24px",
+        "apple-xl": "32px",
+        "apple-xxl": "48px",
+        "apple-section": "80px"
       },
       fontFamily: {
+        "apple-display": ["system-ui", "-apple-system", "BlinkMacSystemFont", "Inter", "sans-serif"],
+        "apple-text": ["system-ui", "-apple-system", "BlinkMacSystemFont", "Inter", "sans-serif"],
+        // Material
         "headline-md": ["var(--font-source-serif-4)", "serif"],
         "body-lg": ["var(--font-hanken-grotesk)", "sans-serif"],
         "body-md": ["var(--font-hanken-grotesk)", "sans-serif"],
@@ -103,6 +142,17 @@ const config: Config = {
         "headline-lg": ["var(--font-source-serif-4)", "serif"]
       },
       fontSize: {
+        "apple-hero-display": ["56px", { "lineHeight": "1.07", "letterSpacing": "-0.28px", "fontWeight": "600" }],
+        "apple-display-lg": ["40px", { "lineHeight": "1.1", "letterSpacing": "0px", "fontWeight": "600" }],
+        "apple-display-md": ["34px", { "lineHeight": "1.47", "letterSpacing": "-0.374px", "fontWeight": "600" }],
+        "apple-lead": ["28px", { "lineHeight": "1.14", "letterSpacing": "0.196px", "fontWeight": "400" }],
+        "apple-lead-airy": ["24px", { "lineHeight": "1.5", "letterSpacing": "0px", "fontWeight": "300" }],
+        "apple-tagline": ["21px", { "lineHeight": "1.19", "letterSpacing": "0.231px", "fontWeight": "600" }],
+        "apple-body-strong": ["17px", { "lineHeight": "1.24", "letterSpacing": "-0.374px", "fontWeight": "600" }],
+        "apple-body": ["17px", { "lineHeight": "1.47", "letterSpacing": "-0.374px", "fontWeight": "400" }],
+        "apple-caption": ["14px", { "lineHeight": "1.43", "letterSpacing": "-0.224px", "fontWeight": "400" }],
+        "apple-button": ["18px", { "lineHeight": "1.0", "letterSpacing": "0px", "fontWeight": "300" }],
+        // Material
         "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
         "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
         "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],

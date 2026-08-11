@@ -1,337 +1,166 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Building2, Users, ShieldCheck, Leaf, Briefcase, Phone, MapPin, ChevronRight, CheckCircle2, Shield, Search, Lightbulb, Star } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white">
-      {/* 1. 메인 히어로 슬라이더 (CSS 애니메이션으로 원본 4장 교체) */}
-      <section className="relative w-full h-[600px] md:h-[700px] lg:h-[800px] overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="animate-hero-slide absolute inset-0 w-[400%] h-full flex">
-            <div className="relative w-1/4 h-full">
-              <Image src="/images/legacy/main_banner_1.jpg" alt="Hero 1" fill className="object-cover object-center" priority />
-            </div>
-            <div className="relative w-1/4 h-full">
-              <Image src="/images/legacy/main_banner_2.jpg" alt="Hero 2" fill className="object-cover object-center" />
-            </div>
-            <div className="relative w-1/4 h-full">
-              <Image src="/images/legacy/main_banner_3.jpg" alt="Hero 3" fill className="object-cover object-center" />
-            </div>
-            <div className="relative w-1/4 h-full">
-              <Image src="/images/legacy/main_banner_4.jpg" alt="Hero 4" fill className="object-cover object-center" />
-            </div>
-          </div>
-          <div className="absolute inset-0 bg-black/40" />
+    <main className="min-h-screen bg-apple-canvas font-apple-text text-apple-ink overflow-x-hidden selection:bg-apple-primary selection:text-white">
+      
+      {/* TILE 1: Light Hero & Scale (Full Bleed Light Canvas) */}
+      <section className="relative w-full h-screen min-h-[800px] flex flex-col justify-between bg-apple-canvas-parchment pt-32 pb-16">
+        {/* Background Image Layer with very subtle opacity for the "museum gallery" feel */}
+        <div className="absolute inset-0 z-0">
+          <Image 
+            src="/images/legacy/main_banner_1.jpg" 
+            alt="Hero Background" 
+            fill 
+            className="object-cover object-center opacity-40 mix-blend-multiply" 
+            priority 
+          />
+          {/* Faint gradient to ensure text readability at the top */}
+          <div className="absolute inset-0 bg-gradient-to-b from-apple-canvas-parchment via-transparent to-apple-canvas-parchment/90" />
         </div>
-        
-        <div className="absolute inset-0 flex flex-col justify-center items-center text-white text-center px-4">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight leading-tight animate-fade-in-up">
-            더 멀리 함께하는 기업!<br />
-            <span className="text-blue-400">케이두레</span>
+
+        {/* Hero Copy */}
+        <div className="relative z-10 container mx-auto px-6 text-center mt-12">
+          <h1 className="text-apple-hero-display text-apple-ink mb-6 animate-fade-in-up">
+            더 멀리 함께하는 기업,<br />케이두레.
           </h1>
-          <p className="text-xl md:text-2xl font-light mb-10 max-w-2xl mx-auto opacity-90 animate-fade-in-up animation-delay-200">
-            고객만족을 위하고 새로운 도약을 준비합니다
+          <p className="text-apple-lead text-apple-ink-muted-80 max-w-3xl mx-auto mb-12 animate-fade-in-up animation-delay-200">
+            고객 만족을 넘어 새로운 도약을 준비합니다.<br/>신뢰와 전문성으로 완성되는 완벽한 공간 관리 솔루션.
           </p>
-          <div className="flex gap-4 animate-fade-in-up animation-delay-400">
-            <Link href="/about" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-medium transition-colors">
+          <div className="flex justify-center gap-4 animate-fade-in-up animation-delay-400">
+            <Link href="/about" className="bg-apple-primary hover:bg-apple-primary-focus text-white px-6 py-3 rounded-apple-pill text-apple-button transition-colors">
               회사소개
             </Link>
-            <Link href="/services" className="bg-white/20 hover:bg-white/30 backdrop-blur text-white px-8 py-3 rounded-full font-medium transition-colors border border-white/50">
+            <Link href="/services" className="bg-apple-surface-pearl text-apple-ink px-6 py-3 rounded-apple-pill text-apple-button border border-apple-hairline hover:bg-gray-100 transition-colors">
               사업분야
             </Link>
           </div>
         </div>
-      </section>
 
-      {/* 2. 빠른 메뉴 / 통계 (NEW) */}
-      <section className="py-12 bg-white relative -mt-16 z-10 px-4">
-        <div className="container mx-auto max-w-6xl">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 shadow-xl bg-white rounded-2xl p-6 md:p-8 border border-gray-100">
-            <Link href="/about#history" className="flex flex-col items-center p-4 hover:bg-gray-50 rounded-xl transition-colors group">
-              <div className="w-16 h-16 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <Building2 className="w-8 h-8" />
+        {/* The "By the Numbers" Scale Sub-Nav (Minimalist) */}
+        <div className="relative z-10 w-full mt-auto">
+          <div className="container mx-auto px-6">
+            <div className="flex flex-col md:flex-row justify-between items-center py-8 border-t border-apple-hairline">
+              <div className="text-center md:text-left mb-6 md:mb-0">
+                <span className="block text-apple-caption text-apple-ink-muted-80 mb-1">연간 매출규모</span>
+                <span className="text-apple-display-md text-apple-ink">198억</span>
               </div>
-              <h3 className="font-bold text-gray-900">회사연혁</h3>
-            </Link>
-            <Link href="/services" className="flex flex-col items-center p-4 hover:bg-gray-50 rounded-xl transition-colors group">
-              <div className="w-16 h-16 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <Briefcase className="w-8 h-8" />
+              <div className="text-center md:text-left mb-6 md:mb-0">
+                <span className="block text-apple-caption text-apple-ink-muted-80 mb-1">전문 임직원</span>
+                <span className="text-apple-display-md text-apple-ink">720명</span>
               </div>
-              <h3 className="font-bold text-gray-900">사업분야</h3>
-            </Link>
-            <Link href="/about#certifications" className="flex flex-col items-center p-4 hover:bg-gray-50 rounded-xl transition-colors group">
-              <div className="w-16 h-16 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <ShieldCheck className="w-8 h-8" />
+              <div className="text-center md:text-left mb-6 md:mb-0">
+                <span className="block text-apple-caption text-apple-ink-muted-80 mb-1">전국 관리 현장</span>
+                <span className="text-apple-display-md text-apple-ink">317개</span>
               </div>
-              <h3 className="font-bold text-gray-900">인증 및 허가</h3>
-            </Link>
-            <a href="http://www.dooremall.kr" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center p-4 hover:bg-gray-50 rounded-xl transition-colors group">
-              <div className="w-16 h-16 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <Search className="w-8 h-8" />
+              <div className="text-center md:text-left">
+                <span className="block text-apple-caption text-apple-ink-muted-80 mb-1">기업 고객사</span>
+                <span className="text-apple-display-md text-apple-ink">29개</span>
               </div>
-              <h3 className="font-bold text-gray-900">두레몰 가기</h3>
-            </a>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* 3. By the Numbers & Major Partners (NEW) */}
-      <section className="py-20 bg-gray-50 border-t border-gray-100">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">숫자로 증명하는 케이두레의 역량</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              안정적인 규모와 탄탄한 네트워크를 바탕으로 최고의 서비스를 제공합니다.
+      {/* TILE 2: Services (Near-Black Tile 1) */}
+      <section className="relative w-full py-apple-section bg-apple-surface-tile-1 text-apple-body-on-dark flex flex-col items-center">
+        <div className="container mx-auto px-6 text-center mb-24">
+          <h2 className="text-apple-display-lg mb-6">시설 관리의 새로운 기준.</h2>
+          <p className="text-apple-lead-airy text-apple-body-muted max-w-2xl mx-auto">
+            첨단 장비와 숙련된 전문가가 제공하는 무결점 종합 관리 서비스. 케이두레가 당신의 공간 가치를 극대화합니다.
+          </p>
+        </div>
+
+        {/* Alternating Edge-to-Edge Service Grid without traditional cards */}
+        <div className="w-full max-w-[1440px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 mb-16">
+          <div className="flex flex-col items-start justify-center">
+            <h3 className="text-apple-display-md mb-4">경비 및 보안</h3>
+            <p className="text-apple-body text-apple-body-muted mb-8">
+              철저한 출입통제 및 첨단 방범 서비스로 고객의 안전과 자산을 24시간 완벽하게 보호합니다.
+            </p>
+            <Link href="/services" className="text-apple-primary-on-dark text-apple-body-strong flex items-center hover:underline">
+              자세히 알아보기 <ArrowRight className="ml-1 w-4 h-4" />
+            </Link>
+          </div>
+          <div className="relative w-full h-[400px] md:h-[500px] rounded-apple-lg overflow-hidden">
+             <Image src="/images/legacy/gallery_1626228315.jpg" alt="경비보안" fill className="object-cover" />
+             <div className="absolute inset-0 border border-apple-surface-tile-3 rounded-apple-lg pointer-events-none" />
+          </div>
+
+          <div className="relative w-full h-[400px] md:h-[500px] rounded-apple-lg overflow-hidden order-last md:order-none">
+             <Image src="/images/legacy/gallery_1626228350.jpg" alt="시설관리" fill className="object-cover" />
+             <div className="absolute inset-0 border border-apple-surface-tile-3 rounded-apple-lg pointer-events-none" />
+          </div>
+          <div className="flex flex-col items-start justify-center">
+            <h3 className="text-apple-display-md mb-4">건축물 시설관리</h3>
+            <p className="text-apple-body text-apple-body-muted mb-8">
+              전기, 소방, 설비 등 건축물의 핵심 기계장치를 안정적으로 유지보수하여 건물의 수명을 연장시킵니다.
+            </p>
+            <Link href="/services" className="text-apple-primary-on-dark text-apple-body-strong flex items-center hover:underline">
+              자세히 알아보기 <ArrowRight className="ml-1 w-4 h-4" />
+            </Link>
+          </div>
+        </div>
+        
+        <div className="mt-12 text-center w-full">
+           <Link href="/services" className="bg-apple-surface-tile-2 hover:bg-apple-surface-tile-3 text-white px-6 py-3 rounded-apple-pill text-apple-caption transition-colors">
+              모든 솔루션 살펴보기
+           </Link>
+        </div>
+      </section>
+
+      {/* TILE 3: Partners & Trust (Parchment Canvas) */}
+      <section className="relative w-full py-32 bg-apple-canvas-parchment flex flex-col items-center">
+        <div className="container mx-auto px-6 text-center mb-20">
+          <h2 className="text-apple-display-lg text-apple-ink mb-6">글로벌 리더들의 선택.</h2>
+          <p className="text-apple-lead-airy text-apple-ink-muted-80 max-w-2xl mx-auto">
+            삼성바이오로직스, 메르세데스-벤츠 등 업계 최고의 기업들이 케이두레의 역량을 신뢰합니다.
+          </p>
+        </div>
+
+        {/* Minimalist Logo Gallery */}
+        <div className="container mx-auto px-6">
+          <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-80 mix-blend-multiply">
+            {[
+              '1625722183', '1625722188', '1625722194', '1625722199', 
+              '1625722208', '1625722213', '1625722219', '1625722227'
+            ].map((id, idx) => (
+              <div key={idx} className="relative w-32 h-12 grayscale hover:grayscale-0 transition-all duration-500">
+                <Image src={`/partners/gallery_${id}.jpg`} alt={`Partner`} fill className="object-contain" />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Quiet SVI & Awards */}
+        <div className="container mx-auto px-6 mt-32 text-center">
+          <div className="max-w-3xl mx-auto border-t border-apple-divider-soft pt-16">
+            <h3 className="text-apple-tagline text-apple-ink mb-4">대통령 표창 수상 및 사회적 가치 우수기업</h3>
+            <p className="text-apple-body text-apple-ink-muted-48 leading-relaxed">
+              장애인표준사업장 및 사회적 기업으로서 일자리 창출에 기여하며, 국가기관 공공구매 우선 대상 기업의 책임을 다하고 있습니다.
             </p>
           </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center hover:-translate-y-1 transition-transform">
-              <div className="text-blue-600 font-bold text-4xl mb-2">198<span className="text-2xl">억</span></div>
-              <p className="text-gray-600 font-medium">연간 매출규모</p>
-            </div>
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center hover:-translate-y-1 transition-transform">
-              <div className="text-blue-600 font-bold text-4xl mb-2">720<span className="text-2xl">명</span></div>
-              <p className="text-gray-600 font-medium">전문 임직원</p>
-            </div>
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center hover:-translate-y-1 transition-transform">
-              <div className="text-blue-600 font-bold text-4xl mb-2">317<span className="text-2xl">개</span></div>
-              <p className="text-gray-600 font-medium">전국 관리 현장</p>
-            </div>
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center hover:-translate-y-1 transition-transform">
-              <div className="text-blue-600 font-bold text-4xl mb-2">29<span className="text-2xl">개</span></div>
-              <p className="text-gray-600 font-medium">기업 고객사</p>
-            </div>
-          </div>
-
-          <div className="bg-blue-600 rounded-3xl p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
-            <div className="absolute top-0 right-0 opacity-10">
-              <Star className="w-64 h-64 -mt-16 -mr-16" />
-            </div>
-            <div className="relative z-10 grid md:grid-cols-2 gap-8 items-center">
-              <div>
-                <h3 className="text-3xl font-bold mb-4">글로벌 리딩 기업이 선택한 파트너</h3>
-                <p className="text-blue-100 text-lg leading-relaxed mb-6">
-                  대통령 표창 수상 및 사회적가치(SVI) 우수 기업으로서, 삼성바이오로직스 협력사 평가 우수를 비롯해 수많은 최고 수준의 기업들과 동반 성장하고 있습니다.
-                </p>
-                <Link href="/about" className="inline-flex items-center font-medium bg-white text-blue-600 px-6 py-3 rounded-full hover:bg-blue-50 transition-colors">
-                  회사소개 자세히 보기 <ArrowRight className="ml-2 w-4 h-4" />
-                </Link>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                {['삼성바이오로직스', '메르세데스-벤츠', 'SK시그넷', '매일유업', '동희산업', '서울시교육청'].map((partner, i) => (
-                  <div key={i} className="bg-blue-700/50 backdrop-blur border border-blue-500/30 rounded-xl p-4 flex items-center justify-center text-center font-bold text-lg hover:bg-blue-700 transition-colors">
-                    {partner}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
-      {/* 4. 사업분야 갤러리 */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-12">
-            <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">빌딩 종합 관리 솔루션</h2>
-              <p className="text-lg text-gray-600">전문적이고 체계적인 맞춤형 관리 서비스를 제공합니다</p>
-            </div>
-            <Link href="/services" className="hidden md:flex items-center text-blue-600 font-medium hover:text-blue-800 transition-colors">
-              전체보기 <ArrowRight className="ml-2 w-4 h-4" />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { id: '1626228315', title: '경비보안', desc: '철저한 출입통제 및 방범 서비스' },
-              { id: '1626228350', title: '시설관리', desc: '건축물 설비의 안정적 유지보수' },
-              { id: '1626228355', title: '환경미화', desc: '쾌적하고 청결한 공간 조성' },
-              { id: '1626228361', title: '근로자파견', desc: '검증된 우수 인력 적재적소 파견' },
-              { id: '1626228413', title: '소독방역', desc: '체계적인 해충방제 및 살균소독' },
-              { id: '1626228418', title: '저수조청소', desc: '안전한 식수 공급을 위한 수조 관리' }
-            ].map((item) => (
-              <div key={item.id} className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-xl transition-all h-[300px]">
-                <Image 
-                  src={`/images/legacy/gallery_${item.id}.jpg`}
-                  alt={item.title}
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-                <div className="absolute bottom-0 left-0 p-6 text-white w-full">
-                  <h3 className="text-2xl font-bold mb-2 group-hover:text-blue-300 transition-colors">{item.title}</h3>
-                  <p className="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="mt-8 text-center md:hidden">
-            <Link href="/services" className="inline-flex items-center text-blue-600 font-medium hover:text-blue-800 transition-colors">
-              사업분야 전체보기 <ArrowRight className="ml-2 w-4 h-4" />
+      {/* TILE 4: Clean Footer CTA (White Canvas) */}
+      <section className="relative w-full py-24 bg-apple-canvas flex flex-col items-center border-t border-apple-hairline">
+        <div className="text-center">
+          <h2 className="text-apple-display-md text-apple-ink mb-8">케이두레와 함께 비즈니스의 격을 높이세요.</h2>
+          <div className="flex flex-col md:flex-row items-center justify-center gap-6">
+            <a href="tel:02-2668-0311" className="text-apple-display-lg text-apple-primary hover:text-apple-primary-focus transition-colors">
+              02-2668-0311
+            </a>
+            <span className="hidden md:block w-px h-12 bg-apple-divider-soft" />
+            <Link href="/about#contact" className="text-apple-body-strong text-apple-primary hover:underline">
+              오시는 길 안내 <ArrowRight className="inline-block ml-1 w-4 h-4" />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* 5. 정부지원 및 사회적 가치 (유튜브 포함 원본 구조) */}
-      <section className="py-24 bg-gray-900 text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <Image src="/images/legacy/banner_1626227840.jpg" alt="Background" fill className="object-cover" />
-        </div>
-        
-        <div className="container mx-auto px-4 max-w-6xl relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6">정부지원기업 및 사회적 가치 실현</h2>
-            <p className="text-xl text-gray-300">정부 우선구매 대상 기업으로서 신뢰와 책임을 다합니다</p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <div className="flex items-start gap-4 p-6 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors">
-                <Shield className="w-12 h-12 text-blue-400 flex-shrink-0" />
-                <div>
-                  <h3 className="text-2xl font-bold mb-3">사회적 기업</h3>
-                  <p className="text-gray-300 leading-relaxed">
-                    국가기관 및 지자체 등 공공기관의 공공구매 대상으로 취약계층에게 사회서비스 또는 일자리를 제공하여 지역주민의 삶의 질을 높이는 등의 사회적 목적을 추구합니다.
-                  </p>
-                  <ul className="mt-4 space-y-2 text-gray-400">
-                    <li className="flex items-center"><CheckCircle2 className="w-5 h-5 mr-2 text-blue-400" /> 공공기관 우선구매 대상</li>
-                    <li className="flex items-center"><CheckCircle2 className="w-5 h-5 mr-2 text-blue-400" /> 지역사회 발전 기여</li>
-                  </ul>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4 p-6 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors">
-                <Users className="w-12 h-12 text-blue-400 flex-shrink-0" />
-                <div>
-                  <h3 className="text-2xl font-bold mb-3">장애인표준사업장</h3>
-                  <p className="text-gray-300 leading-relaxed">
-                    취업이 어려운 장애인에게 안정된 일자리를 제공하며, 국가기관 및 자치단체는 총 구매액의 일정비율 이상을 우선 구매해야 하는 대상기업입니다.
-                  </p>
-                  <ul className="mt-4 space-y-2 text-gray-400">
-                    <li className="flex items-center"><CheckCircle2 className="w-5 h-5 mr-2 text-blue-400" /> 장애인 고용 창출 (부담금 감면)</li>
-                    <li className="flex items-center"><CheckCircle2 className="w-5 h-5 mr-2 text-blue-400" /> 안정적 일자리 및 편의시설 제공</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-              <div className="aspect-video w-full bg-black">
-                <iframe 
-                  width="100%" 
-                  height="100%" 
-                  src="https://www.youtube.com/embed/zOIfK7v0c5I" 
-                  title="YouTube video player" 
-                  frameBorder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                  allowFullScreen
-                ></iframe>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 6. 우리의 주요 인증서 (NEW) */}
-      <section className="py-20 bg-gray-50 border-t border-gray-200">
-        <div className="container mx-auto px-4 max-w-6xl text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-10">보유 인증 및 허가</h2>
-          
-          <div className="flex flex-wrap justify-center gap-4">
-            {[
-              { id: '1626230357', name: '건물위생관리업' },
-              { id: '1626230359', name: '경비업 허가증' },
-              { id: '1626230361', name: '근로자파견사업' },
-              { id: '1626230363', name: '소독업 신고증' },
-              { id: '1626230366', name: '위생관리용역업' },
-              { id: '1626230368', name: '저수조청소업' },
-            ].map((cert) => (
-              <div key={cert.id} className="bg-white border border-gray-200 p-2 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                <div className="relative w-32 h-40 border border-gray-100 mb-2">
-                  <Image src={`/images/legacy/cert_${cert.id}.jpg`} alt={cert.name} fill className="object-contain" />
-                </div>
-                <p className="text-sm font-medium text-gray-700">{cert.name}</p>
-              </div>
-            ))}
-          </div>
-          
-          <div className="mt-8">
-            <Link href="/about#certifications" className="text-blue-600 font-medium hover:underline inline-flex items-center">
-              모든 인증서 보기 <ChevronRight className="w-4 h-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* 7. 협력업체 마퀴 애니메이션 (원본 슬라이더 복원) */}
-      <section className="py-12 bg-white border-t border-gray-100 overflow-hidden">
-        <div className="container mx-auto px-4 mb-8 text-center">
-          <h3 className="text-2xl font-bold text-gray-400 uppercase tracking-widest">Our Partners</h3>
-        </div>
-        
-        <div className="relative flex overflow-x-hidden w-full group">
-          <div className="animate-marquee flex whitespace-nowrap items-center min-w-full">
-            {[
-              '1625722183', '1625722188', '1625722194', '1625722199', 
-              '1625722208', '1625722213', '1625722219', '1625722227',
-              '1626228315', '1626228350', '1626228355', '1626228361',
-              '1626228413', '1626228418', '1626228423', '1626228429',
-              '1626228436'
-            ].map((id, idx) => (
-              <div key={idx} className="flex-shrink-0 w-48 h-24 relative mx-6 grayscale hover:grayscale-0 transition-all duration-300">
-                <Image src={`/partners/gallery_${id}.jpg`} alt={`Partner ${idx}`} fill className="object-contain" />
-              </div>
-            ))}
-            {/* Seamless loop duplication */}
-            {[
-              '1625722183', '1625722188', '1625722194', '1625722199', 
-              '1625722208', '1625722213', '1625722219', '1625722227',
-              '1626228315', '1626228350', '1626228355', '1626228361',
-              '1626228413', '1626228418', '1626228423', '1626228429',
-              '1626228436'
-            ].map((id, idx) => (
-              <div key={`dup-${idx}`} className="flex-shrink-0 w-48 h-24 relative mx-6 grayscale hover:grayscale-0 transition-all duration-300">
-                <Image src={`/partners/gallery_${id}.jpg`} alt={`Partner ${idx}`} fill className="object-contain" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 8. CTA 배너 */}
-      <section className="py-20 bg-blue-600 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <Image src="/images/legacy/banner_1626229045.png" alt="CTA Background" fill className="object-cover" />
-        </div>
-        <div className="container mx-auto px-4 max-w-4xl relative z-10 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 leading-tight">
-            성공적인 비즈니스를 위한 최고의 파트너<br/>
-            케이두레와 함께 하십시오
-          </h2>
-          <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 md:p-12 border border-white/20">
-            <div className="flex flex-col md:flex-row items-center justify-center gap-8">
-              <div className="flex items-center text-white">
-                <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mr-6">
-                  <Phone className="w-8 h-8" />
-                </div>
-                <div className="text-left">
-                  <p className="text-blue-200 font-medium mb-1">고객상담센터</p>
-                  <p className="text-4xl font-bold tracking-tight">02-2668-0311</p>
-                </div>
-              </div>
-              <div className="hidden md:block w-px h-24 bg-white/20" />
-              <Link href="/about#contact" className="w-full md:w-auto bg-white text-blue-600 hover:bg-blue-50 px-8 py-4 rounded-xl font-bold text-lg transition-colors flex items-center justify-center">
-                <MapPin className="w-5 h-5 mr-2" />
-                오시는 길
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
     </main>
   );
 }
