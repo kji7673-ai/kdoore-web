@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import Logo from "@/components/Logo";
 
 const navLinks = [
   { href: "/", label: "홈" },
@@ -57,36 +58,7 @@ export default function TopNavBar() {
               textDecoration: "none",
             }}
           >
-            <div
-              style={{
-                width: "32px",
-                height: "32px",
-                borderRadius: "8px",
-                background: isLight
-                  ? "linear-gradient(135deg,#003087,#0055cc)"
-                  : "linear-gradient(135deg,#4a90e2,#7ab4ff)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: "#fff",
-                fontWeight: 800,
-                fontSize: "14px",
-                letterSpacing: "-0.05em",
-                flexShrink: 0,
-              }}
-            >
-              K
-            </div>
-            <span
-              style={{
-                fontWeight: 700,
-                fontSize: "16px",
-                letterSpacing: "-0.02em",
-                color: isLight ? "#003087" : "#f0f4ff",
-              }}
-            >
-              케이두레
-            </span>
+            <Logo isLight={isLight} className="h-10 w-auto" />
           </Link>
 
           {/* Desktop Nav */}
