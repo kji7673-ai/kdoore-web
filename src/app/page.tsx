@@ -31,8 +31,17 @@ export default async function Home() {
         </div>
 
         <div className="relative z-10 container mx-auto px-6 lg:px-12 mt-12 flex flex-col items-start text-left">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-apple-pill bg-white/10 backdrop-blur-md border border-white/20 mb-8 animate-fade-in-up">
-            <span className="text-white text-sm font-semibold tracking-wide">🏆 대통령 표창 및 사회적 가치 우수기업</span>
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-6 mb-8 animate-fade-in-up">
+            <div className="relative w-20 h-24 sm:w-24 sm:h-32 rounded-sm overflow-hidden shadow-lg border border-white/20">
+               {/* Note: using a placeholder for the actual citation image if exact ID is unknown, assuming cert_1626230357.jpg */}
+               <Image src="/images/legacy/cert_1626230357.jpg" alt="대통령 표창" fill className="object-cover" />
+            </div>
+            <div className="flex flex-col">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-apple-pill bg-white/10 backdrop-blur-md border border-white/20 mb-2">
+                <span className="text-white text-sm font-semibold tracking-wide">🏆 대통령 표창 및 사회적 가치 우수기업</span>
+              </div>
+              <p className="text-apple-caption text-apple-body-muted">국가가 인정한 최고의 시설관리 전문기업</p>
+            </div>
           </div>
           
           <h1 className="text-apple-hero-display text-white mb-6 animate-fade-in-up animation-delay-200 max-w-4xl leading-tight">
@@ -53,48 +62,98 @@ export default async function Home() {
           </div>
         </div>
 
-        {/* Floating KPI Card */}
-        <div className="absolute left-0 right-0 -bottom-24 z-20 container mx-auto px-6 lg:px-12 animate-fade-in-up animation-delay-800">
-          <div className="bg-white rounded-apple-lg shadow-[0_20px_40px_rgba(10,37,64,0.08)] border border-apple-hairline p-8 md:p-12">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 divide-y md:divide-y-0 md:divide-x divide-apple-divider-soft">
-              <div className="flex flex-col items-center md:items-start md:px-8 pt-4 md:pt-0">
-                <span className="text-apple-caption-strong text-apple-ink-muted-80 mb-2 uppercase tracking-wider">연간 매출규모</span>
-                <span className="text-apple-display-lg text-apple-primary font-bold">198<span className="text-apple-display-md font-medium text-apple-ink-muted-80 ml-1">억</span></span>
+        {/* Graphical KPI Dashboard */}
+        <div className="absolute left-0 right-0 -bottom-32 z-20 container mx-auto px-6 lg:px-12 animate-fade-in-up animation-delay-800">
+          <div className="bg-white rounded-apple-lg shadow-[0_20px_40px_rgba(10,37,64,0.12)] border border-apple-hairline p-8 md:p-10">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-4 divide-y md:divide-y-0 md:divide-x divide-apple-divider-soft">
+              
+              <div className="flex flex-col items-center md:items-start md:px-6 pt-4 md:pt-0">
+                <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mb-4">
+                  <BarChart className="w-6 h-6 text-apple-primary" />
+                </div>
+                <span className="text-apple-caption-strong text-apple-ink-muted-80 mb-1 uppercase tracking-wider">연간 매출규모</span>
+                <div className="flex items-baseline gap-1">
+                  <span className="text-apple-display-lg text-apple-primary font-bold">198</span>
+                  <span className="text-apple-body-strong text-apple-ink-muted-80">억원</span>
+                </div>
+                <div className="w-full h-1.5 bg-gray-100 rounded-full mt-3 overflow-hidden">
+                  <div className="h-full bg-apple-primary w-[85%] rounded-full"></div>
+                </div>
               </div>
-              <div className="flex flex-col items-center md:items-start md:px-8 pt-4 md:pt-0">
-                <span className="text-apple-caption-strong text-apple-ink-muted-80 mb-2 uppercase tracking-wider">전문 임직원</span>
-                <span className="text-apple-display-lg text-apple-primary font-bold">720<span className="text-apple-display-md font-medium text-apple-ink-muted-80 ml-1">명</span></span>
+
+              <div className="flex flex-col items-center md:items-start md:px-6 pt-4 md:pt-0">
+                <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mb-4">
+                  <Users className="w-6 h-6 text-apple-primary" />
+                </div>
+                <span className="text-apple-caption-strong text-apple-ink-muted-80 mb-1 uppercase tracking-wider">전문 임직원</span>
+                <div className="flex items-baseline gap-1">
+                  <span className="text-apple-display-lg text-apple-primary font-bold">720</span>
+                  <span className="text-apple-body-strong text-apple-ink-muted-80">명</span>
+                </div>
+                <div className="w-full h-1.5 bg-gray-100 rounded-full mt-3 overflow-hidden">
+                  <div className="h-full bg-apple-primary w-[90%] rounded-full"></div>
+                </div>
               </div>
-              <div className="flex flex-col items-center md:items-start md:px-8 pt-4 md:pt-0">
-                <span className="text-apple-caption-strong text-apple-ink-muted-80 mb-2 uppercase tracking-wider">전국 관리 현장</span>
-                <span className="text-apple-display-lg text-apple-primary font-bold">317<span className="text-apple-display-md font-medium text-apple-ink-muted-80 ml-1">곳</span></span>
+
+              <div className="flex flex-col items-center md:items-start md:px-6 pt-4 md:pt-0">
+                <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mb-4">
+                  <Building className="w-6 h-6 text-apple-primary" />
+                </div>
+                <span className="text-apple-caption-strong text-apple-ink-muted-80 mb-1 uppercase tracking-wider">전국 관리 현장</span>
+                <div className="flex items-baseline gap-1">
+                  <span className="text-apple-display-lg text-apple-primary font-bold">317</span>
+                  <span className="text-apple-body-strong text-apple-ink-muted-80">곳</span>
+                </div>
+                <div className="w-full h-1.5 bg-gray-100 rounded-full mt-3 overflow-hidden">
+                  <div className="h-full bg-apple-primary w-[75%] rounded-full"></div>
+                </div>
               </div>
-              <div className="flex flex-col items-center md:items-start md:px-8 pt-4 md:pt-0">
-                <span className="text-apple-caption-strong text-apple-ink-muted-80 mb-2 uppercase tracking-wider">글로벌·공공 고객사</span>
-                <span className="text-apple-display-lg text-apple-primary font-bold">29<span className="text-apple-display-md font-medium text-apple-ink-muted-80 ml-1">개사</span></span>
+
+              <div className="flex flex-col items-center md:items-start md:px-6 pt-4 md:pt-0">
+                <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mb-4">
+                  <Award className="w-6 h-6 text-apple-primary" />
+                </div>
+                <span className="text-apple-caption-strong text-apple-ink-muted-80 mb-1 uppercase tracking-wider">글로벌·공공 고객사</span>
+                <div className="flex items-baseline gap-1">
+                  <span className="text-apple-display-lg text-apple-primary font-bold">29</span>
+                  <span className="text-apple-body-strong text-apple-ink-muted-80">개사</span>
+                </div>
+                <div className="w-full h-1.5 bg-gray-100 rounded-full mt-3 overflow-hidden">
+                  <div className="h-full bg-apple-primary w-[100%] rounded-full"></div>
+                </div>
               </div>
+
             </div>
           </div>
         </div>
       </section>
 
       {/* ─── 2. TRUST & PARTNERS SECTION ─── */}
-      <section className="relative w-full pt-48 pb-24 bg-apple-canvas-parchment">
-        <div className="container mx-auto px-6 lg:px-12 text-center">
+      <section className="relative w-full pt-56 pb-24 bg-apple-canvas-parchment overflow-hidden">
+        <div className="container mx-auto px-6 text-center">
           <h2 className="text-apple-display-md text-apple-ink font-semibold mb-4">최고의 기업들이 증명합니다</h2>
           <p className="text-apple-body text-apple-ink-muted-80 mb-16">
             엄격한 심사와 검증을 거쳐 대한민국 주요 공공기관 및 대기업의 시설 관리를 전담하고 있습니다.
           </p>
+        </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6 max-w-5xl mx-auto">
-            {partners.map((partner, idx) => (
-              <div key={idx} className="flex flex-col items-center justify-center py-8 px-4 bg-white rounded-apple-sm border border-apple-divider-soft shadow-sm hover:shadow-md transition-all hover:-translate-y-1 cursor-pointer">
-                <div className="relative w-28 h-12 mb-4">
-                  <Image src={`/partners/gallery_${partner.id}.jpg`} alt={partner.name} fill className="object-contain" />
-                </div>
-                <span className="text-apple-caption text-apple-ink font-medium tracking-wide">
-                  {partner.name}
-                </span>
+        <div className="relative w-full overflow-hidden flex flex-col gap-6">
+          <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-apple-canvas-parchment to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-apple-canvas-parchment to-transparent z-10 pointer-events-none" />
+          
+          <div className="flex w-max animate-marquee hover:[animation-play-state:paused]">
+            {[1, 2, 3].map((set) => (
+              <div key={set} className="flex items-center gap-6 px-3">
+                {partners.map((partner, idx) => (
+                  <div key={`${set}-${idx}`} className="flex flex-col items-center justify-center w-56 h-32 bg-white rounded-apple-sm border border-apple-divider-soft shadow-sm hover:shadow-md transition-all hover:-translate-y-1 cursor-pointer">
+                    <div className="relative w-36 h-16 mb-2">
+                      <Image src={`/partners/gallery_${partner.id}.jpg`} alt={partner.name} fill className="object-contain" />
+                    </div>
+                    <span className="text-apple-caption text-apple-ink-muted-80 font-medium tracking-wide">
+                      {partner.name}
+                    </span>
+                  </div>
+                ))}
               </div>
             ))}
           </div>
