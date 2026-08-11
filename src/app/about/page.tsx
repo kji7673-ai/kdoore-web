@@ -135,8 +135,8 @@ export default function AboutPage() {
               { id: '7.png', name: '인증/허가 6' },
               { id: '8.png', name: '인증/허가 7' },
               { id: '9.jpg', name: '인증/허가 8' },
-              { id: 'unnamed (9).jpg', name: '인증/허가 9' },
-              { id: '그림1.png', name: '인증/허가 10' },
+              { id: 'cert_main.jpg', name: '인증/허가 9' },
+              { id: 'cert_10.png', name: '인증/허가 10' },
             ].map((cert) => (
               <div key={cert.id} className="bg-white border border-gray-200 p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow flex flex-col items-center">
                 <div className="relative w-full aspect-[3/4] mb-3">
