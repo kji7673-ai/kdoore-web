@@ -20,74 +20,96 @@ export default function AboutPage() {
       </div>
 
       {/* 2. 회사 연혁 */}
-      <section id="history" className="py-20 bg-white">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <div className="flex items-center justify-center gap-3 mb-12">
-            <Building2 className="w-8 h-8 text-blue-600" />
-            <h2 className="text-3xl font-bold text-gray-900">회사 연혁</h2>
+      <section id="history" className="py-24 bg-white">
+        <div className="container mx-auto px-6 max-w-4xl">
+          <div className="flex items-center justify-center gap-3 mb-16">
+            <h2 className="text-apple-display-md text-gray-900 font-bold">회사 연혁</h2>
           </div>
           
-          <div className="space-y-12 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-gray-200 before:to-transparent">
+          <div className="space-y-12 relative before:absolute before:inset-0 before:ml-[1.1rem] md:before:mx-auto md:before:translate-x-0 before:h-full before:w-[1px] before:bg-gray-200">
             {/* 2023 */}
-            <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-              <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-blue-100 group-[.is-active]:bg-blue-600 text-blue-500 group-[.is-active]:text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                <span className="font-bold text-xs">2023</span>
+            <div className="relative flex flex-col md:flex-row items-start md:items-center justify-between group">
+              <div className="hidden md:block w-[calc(50%-2rem)] text-right">
+                <span className="text-apple-display-md font-bold text-apple-primary tracking-tighter">2023</span>
               </div>
-              <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-gray-100 bg-white shadow-sm">
-                <div className="mb-1 text-sm text-blue-600 font-bold">2023.04</div>
-                <div className="text-gray-700 font-medium">삼성바이오로직스 주차타워 미화용역 수주 (4.1)</div>
+              <div className="flex items-center justify-center w-[2.25rem] h-[2.25rem] rounded-full border border-gray-200 bg-white shadow-sm z-10 md:mx-auto md:group-odd:-translate-x-0 md:group-even:translate-x-0">
+                <div className="w-2.5 h-2.5 rounded-full bg-apple-primary"></div>
+              </div>
+              <div className="w-full md:w-[calc(50%-2rem)] pl-12 md:pl-0 pb-6 border-b border-gray-100 last:border-0 mt-[-2rem] md:mt-0">
+                <div className="md:hidden mb-2 text-apple-display-md font-bold text-apple-primary tracking-tighter">2023</div>
+                <div className="text-sm font-bold text-gray-400 mb-1">04</div>
+                <div className="text-apple-body text-gray-800">삼성바이오로직스 주차타워 미화용역 수주 (4.1)</div>
               </div>
             </div>
 
             {/* 2022 */}
-            <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-              <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-blue-100 text-blue-600 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                <span className="font-bold text-xs">2022</span>
+            <div className="relative flex flex-col md:flex-row items-start md:items-center justify-between group">
+              <div className="hidden md:block w-[calc(50%-2rem)] text-right">
+                <span className="text-apple-display-md font-bold text-gray-300 tracking-tighter group-hover:text-apple-primary transition-colors">2022</span>
               </div>
-              <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-gray-100 bg-white shadow-sm">
-                <div className="mb-1 text-sm text-blue-600 font-bold">2022.12</div>
-                <div className="text-gray-700 font-medium">2022년도 제대군인 고용 우수기업 선정 (제2022-12호)</div>
+              <div className="flex items-center justify-center w-[2.25rem] h-[2.25rem] rounded-full border border-gray-200 bg-white z-10 md:mx-auto">
+                <div className="w-2.5 h-2.5 rounded-full bg-gray-200 group-hover:bg-apple-primary transition-colors"></div>
+              </div>
+              <div className="w-full md:w-[calc(50%-2rem)] pl-12 md:pl-0 pb-6 border-b border-gray-100 last:border-0 mt-[-2rem] md:mt-0">
+                <div className="md:hidden mb-2 text-apple-display-md font-bold text-gray-300 tracking-tighter group-hover:text-apple-primary transition-colors">2022</div>
+                <div className="text-sm font-bold text-gray-400 mb-1">12</div>
+                <div className="text-apple-body text-gray-800">2022년도 제대군인 고용 우수기업 선정 (제2022-12호)</div>
               </div>
             </div>
 
             {/* 2021 */}
-            <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-              <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-blue-100 text-blue-600 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                <span className="font-bold text-xs">2021</span>
+            <div className="relative flex flex-col md:flex-row items-start md:items-center justify-between group">
+              <div className="hidden md:block w-[calc(50%-2rem)] text-right">
+                <span className="text-apple-display-md font-bold text-gray-300 tracking-tighter group-hover:text-apple-primary transition-colors">2021</span>
               </div>
-              <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-gray-100 bg-white shadow-sm">
-                <div className="text-gray-700 font-medium">삼성바이오로직스 개발동 미화용역 수주 (5.1)<br/><span className="text-sm text-gray-500">(에스원 협력사 등록: 4.28)</span></div>
+              <div className="flex items-center justify-center w-[2.25rem] h-[2.25rem] rounded-full border border-gray-200 bg-white z-10 md:mx-auto">
+                <div className="w-2.5 h-2.5 rounded-full bg-gray-200 group-hover:bg-apple-primary transition-colors"></div>
+              </div>
+              <div className="w-full md:w-[calc(50%-2rem)] pl-12 md:pl-0 pb-6 border-b border-gray-100 last:border-0 mt-[-2rem] md:mt-0">
+                <div className="md:hidden mb-2 text-apple-display-md font-bold text-gray-300 tracking-tighter group-hover:text-apple-primary transition-colors">2021</div>
+                <div className="text-sm font-bold text-gray-400 mb-1">05</div>
+                <div className="text-apple-body text-gray-800">삼성바이오로직스 개발동 미화용역 수주<br/><span className="text-sm text-gray-400 mt-1 block">(에스원 협력사 등록: 4.28)</span></div>
               </div>
             </div>
 
             {/* 2020 */}
-            <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-              <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-blue-100 text-blue-600 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                <span className="font-bold text-xs">2020</span>
+            <div className="relative flex flex-col md:flex-row items-start md:items-center justify-between group">
+              <div className="hidden md:block w-[calc(50%-2rem)] text-right">
+                <span className="text-apple-display-md font-bold text-gray-300 tracking-tighter group-hover:text-apple-primary transition-colors">2020</span>
               </div>
-              <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-gray-100 bg-white shadow-sm space-y-3">
+              <div className="flex items-center justify-center w-[2.25rem] h-[2.25rem] rounded-full border border-gray-200 bg-white z-10 md:mx-auto">
+                <div className="w-2.5 h-2.5 rounded-full bg-gray-200 group-hover:bg-apple-primary transition-colors"></div>
+              </div>
+              <div className="w-full md:w-[calc(50%-2rem)] pl-12 md:pl-0 pb-6 border-b border-gray-100 last:border-0 mt-[-2rem] md:mt-0 space-y-4">
+                <div className="md:hidden mb-2 text-apple-display-md font-bold text-gray-300 tracking-tighter group-hover:text-apple-primary transition-colors">2020</div>
                 <div>
-                  <div className="text-gray-700 font-medium">2020년 일자리창출 유공 대통령 표창 수상 (12.21)</div>
-                  <div className="text-gray-700 font-medium">2020년 사회적가치 측정 우수기업 선정 (11.30)</div>
+                  <div className="text-sm font-bold text-gray-400 mb-1">11~12</div>
+                  <div className="text-apple-body text-gray-800">2020년 일자리창출 유공 대통령 표창 수상<br/>2020년 사회적가치 측정 우수기업 선정</div>
                 </div>
-                <div className="text-gray-700">증미지점 설치 (9.29)<br/><span className="text-sm text-gray-500">(교육서비스업: 요가, 필라테스)</span></div>
-                <div className="text-gray-700">경기지점 설치 (11.11)<br/><span className="text-sm text-gray-500">-도매 및 소매업, 서비스업(시설관리)</span></div>
-                <div className="text-gray-700">관공서 용역 수주</div>
+                <div>
+                  <div className="text-sm font-bold text-gray-400 mb-1">09~11</div>
+                  <div className="text-apple-body text-gray-800">증미지점 설치 (교육서비스업)<br/>경기지점 설치 (도매 및 소매업, 시설관리)</div>
+                </div>
+                <div className="text-apple-body text-gray-800">관공서 용역 다수 수주</div>
               </div>
             </div>
             
             {/* 2019 ~ 2014 */}
-            <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-              <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-blue-100 text-blue-600 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                <span className="font-bold text-[10px]">~ 14</span>
+            <div className="relative flex flex-col md:flex-row items-start md:items-center justify-between group">
+              <div className="hidden md:block w-[calc(50%-2rem)] text-right">
+                <span className="text-apple-display-md font-bold text-gray-300 tracking-tighter group-hover:text-apple-primary transition-colors">~ 14</span>
               </div>
-              <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-gray-100 bg-white shadow-sm space-y-2">
-                <p className="text-gray-700"><strong>2019:</strong> 공공주택관리업, 근로자파견업 허가</p>
-                <p className="text-gray-700"><strong>2018:</strong> 사회적 기업 인증 (3.8), 서울교육청 학교 용역 수주</p>
-                <p className="text-gray-700"><strong>2017:</strong> 건물위생관리업 등록, 사옥 이전(강서구)</p>
-                <p className="text-gray-700"><strong>2016:</strong> 시설경비업 허가, 점보롤휴지제조업 등록</p>
-                <p className="text-gray-700"><strong>2015:</strong> 장애인 표준사업장 등록 (11.27), 군인공제회 수주, 콜센터업 등록</p>
-                <p className="text-gray-700 font-bold text-blue-600 mt-2"><strong>2014.12:</strong> 케이두레 설립 (12.24) 및 건물관리업, 종합서비스업 등록</p>
+              <div className="flex items-center justify-center w-[2.25rem] h-[2.25rem] rounded-full border border-gray-200 bg-white z-10 md:mx-auto">
+                <div className="w-2.5 h-2.5 rounded-full bg-gray-200 group-hover:bg-apple-primary transition-colors"></div>
+              </div>
+              <div className="w-full md:w-[calc(50%-2rem)] pl-12 md:pl-0 pb-6 border-b border-gray-100 last:border-0 mt-[-2rem] md:mt-0 space-y-2">
+                <div className="md:hidden mb-2 text-apple-display-md font-bold text-gray-300 tracking-tighter group-hover:text-apple-primary transition-colors">~ 2014</div>
+                <p className="text-apple-body text-gray-600"><strong className="text-gray-900">2019</strong> 공공주택관리업, 근로자파견업 허가</p>
+                <p className="text-apple-body text-gray-600"><strong className="text-gray-900">2018</strong> 사회적 기업 인증, 서울교육청 수주</p>
+                <p className="text-apple-body text-gray-600"><strong className="text-gray-900">2017</strong> 건물위생관리업 등록, 사옥 이전(강서구)</p>
+                <p className="text-apple-body text-gray-600"><strong className="text-gray-900">2016</strong> 시설경비업 허가, 점보롤휴지제조업 등록</p>
+                <p className="text-apple-body text-gray-600"><strong className="text-gray-900">2015</strong> 장애인 표준사업장 등록, 콜센터업 등록</p>
+                <p className="text-apple-body-strong text-gray-900 mt-4">2014.12 케이두레 설립 및 건물관리업 등록</p>
               </div>
             </div>
 

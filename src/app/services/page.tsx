@@ -77,39 +77,37 @@ export default function ServicesPage() {
       </div>
 
       {/* 2. 서비스 상세 목록 */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 max-w-6xl space-y-16">
+      <section className="py-24">
+        <div className="container mx-auto px-6 max-w-6xl space-y-24">
           {services.map((svc, index) => (
-            <div key={svc.id} id={svc.id} className={`flex flex-col md:flex-row gap-8 md:gap-12 items-center ${index % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}>
+            <div key={svc.id} id={svc.id} className={`flex flex-col md:flex-row gap-12 lg:gap-20 items-center ${index % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}>
               
               <div className="w-full md:w-1/2 relative">
-                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl group">
+                <div className="relative aspect-[4/3] rounded-[24px] overflow-hidden shadow-lg border border-apple-hairline group">
                   <Image src={svc.image} alt={svc.title} fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
-                  <div className="absolute inset-0 bg-blue-900/10 group-hover:bg-transparent transition-colors duration-500"></div>
+                  <div className="absolute inset-0 bg-apple-surface-tile-1/5 group-hover:bg-transparent transition-colors duration-500"></div>
                 </div>
               </div>
 
               <div className="w-full md:w-1/2 space-y-6">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-100 text-blue-600 mb-2">
-                  <svc.icon className="w-8 h-8" />
+                <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-apple-surface-parchment border border-apple-divider-soft text-apple-primary mb-2 shadow-sm">
+                  <svc.icon className="w-7 h-7" />
                 </div>
-                <h2 className="text-3xl font-bold text-gray-900">{svc.title}</h2>
-                <p className="text-xl text-blue-600 font-medium">{svc.desc}</p>
-                <p className="text-gray-600 leading-relaxed text-lg">{svc.details}</p>
+                <h2 className="text-apple-display-md font-bold text-gray-900">{svc.title}</h2>
+                <p className="text-apple-lead text-apple-primary font-medium">{svc.desc}</p>
+                <p className="text-apple-body text-gray-600 leading-relaxed">{svc.details}</p>
                 
-                <div className="pt-6 border-t border-gray-200">
-                  <h4 className="font-bold text-gray-900 mb-4">주요 서비스 내용</h4>
-                  <ul className="grid grid-cols-2 gap-3">
-                    {svc.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center text-gray-700">
-                        <CheckCircle2 className="w-5 h-5 text-blue-500 mr-2 flex-shrink-0" />
-                        <span>{feature}</span>
+                <div className="pt-8 border-t border-gray-100">
+                  <ul className="grid grid-cols-2 gap-4">
+                    {svc.features.map((feature, i) => (
+                      <li key={i} className="flex items-center text-gray-700 font-medium text-[15px]">
+                        <CheckCircle2 className="w-5 h-5 text-apple-primary mr-3 shrink-0" />
+                        {feature}
                       </li>
                     ))}
                   </ul>
                 </div>
               </div>
-
             </div>
           ))}
         </div>
