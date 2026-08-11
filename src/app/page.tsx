@@ -21,26 +21,43 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-apple-canvas-parchment via-transparent to-apple-canvas-parchment/90" />
         </div>
 
-        {/* Hero Copy */}
-        <div className="relative z-10 container mx-auto px-6 text-center mt-12">
-          <h1 className="text-apple-hero-display text-apple-ink mb-6 animate-fade-in-up">
-            더 멀리 함께하는 기업,<br />케이두레.
+        {/* Hero Copy & Partners */}
+        <div className="relative z-10 container mx-auto px-6 text-center mt-8">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-apple-pill bg-apple-surface-pearl border border-apple-divider-soft mb-6 animate-fade-in-up">
+            <span className="text-apple-primary">🏆</span>
+            <span className="text-apple-caption-strong text-apple-ink">대통령 표창 수상 및 사회적 가치 우수기업</span>
+          </div>
+          
+          <h1 className="text-apple-hero-display text-apple-ink mb-6 animate-fade-in-up animation-delay-200">
+            글로벌 리더가 선택한<br />무결점 공간 관리.
           </h1>
-          <p className="text-apple-lead text-apple-ink-muted-80 max-w-3xl mx-auto mb-12 animate-fade-in-up animation-delay-200">
-            고객 만족을 넘어 새로운 도약을 준비합니다.<br/>신뢰와 전문성으로 완성되는 완벽한 공간 관리 솔루션.
+          <p className="text-apple-lead text-apple-ink-muted-80 max-w-3xl mx-auto mb-12 animate-fade-in-up animation-delay-400">
+            삼성바이오로직스, 메르세데스-벤츠 등 세계적인 기업들이<br/>케이두레의 압도적인 전문성과 신뢰를 선택했습니다.
           </p>
-          <div className="flex justify-center gap-4 animate-fade-in-up animation-delay-400">
-            <Link href="/about" className="bg-apple-primary hover:bg-apple-primary-focus text-white px-6 py-3 rounded-apple-pill text-apple-button transition-colors">
-              회사소개
+
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 opacity-80 mix-blend-multiply animate-fade-in-up animation-delay-600 mb-12">
+            {[
+              '1625722183', '1625722188', '1625722194', '1625722199', 
+              '1625722208', '1625722213', '1625722219', '1625722227'
+            ].map((id, idx) => (
+              <div key={idx} className="relative w-24 h-8 md:w-32 md:h-12 grayscale hover:grayscale-0 transition-all duration-500">
+                <Image src={`/partners/gallery_${id}.jpg`} alt={`Partner`} fill className="object-contain" />
+              </div>
+            ))}
+          </div>
+
+          <div className="flex justify-center gap-4 animate-fade-in-up animation-delay-800">
+            <Link href="/services" className="bg-apple-primary hover:bg-apple-primary-focus text-white px-6 py-3 rounded-apple-pill text-apple-button transition-colors">
+              관리 솔루션 보기
             </Link>
-            <Link href="/services" className="bg-apple-surface-pearl text-apple-ink px-6 py-3 rounded-apple-pill text-apple-button border border-apple-hairline hover:bg-gray-100 transition-colors">
-              사업분야
+            <Link href="/about" className="bg-apple-surface-pearl text-apple-ink px-6 py-3 rounded-apple-pill text-apple-button border border-apple-hairline hover:bg-gray-100 transition-colors">
+              신뢰의 이유
             </Link>
           </div>
         </div>
 
         {/* The "By the Numbers" Scale Sub-Nav (Minimalist) */}
-        <div className="relative z-10 w-full mt-auto">
+        <div className="relative z-10 w-full mt-auto pt-16">
           <div className="container mx-auto px-6">
             <div className="flex flex-col md:flex-row justify-between items-center py-8 border-t border-apple-hairline">
               <div className="text-center md:text-left mb-6 md:mb-0">
@@ -111,39 +128,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* TILE 3: Partners & Trust (Parchment Canvas) */}
-      <section className="relative w-full py-32 bg-apple-canvas-parchment flex flex-col items-center">
-        <div className="container mx-auto px-6 text-center mb-20">
-          <h2 className="text-apple-display-lg text-apple-ink mb-6">글로벌 리더들의 선택.</h2>
-          <p className="text-apple-lead-airy text-apple-ink-muted-80 max-w-2xl mx-auto">
-            삼성바이오로직스, 메르세데스-벤츠 등 업계 최고의 기업들이 케이두레의 역량을 신뢰합니다.
-          </p>
-        </div>
 
-        {/* Minimalist Logo Gallery */}
-        <div className="container mx-auto px-6">
-          <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-80 mix-blend-multiply">
-            {[
-              '1625722183', '1625722188', '1625722194', '1625722199', 
-              '1625722208', '1625722213', '1625722219', '1625722227'
-            ].map((id, idx) => (
-              <div key={idx} className="relative w-32 h-12 grayscale hover:grayscale-0 transition-all duration-500">
-                <Image src={`/partners/gallery_${id}.jpg`} alt={`Partner`} fill className="object-contain" />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Quiet SVI & Awards */}
-        <div className="container mx-auto px-6 mt-32 text-center">
-          <div className="max-w-3xl mx-auto border-t border-apple-divider-soft pt-16">
-            <h3 className="text-apple-tagline text-apple-ink mb-4">대통령 표창 수상 및 사회적 가치 우수기업</h3>
-            <p className="text-apple-body text-apple-ink-muted-48 leading-relaxed">
-              장애인표준사업장 및 사회적 기업으로서 일자리 창출에 기여하며, 국가기관 공공구매 우선 대상 기업의 책임을 다하고 있습니다.
-            </p>
-          </div>
-        </div>
-      </section>
 
       {/* TILE 4: Clean Footer CTA (White Canvas) */}
       <section className="relative w-full py-24 bg-apple-canvas flex flex-col items-center border-t border-apple-hairline">
