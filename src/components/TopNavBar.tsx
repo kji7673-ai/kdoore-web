@@ -9,6 +9,7 @@ const navLinks = [
   { href: "/about", label: "회사소개" },
   { href: "/services", label: "사업분야" },
   { href: "/prcenter", label: "홍보센터" },
+  { href: "/news", label: "케이두레 뉴스" },
   { href: "/inquiry", label: "고객문의" },
   { href: "/contact", label: "오시는 길" },
 ];

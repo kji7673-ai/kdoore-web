@@ -11,14 +11,25 @@ import config from '@payload-config';
 
 export default async function Home() {
   let cmsData: any = null;
+  let newsDocs: any[] = [];
   const dbUrl = process.env.POSTGRES_URL;
   if (dbUrl && !dbUrl.includes('placeholder')) {
     try {
       const payload = await getPayload({ config });
       cmsData = await payload.findGlobal({ slug: 'homepage' });
+      const newsResult = await payload.find({ collection: 'news', sort: '-date', limit: 3 });
+      newsDocs = newsResult.docs;
     } catch (e) {
       console.warn("Payload DB connection failed, using fallbacks.", e);
     }
+  }
+
+  if (newsDocs.length === 0) {
+    newsDocs = [
+      { id: '1', title: '2026년 안전보건관리계획 안내', date: '2026-01-10T00:00:00.000Z' },
+      { id: '2', title: '2026년 안전보건관리규정 안내', date: '2026-01-05T00:00:00.000Z' },
+      { id: '3', title: '2022년도 제대군인 고용 우수기업 선정', date: '2022-12-01T00:00:00.000Z' },
+    ];
   }
   const partners = [
     { id: '1625722183', name: '서울특별시교육청' },
@@ -152,6 +163,58 @@ export default async function Home() {
                 서비스 자세히 보기 <ArrowRight className="ml-2 w-4 h-4" />
               </Link>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 3.5 PR VIDEO & NEWS SECTION (홍보 영상 및 뉴스) ─── */}
+      <section className="relative w-full py-32 bg-white border-t border-apple-hairline">
+        <div className="container mx-auto px-6 lg:px-12">
+          <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
+            
+            {/* PR Video */}
+            <div className="w-full lg:w-3/5">
+              <div className="flex items-center gap-3 mb-8">
+                <Sparkles className="w-6 h-6 text-apple-primary" />
+                <h2 className="text-apple-display-md text-apple-ink font-bold tracking-tight">케이두레 스토리</h2>
+              </div>
+              <div className="relative w-full aspect-video rounded-apple-lg overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
+                <iframe 
+                  className="absolute top-0 left-0 w-full h-full"
+                  src="https://www.youtube.com/embed/DKPkOXFlY10?rel=0&autoplay=0&controls=1&modestbranding=1" 
+                  title="케이두레 홍보 영상"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowFullScreen
+                />
+              </div>
+            </div>
+
+            {/* Recent News */}
+            <div className="w-full lg:w-2/5 flex flex-col">
+              <div className="flex items-center justify-between mb-8">
+                <h2 className="text-apple-display-md text-apple-ink font-bold tracking-tight">케이두레 뉴스</h2>
+                <Link href="/news" className="text-sm font-medium text-apple-primary hover:text-apple-primary-focus flex items-center transition-colors">
+                  더보기 <ArrowRight className="w-4 h-4 ml-1" />
+                </Link>
+              </div>
+              
+              <div className="flex flex-col gap-4 flex-1">
+                {newsDocs.map((news) => {
+                  const dateStr = new Date(news.date).toLocaleDateString('ko-KR', {
+                    year: 'numeric', month: '2-digit', day: '2-digit'
+                  });
+                  return (
+                    <Link key={news.id} href={`/news/${news.id}`} className="group block bg-apple-canvas-parchment hover:bg-apple-surface-pearl p-6 rounded-apple-lg transition-colors border border-transparent hover:border-apple-divider-soft">
+                      <div className="text-xs font-semibold text-apple-primary mb-2">{dateStr}</div>
+                      <h3 className="text-apple-body-strong text-apple-ink group-hover:text-apple-primary-focus transition-colors line-clamp-2">
+                        {news.title}
+                      </h3>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
