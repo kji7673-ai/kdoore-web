@@ -32,12 +32,15 @@ export default function Footer() {
                 fontSize: "17px",
                 fontWeight: 600,
                 color: "#1d1d1f",
-                marginBottom: "12px",
+                marginBottom: "8px",
                 letterSpacing: "-0.01em",
               }}
             >
               주식회사 케이두레
             </h2>
+            <p style={{ fontSize: "12px", color: "#1d1d1f", fontWeight: 500, marginBottom: "12px" }}>
+              공공기관·학교·기업시설의 운영 안정성을 높이는 종합 시설관리 전문기업
+            </p>
             <p style={{ fontSize: "12px", color: "#6e6e73", lineHeight: 1.6, marginBottom: "8px" }}>
               서울특별시 강서구 강서로 468<br />7층 701호 (등촌동)
             </p>
@@ -91,10 +94,10 @@ export default function Footer() {
             </h3>
             <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
               {[
-                { href: "/about", label: "회사소개" },
-                { href: "/services", label: "사업분야" },
-                { href: "/contact", label: "오시는 길" },
-                { href: "http://www.dooremall.kr", label: "두레몰 (온라인쇼핑)", external: true },
+                { href: "/about", label: "회사 소개" },
+                { href: "/services", label: "서비스 안내" },
+                { href: "/about#history", label: "운영 사례" },
+                { href: "/about#contact", label: "상담 문의" },
               ].map((link) => (
                 <li key={link.href} style={{ marginBottom: "6px" }}>
                   <Link

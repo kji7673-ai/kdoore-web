@@ -11,6 +11,7 @@ const config: Config = {
     extend: {
       animation: {
         "marquee": "marquee 35s linear infinite",
+        "marquee-reverse": "marquee-reverse 35s linear infinite",
         "fade-in-up": "fade-in-up 0.8s ease-out forwards",
         "hero-slide": "hero-slide 20s infinite"
       },
@@ -18,6 +19,10 @@ const config: Config = {
         marquee: {
           "0%": { transform: "translateX(0%)" },
           "100%": { transform: "translateX(-50%)" }
+        },
+        "marquee-reverse": {
+          "0%": { transform: "translateX(-50%)" },
+          "100%": { transform: "translateX(0%)" }
         },
         "fade-in-up": {
           "0%": { opacity: "0", transform: "translateY(20px)" },
@@ -32,9 +37,9 @@ const config: Config = {
         }
       },
       colors: {
-        "apple-primary": "#0066cc",
-        "apple-primary-focus": "#0071e3",
-        "apple-primary-on-dark": "#2997ff",
+        "apple-primary": "#1A365D",
+        "apple-primary-focus": "#2C5282",
+        "apple-primary-on-dark": "#63B3ED",
         "apple-ink": "#1d1d1f",
         "apple-body": "#1d1d1f",
         "apple-body-on-dark": "#ffffff",

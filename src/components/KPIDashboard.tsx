@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
 import { Building2, Users, ShieldCheck, MapPin } from 'lucide-react';
 
-const COLORS = ['#0066cc', '#1A365D', '#d2d2d7', '#e0e0e0'];
+const COLORS = ['#1A365D', '#2C5282', '#63B3ED', '#e2e8f0'];
 
 const businessData = [
   { name: '학교 및 공공기관', value: 49 },
@@ -113,7 +113,7 @@ export default function KPIDashboard() {
             <div className="flex flex-col">
               <div className="flex items-center gap-2 mb-2">
                 <ShieldCheck className="w-5 h-5 text-apple-primary" />
-                <span className="text-apple-caption-strong text-apple-ink-muted-80 tracking-[0.1em]">고객사 현황</span>
+                <span className="text-apple-caption-strong text-apple-ink-muted-80 tracking-[0.1em]">기업 고객사</span>
               </div>
               <AnimatedCounter end={29} suffix="개사" />
             </div>
@@ -122,23 +122,44 @@ export default function KPIDashboard() {
       </div>
 
       {/* Bottom Row: Badges */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="bg-apple-surface-tile-1 rounded-apple-lg p-8 flex items-center gap-6">
-          <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center shrink-0">
-            <ShieldCheck className="w-8 h-8 text-apple-primary-on-dark" />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="bg-apple-surface-tile-1 rounded-apple-lg p-6 flex flex-col items-start gap-4">
+          <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+            <ShieldCheck className="w-6 h-6 text-apple-primary-on-dark" />
           </div>
           <div>
-            <h4 className="text-xl font-semibold text-white mb-1">삼성바이오로직스 협력사 평가 '우수'</h4>
-            <p className="text-apple-body-muted text-sm">작업 품질, 사내 안전, GMP Compliance</p>
+            <h4 className="text-[15px] font-semibold text-white mb-2 leading-snug">대통령 표창 및<br/>사회적 가치 우수기업</h4>
+            <p className="text-apple-body-muted text-[13px] leading-relaxed">사회적 가치와 일자리 창출 성과를 공식적으로 인정받았습니다.</p>
           </div>
         </div>
-        <div className="bg-apple-surface-tile-2 rounded-apple-lg p-8 flex items-center gap-6">
-          <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center shrink-0">
-            <ShieldCheck className="w-8 h-8 text-apple-primary-on-dark" />
+        
+        <div className="bg-apple-surface-tile-2 rounded-apple-lg p-6 flex flex-col items-start gap-4">
+          <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+            <Building2 className="w-6 h-6 text-apple-primary-on-dark" />
           </div>
           <div>
-            <h4 className="text-xl font-semibold text-white mb-1">사회적가치(SVI) 측정 '우수'</h4>
-            <p className="text-apple-body-muted text-sm">한국사회적기업진흥원 평가 인증</p>
+            <h4 className="text-[15px] font-semibold text-white mb-2 leading-snug">삼성바이오로직스<br/>협력사 평가 우수</h4>
+            <p className="text-apple-body-muted text-[13px] leading-relaxed">작업 품질, 사내 안전, GMP Compliance 부문 우수 평가.</p>
+          </div>
+        </div>
+
+        <div className="bg-apple-surface-tile-3 rounded-apple-lg p-6 flex flex-col items-start gap-4">
+          <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+            <ShieldCheck className="w-6 h-6 text-apple-primary-on-dark" />
+          </div>
+          <div>
+            <h4 className="text-[15px] font-semibold text-white mb-2 leading-snug">ISO 9001 / 45001<br/>인증 획득</h4>
+            <p className="text-apple-body-muted text-[13px] leading-relaxed">품질과 안전보건 관리 체계를 국제 기준에 맞춰 운영합니다.</p>
+          </div>
+        </div>
+
+        <div className="bg-apple-surface-tile-1 rounded-apple-lg p-6 flex flex-col items-start gap-4">
+          <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+            <MapPin className="w-6 h-6 text-apple-primary-on-dark" />
+          </div>
+          <div>
+            <h4 className="text-[15px] font-semibold text-white mb-2 leading-snug">전국 317개 현장<br/>운영 경험</h4>
+            <p className="text-apple-body-muted text-[13px] leading-relaxed">다양한 시설 유형에서 축적된 현장 대응 경험으로 안정적 운영 제공.</p>
           </div>
         </div>
       </div>

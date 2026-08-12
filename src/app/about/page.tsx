@@ -125,7 +125,7 @@ export default function AboutPage() {
             <h2 className="text-3xl font-bold text-gray-900">보유 인증 및 허가</h2>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
               { id: '8.png', name: '대통령 표창' },
               { id: '2.png', name: '사회적가치 측정 우수' },

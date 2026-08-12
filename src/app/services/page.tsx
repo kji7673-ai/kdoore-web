@@ -44,7 +44,7 @@ export default function ServicesPage() {
       id: '1626228413',
       title: '소독방역',
       icon: ShieldCheck,
-      image: 'https://images.unsplash.com/photo-1584483766114-2cea6facdf57?w=800&q=80',
+      image: '/images/services/disinfection.jpg',
       desc: '감염병 예방 및 체계적인 해충방제를 통해 안전하고 위생적인 생활 환경을 보장합니다.',
       features: ['법정 의무소독', '해충/쥐 방제', '바이러스 살균소독', '수목 소독'],
       details: '식약처 승인을 받은 안전한 약품만을 사용하며, 대상 시설의 구조와 특성에 따른 1:1 맞춤형 방제 솔루션을 제공합니다. 정기적인 모니터링으로 해충의 서식과 유입을 원천 차단합니다.'
@@ -53,7 +53,7 @@ export default function ServicesPage() {
       id: '1626228418',
       title: '저수조청소',
       icon: Droplets,
-      image: 'https://images.unsplash.com/photo-1585728748176-455b5d09c1fa?w=800&q=80',
+      image: '/images/services/watertank.jpg',
       desc: '안전하고 깨끗한 식수 공급을 위해 관련 법규에 따른 전문적인 수조 관리를 실시합니다.',
       features: ['반기 1회 정기청소', '수질 검사 대행', '물탱크 시설 점검', '녹조/슬러지 완벽제거'],
       details: '전문 교육을 이수한 작업자가 고압 세척 장비를 사용하여 저수조 내부의 이물질과 물때를 완벽하게 제거합니다. 청소 후 소독 작업을 통해 먹는 물의 안전성을 확보합니다.'

@@ -1,12 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Shield, Building, Sparkles, CheckCircle2, Users, Award, TrendingUp, Phone, ChevronRight, BarChart } from "lucide-react";
+import { ArrowRight, Shield, Building, Sparkles, Phone, BarChart } from "lucide-react";
 import KPIDashboard from "@/components/KPIDashboard";
 import PromotionalFeatures from "@/components/PromotionalFeatures";
 import DiagramBrandIdentity from "@/components/DiagramBrandIdentity";
-import DiagramSafetyLoop from "@/components/DiagramSafetyLoop";
-import DiagramTalent from "@/components/DiagramTalent";
 import CompanyTimeline from "@/components/CompanyTimeline";
+import SafetyFeedbackLoop from "@/components/SafetyFeedbackLoop";
+
 export default async function Home() {
   const partners = [
     { id: '1625722183', name: '서울특별시교육청' },
@@ -29,175 +29,139 @@ export default async function Home() {
           className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
           style={{ backgroundImage: "url('/images/legacy/main_banner_1.jpg')" }}
         />
-        <div className="absolute inset-0 bg-apple-surface-black/80" />
+        <div className="absolute inset-0 bg-[#0A2540]/85" />
         
         <div className="relative z-10 container mx-auto px-6 flex flex-col items-center text-center mt-10">
-          {/* Elegant Badge */}
-          <div className="flex flex-col items-center gap-4 mb-10 animate-fade-in-up">
-            <div className="relative w-32 h-44 shadow-2xl shadow-black/50 rounded-sm overflow-hidden border border-white/20">
-              <Image src="/certifications/8.png" alt="대통령 표창" fill className="object-contain bg-white" />
-            </div>
-            <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-apple-surface-tile-2 border border-white/10">
-              <span className="text-white text-sm font-medium tracking-wide">대통령 표창 및 사회적 가치 우수기업</span>
-            </div>
-          </div>
-          
           {/* Main Headline */}
-          <h1 className="text-apple-hero-display text-white mb-8 animate-fade-in-up animation-delay-200 leading-[1.1]">
-            세계적인 기업이 신뢰하는<br />
-            <span className="text-apple-primary-on-dark">프리미엄 공간 관리.</span>
+          <h1 className="text-apple-hero-display text-white mb-8 leading-[1.1]">
+            공공기관·학교·대기업이 선택한<br />
+            <span className="text-apple-primary-on-dark">시설관리 전문기업</span>
           </h1>
           
           {/* Subheadline */}
-          <p className="text-apple-lead-airy text-apple-body-muted max-w-2xl mb-14 animate-fade-in-up animation-delay-400">
-            삼성바이오로직스, 벤츠 코리아 등 글로벌 기업과 주요 공공기관이 선택한 케이두레. 압도적인 전문성으로 귀하의 자산 가치를 극대화합니다.
+          <p className="text-apple-lead-airy text-apple-body-muted max-w-2xl mb-14">
+            대통령 표창 수상, 전문 임직원 720명, 전국 317개 현장 운영 경험. 케이두레는 공공기관·학교·기업시설의 운영 안정성과 관리 효율을 높이는 종합 시설관리 서비스를 제공합니다.
           </p>
 
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row justify-center gap-5 animate-fade-in-up animation-delay-600">
-            <Link href="/services" className="bg-apple-primary text-white hover:bg-apple-primary-focus px-8 py-4 rounded-full text-[17px] font-medium transition-colors">
-              솔루션 자세히 보기
+          <div className="flex flex-col sm:flex-row justify-center gap-5">
+            <Link href="/services" className="bg-apple-primary text-white hover:bg-apple-primary-focus px-8 py-4 rounded-full text-[17px] font-medium transition-colors shadow-md">
+              서비스 알아보기
             </Link>
             <Link href="/about#contact" className="bg-apple-surface-tile-2 text-white hover:bg-apple-surface-tile-1 border border-white/10 px-8 py-4 rounded-full text-[17px] font-medium transition-colors">
-              전문가 상담 신청
+              상담 문의하기
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ─── 1.5 BRAND IDENTITY SECTION ─── */}
-      <section className="relative w-full py-24 bg-white border-b border-apple-divider-soft">
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="text-center mb-16">
-            <h2 className="text-apple-display-lg text-apple-ink font-bold mb-4">브랜드 아이덴티티: 케이두레의 의미</h2>
-            <p className="text-apple-body text-apple-ink-muted-80">일하는 즐거움, 함께하는 직장, 함께 멀리 가는 공동체 정신</p>
-          </div>
-          <DiagramBrandIdentity />
-        </div>
-      </section>
-
-      {/* ─── 2. KPI DASHBOARD SECTION ─── */}
-      <section className="relative w-full py-24 bg-apple-canvas-parchment">
-        <div className="container mx-auto px-6 lg:px-12">
-          <KPIDashboard />
-        </div>
-      </section>
-
-      {/* ─── 3. TRUST & PARTNERS SECTION ─── */}
-      <section className="relative w-full pt-16 pb-32 bg-apple-canvas-parchment overflow-hidden">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-apple-display-md text-apple-ink font-semibold mb-4">최고의 기업들이 증명합니다</h2>
-          <p className="text-apple-body text-apple-ink-muted-80 mb-16">
-            엄격한 심사와 검증을 거쳐 대한민국 주요 공공기관 및 대기업의 시설 관리를 전담하고 있습니다.
+      {/* ─── 2. TRUST & PARTNERS SECTION (신뢰 근거) ─── */}
+      <section className="relative w-full py-32 bg-apple-canvas-parchment overflow-hidden">
+        <div className="w-full text-center overflow-hidden">
+          <h2 className="text-apple-display-lg text-apple-ink font-bold mb-6">검증된 실적이 신뢰를 만듭니다</h2>
+          <p className="text-apple-lead-airy text-apple-ink-muted-80 max-w-3xl mx-auto mb-16">
+            공공기관과 대기업 현장에서 증명된 운영 경험
           </p>
-        </div>
-
-        <div className="relative w-full overflow-hidden flex flex-col gap-6">
-          <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-apple-canvas-parchment to-transparent z-10 pointer-events-none" />
-          <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-apple-canvas-parchment to-transparent z-10 pointer-events-none" />
           
-          <div className="flex w-max animate-marquee hover:[animation-play-state:paused]">
-            {[1, 2, 3].map((set) => (
-              <div key={set} className="flex items-center gap-8 px-4">
-                {partners.map((partner, idx) => (
-                  <div key={`${set}-${idx}`} className="flex flex-col items-center justify-center w-64 h-36 bg-white rounded-apple-lg border border-apple-hairline shadow-sm hover:shadow-md transition-all duration-500 cursor-pointer group">
-                    <div className="relative w-40 h-20 mb-3 transition-all duration-500">
-                      <Image src={`/partners/gallery_${partner.id}.jpg`} alt={partner.name} fill className="object-contain" />
-                    </div>
-                    <span className="text-apple-caption text-apple-ink-muted-80 font-medium tracking-wide">
-                      {partner.name}
-                    </span>
+          <div className="relative w-full max-w-[100vw] overflow-hidden mb-16">
+            <div className="flex w-max animate-marquee gap-8 items-center">
+              {[...partners, ...partners, ...partners].map((partner, idx) => (
+                <div key={`top-${idx}`} className="flex flex-col items-center justify-center py-8 bg-white rounded-apple-lg border border-apple-hairline shadow-sm w-56 md:w-72 flex-shrink-0">
+                  <div className="relative w-40 h-20 md:w-56 md:h-28 mb-2">
+                    <Image src={`/partners/gallery_${partner.id}.jpg`} alt={partner.name} fill className="object-contain" />
                   </div>
-                ))}
-              </div>
-            ))}
+                  <span className="text-[14px] md:text-[16px] text-apple-ink-muted-80 font-bold tracking-wide">
+                    {partner.name}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
+
+          <Link href="/about#history" className="text-apple-primary hover:text-apple-primary-focus font-medium flex items-center justify-center gap-1">
+            운영 사례 보기 <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
       </section>
 
-      {/* ─── 3. PREMIUM SERVICES ─── */}
+      {/* ─── 3. PREMIUM SERVICES (서비스) ─── */}
       <section className="relative w-full py-32 bg-white">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="text-center mb-20">
-            <h2 className="text-apple-display-lg text-apple-ink font-bold mb-6">빈틈없는 종합 시설 관리 솔루션</h2>
+            <h2 className="text-apple-display-lg text-apple-ink font-bold mb-6">종합 관리 솔루션</h2>
             <p className="text-apple-lead-airy text-apple-ink-muted-80 max-w-3xl mx-auto">
-              공간의 용도와 특성을 정확히 분석하여 최적화된 맞춤형 관리 서비스를 제공합니다.
+              보안, 유지관리, 위생 서비스를 통합 운영합니다
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-apple-canvas-parchment p-10 rounded-apple-lg border border-apple-divider-soft group hover:bg-apple-surface-tile-1 hover:text-white transition-colors duration-300">
-              <Shield className="w-12 h-12 text-apple-primary mb-8 group-hover:text-apple-primary-on-dark transition-colors" />
-              <h3 className="text-apple-display-md font-bold mb-4 group-hover:text-white">경비 및 보안</h3>
-              <p className="text-apple-body text-apple-ink-muted-80 mb-8 group-hover:text-apple-body-muted">
-                첨단 보안 장비와 고도로 훈련된 보안 요원을 배치하여 24시간 철저한 출입통제 및 방범 시스템을 운영합니다.
-              </p>
-              <Link href="/services" className="text-apple-primary text-apple-body-strong flex items-center group-hover:text-apple-primary-on-dark">
-                상세 솔루션 <ArrowRight className="ml-2 w-4 h-4" />
+            <div className="bg-apple-canvas-parchment p-10 rounded-apple-lg border border-apple-divider-soft flex flex-col justify-between">
+              <div>
+                <Shield className="w-12 h-12 text-apple-primary mb-8" />
+                <h3 className="text-apple-display-md font-bold mb-4">경비 및 보안</h3>
+                <p className="text-apple-body text-apple-ink-muted-80 mb-8">
+                  출입 통제와 방범 운영으로 시설 안전 리스크를 줄입니다
+                </p>
+              </div>
+              <Link href="/services" className="text-apple-primary text-apple-body-strong flex items-center mt-auto hover:text-apple-primary-focus">
+                서비스 자세히 보기 <ArrowRight className="ml-2 w-4 h-4" />
               </Link>
             </div>
 
-            <div className="bg-apple-canvas-parchment p-10 rounded-apple-lg border border-apple-divider-soft group hover:bg-apple-surface-tile-1 hover:text-white transition-colors duration-300">
-              <Building className="w-12 h-12 text-apple-primary mb-8 group-hover:text-apple-primary-on-dark transition-colors" />
-              <h3 className="text-apple-display-md font-bold mb-4 group-hover:text-white">건축물 유지관리</h3>
-              <p className="text-apple-body text-apple-ink-muted-80 mb-8 group-hover:text-apple-body-muted">
-                전기, 소방, 기계 설비에 대한 정기적 예방 점검과 신속한 유지보수를 통해 건축물의 수명과 자산 가치를 보존합니다.
-              </p>
-              <Link href="/services" className="text-apple-primary text-apple-body-strong flex items-center group-hover:text-apple-primary-on-dark">
-                상세 솔루션 <ArrowRight className="ml-2 w-4 h-4" />
+            <div className="bg-apple-canvas-parchment p-10 rounded-apple-lg border border-apple-divider-soft flex flex-col justify-between">
+              <div>
+                <Building className="w-12 h-12 text-apple-primary mb-8" />
+                <h3 className="text-apple-display-md font-bold mb-4">건축물 유지관리</h3>
+                <p className="text-apple-body text-apple-ink-muted-80 mb-8">
+                  예방 점검과 신속 대응으로 운영 중단 위험을 낮춥니다
+                </p>
+              </div>
+              <Link href="/services" className="text-apple-primary text-apple-body-strong flex items-center mt-auto hover:text-apple-primary-focus">
+                운영 방식 보기 <ArrowRight className="ml-2 w-4 h-4" />
               </Link>
             </div>
 
-            <div className="bg-apple-canvas-parchment p-10 rounded-apple-lg border border-apple-divider-soft group hover:bg-apple-surface-tile-1 hover:text-white transition-colors duration-300">
-              <Sparkles className="w-12 h-12 text-apple-primary mb-8 group-hover:text-apple-primary-on-dark transition-colors" />
-              <h3 className="text-apple-display-md font-bold mb-4 group-hover:text-white">위생 및 환경 미화</h3>
-              <p className="text-apple-body text-apple-ink-muted-80 mb-8 group-hover:text-apple-body-muted">
-                프리미엄 세제와 최신 장비를 활용해 공간의 특성에 맞는 맞춤형 미화 및 법정 전염병 예방 방역을 실시합니다.
-              </p>
-              <Link href="/services" className="text-apple-primary text-apple-body-strong flex items-center group-hover:text-apple-primary-on-dark">
-                상세 솔루션 <ArrowRight className="ml-2 w-4 h-4" />
+            <div className="bg-apple-canvas-parchment p-10 rounded-apple-lg border border-apple-divider-soft flex flex-col justify-between">
+              <div>
+                <Sparkles className="w-12 h-12 text-apple-primary mb-8" />
+                <h3 className="text-apple-display-md font-bold mb-4">위생 및 환경 미화</h3>
+                <p className="text-apple-body text-apple-ink-muted-80 mb-8">
+                  공간 특성에 맞춘 미화와 방역으로 쾌적함을 유지합니다
+                </p>
+              </div>
+              <Link href="/services" className="text-apple-primary text-apple-body-strong flex items-center mt-auto hover:text-apple-primary-focus">
+                서비스 자세히 보기 <ArrowRight className="ml-2 w-4 h-4" />
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ─── 4. CORE COMPETENCIES SECTION ─── */}
-      <section className="relative w-full py-32 bg-apple-canvas-parchment border-y border-apple-divider-soft flex flex-col gap-32">
+      {/* ─── 4. CORE COMPETENCIES SECTION (차별점) ─── */}
+      <section className="relative w-full py-32 bg-apple-canvas-parchment">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="text-center mb-16">
-            <h2 className="text-apple-display-lg text-apple-ink font-bold mb-4">왜 케이두레인가?</h2>
-            <p className="text-apple-body text-apple-ink-muted-80 mb-12">수많은 공공기관과 대기업이 신뢰할 수밖에 없는 핵심 경쟁력</p>
-            <PromotionalFeatures />
-          </div>
-          
-          <div className="mt-32">
-            <h2 className="text-apple-display-md text-apple-ink font-bold mb-12 text-center">핵심 경쟁력 I : 빈틈없는 안전보건 아키텍처</h2>
-            <DiagramSafetyLoop />
-          </div>
-
-          <div className="mt-32">
-            <h2 className="text-apple-display-md text-apple-ink font-bold mb-12 text-center">핵심 경쟁력 II : 전문성과 만족도를 높이는 인재 양성 시스템</h2>
-            <DiagramTalent />
-          </div>
+          <PromotionalFeatures />
         </div>
       </section>
 
-      {/* ─── 5. PROCESS SECTION (Horizontal Timeline) ─── */}
+      {/* ─── 5. PROCESS SECTION (프로세스) ─── */}
       <section className="relative w-full py-32 bg-white">
         <div className="container mx-auto px-6 lg:px-12 text-center">
-          <h2 className="text-apple-display-lg text-apple-ink font-bold mb-20">투명하고 체계적인 업무 프로세스</h2>
+          <h2 className="text-apple-display-lg text-apple-ink font-bold mb-6">체계적인 업무 프로세스</h2>
+          <p className="text-apple-lead-airy text-apple-ink-muted-80 max-w-3xl mx-auto mb-20">
+            상담부터 실행·보고까지 일관되게 관리합니다
+          </p>
           
-          <div className="relative flex flex-col md:flex-row justify-between items-start md:items-center max-w-5xl mx-auto">
+          <div className="relative flex flex-col md:flex-row justify-between items-start md:items-center max-w-5xl mx-auto mb-16">
             {/* Background Line */}
             <div className="hidden md:block absolute top-8 left-12 right-12 h-0.5 bg-apple-divider-soft z-0" />
 
             {[
-              { step: '01', title: '전문가 상담', desc: '고객 요구사항 및 현장 특성 사전 파악' },
-              { step: '02', title: '현장 정밀 진단', desc: '본사 전문가 파견 및 맞춤형 솔루션 도출' },
-              { step: '03', title: '운영 계획 수립', desc: '인력 배치, 장비 세팅 및 예산 최적화 제안' },
-              { step: '04', title: '실행 및 관리', desc: '현장 투입 및 철저한 매뉴얼 기반 업무 수행' },
-              { step: '05', title: '정기 품질 보고', desc: '운영 성과 측정 및 월간/분기별 리포트 제공' },
+              { step: '01', title: '전문가 상담', desc: '요구사항과 시설 특성을 파악합니다' },
+              { step: '02', title: '현장 정밀 진단', desc: '리스크와 운영 범위를 점검합니다' },
+              { step: '03', title: '운영 계획 수립', desc: '인력, 장비, 예산을 최적화합니다' },
+              { step: '04', title: '실행 및 관리', desc: '매뉴얼 기반으로 현장을 운영합니다' },
+              { step: '05', title: '정기 품질 보고', desc: '성과와 개선 사항을 공유합니다' },
             ].map((item, idx) => (
               <div key={idx} className="relative z-10 flex flex-col items-center text-center w-full md:w-48 mb-12 md:mb-0">
                 <div className="w-16 h-16 rounded-full bg-apple-primary text-white flex items-center justify-center text-apple-title-lg font-bold shadow-[0_4px_16px_rgba(10,37,64,0.2)] mb-6 ring-4 ring-white">
@@ -208,39 +172,110 @@ export default async function Home() {
               </div>
             ))}
           </div>
+
+          <Link href="/about#contact" className="inline-flex bg-apple-primary text-white hover:bg-apple-primary-focus px-8 py-4 rounded-full text-[17px] font-medium transition-colors">
+            현장 진단 요청하기
+          </Link>
         </div>
       </section>
 
-      {/* ─── 5.5 COMPANY TIMELINE SECTION ─── */}
-      <section className="relative w-full py-32 bg-white">
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="text-center mb-16">
-            <h2 className="text-apple-display-lg text-apple-ink font-bold mb-4">연혁: 끊임없는 성장과 가치 창출의 발자취</h2>
+      {/* ─── 6. KPI DASHBOARD SECTION (성과/증빙) ─── */}
+      <section className="relative w-full py-32 bg-apple-canvas-parchment">
+        <div className="container mx-auto px-6 lg:px-12 text-center">
+          <h2 className="text-apple-display-lg text-apple-ink font-bold mb-6">숫자와 인증으로 증명하는 운영 역량</h2>
+          <p className="text-apple-lead-airy text-apple-ink-muted-80 max-w-3xl mx-auto mb-16">
+            수상, 인증, 현장 경험으로 검증된 관리 체계
+          </p>
+          
+          <div className="mb-24">
+            <KPIDashboard />
           </div>
-          <CompanyTimeline />
+
+          <div className="border-t border-apple-divider-soft pt-24 mb-16">
+            <h3 className="text-apple-display-md text-apple-ink font-bold mb-6">현장 안전과 품질을 놓치지 않는 운영 체계</h3>
+            <p className="text-apple-lead-airy text-apple-ink-muted-80 max-w-3xl mx-auto mb-16">
+              본사와 현장이 분리되지 않는 관리 구조로 위험요소를 사전에 점검하고, 문제가 생기기 전에 대응합니다.
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+              <div className="bg-white p-8 rounded-apple-lg border border-apple-hairline shadow-sm text-left flex flex-col justify-center">
+                <div className="w-12 h-12 rounded-full bg-apple-primary/10 flex items-center justify-center mb-6">
+                  <Shield className="w-6 h-6 text-apple-primary" />
+                </div>
+                <h4 className="text-xl font-semibold text-apple-ink mb-3">위험요소 사전 점검</h4>
+                <p className="text-[15px] text-apple-ink-muted-80">현장 중심 점검 체계로 잠재 리스크를 미리 확인합니다.</p>
+              </div>
+
+              <div className="bg-white p-8 rounded-apple-lg border border-apple-hairline shadow-sm text-left flex flex-col justify-center">
+                <div className="w-12 h-12 rounded-full bg-apple-primary/10 flex items-center justify-center mb-6">
+                  <Building className="w-6 h-6 text-apple-primary" />
+                </div>
+                <h4 className="text-xl font-semibold text-apple-ink mb-3">본사-현장 실시간 대응</h4>
+                <p className="text-[15px] text-apple-ink-muted-80">현장관리팀과 본사가 긴밀히 연결되어 빠르게 대응합니다.</p>
+              </div>
+
+              <div className="bg-white p-8 rounded-apple-lg border border-apple-hairline shadow-sm text-left flex flex-col justify-center">
+                <div className="w-12 h-12 rounded-full bg-apple-primary/10 flex items-center justify-center mb-6">
+                  <BarChart className="w-6 h-6 text-apple-primary" />
+                </div>
+                <h4 className="text-xl font-semibold text-apple-ink mb-3">정기 교육 및 보고 체계</h4>
+                <p className="text-[15px] text-apple-ink-muted-80">일일 TBM, 정기 교육, 보고 체계를 통해 안정적인 운영 품질을 유지합니다.</p>
+              </div>
+            </div>
+            
+            <SafetyFeedbackLoop />
+          </div>
+
+          <div className="flex flex-col sm:flex-row justify-center gap-5">
+            <Link href="/about#history" className="bg-white text-apple-primary border border-apple-hairline hover:bg-apple-surface-pearl px-8 py-4 rounded-full text-[17px] font-medium transition-colors">
+              안전 운영 체계 보기
+            </Link>
+            <Link href="/about#contact" className="bg-apple-primary text-white hover:bg-apple-primary-focus px-8 py-4 rounded-full text-[17px] font-medium transition-colors">
+              현장 운영 문의하기
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* ─── 6. VISION QUOTE & CONVERSION CTA SECTION ─── */}
-      <section className="relative w-full py-32 bg-apple-surface-tile-1 flex flex-col items-center">
+      {/* ─── 7. VISION QUOTE & CONVERSION CTA SECTION (최종 CTA) ─── */}
+      <section className="relative w-full py-32 bg-[#1A365D] flex flex-col items-center">
         <div className="container mx-auto px-6 text-center">
-          <div className="mb-20 max-w-4xl mx-auto border-b border-white/20 pb-16">
-            <h2 className="text-apple-display-lg text-white font-bold mb-4 leading-tight">
-              "고객 신뢰를 최우선으로, <br className="md:hidden" />
-              나눔과 상생을 실천하며 <br className="md:hidden" />
-              함께 멀리 가겠습니다."
-            </h2>
-          </div>
-          <h2 className="text-apple-display-md text-white font-bold mb-6">검증된 시설관리 파트너가 필요하신가요?</h2>
-          <p className="text-apple-lead text-apple-body-muted mb-12 max-w-2xl mx-auto">
-            삼성바이오로직스 등 글로벌 수준의 현장에서 입증된 역량으로 고객사의 가치를 높이겠습니다.
+          <h2 className="text-apple-display-lg text-white font-bold mb-6">검증된 시설관리 파트너가 필요하신가요?</h2>
+          <p className="text-apple-lead text-[#a0aec0] mb-12 max-w-2xl mx-auto">
+            귀사에 맞는 시설관리 체계를 제안드립니다
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <a href="tel:02-2668-0311" className="bg-white text-apple-primary px-10 py-4 rounded-apple-sm text-apple-body-strong hover:bg-gray-100 transition-colors flex items-center justify-center gap-2">
+            <Link href="/about#contact" className="bg-apple-primary text-white hover:bg-apple-primary-focus px-10 py-4 rounded-apple-sm text-apple-body-strong transition-colors flex items-center justify-center gap-2">
+              <BarChart className="w-5 h-5" /> 상담 문의하기
+            </Link>
+            <a href="tel:02-2668-0311" className="bg-apple-surface-tile-2 text-white border border-apple-surface-tile-3 hover:bg-apple-surface-tile-3 px-10 py-4 rounded-apple-sm text-apple-body-strong transition-colors flex items-center justify-center gap-2">
               <Phone className="w-5 h-5" /> 대표전화 02-2668-0311
             </a>
-            <Link href="/about#contact" className="bg-apple-surface-tile-2 text-white border border-apple-surface-tile-3 hover:bg-apple-surface-tile-3 px-10 py-4 rounded-apple-sm text-apple-body-strong transition-colors flex items-center justify-center gap-2">
-              <BarChart className="w-5 h-5" /> 온라인 견적 문의
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 8. BRAND IDENTITY SECTION (Moved to Bottom) ─── */}
+      <section className="relative w-full py-24 bg-apple-canvas-parchment border-t border-apple-divider-soft">
+        <div className="container mx-auto px-6 lg:px-12">
+          <div className="text-center mb-16">
+            <h2 className="text-apple-display-lg text-apple-ink font-bold mb-4">함께 오래 가는 운영 파트너</h2>
+            <p className="text-apple-body text-apple-ink-muted-80">고객 신뢰와 상생의 가치를 바탕으로 성장합니다</p>
+          </div>
+          <DiagramBrandIdentity />
+        </div>
+      </section>
+
+      {/* ─── 9. COMPANY TIMELINE SECTION ─── */}
+      <section className="relative w-full pb-32 pt-16 bg-apple-canvas-parchment">
+        <div className="container mx-auto px-6 lg:px-12">
+          <div className="text-center mb-16">
+            <h2 className="text-apple-display-lg text-apple-ink font-bold mb-4">끊임없는 성장의 발자취</h2>
+          </div>
+          <CompanyTimeline />
+          <div className="text-center mt-12">
+            <Link href="/about" className="text-apple-primary hover:text-apple-primary-focus font-medium flex items-center justify-center gap-1">
+              상세 연혁 및 회사 소개 보기 <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>
