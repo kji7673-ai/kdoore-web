@@ -8,6 +8,7 @@ import DiagramBrandIdentity from "@/components/DiagramBrandIdentity";
 import CompanyTimeline from "@/components/CompanyTimeline";
 import SafetyFeedbackLoop from "@/components/SafetyFeedbackLoop";
 import CounterItem from "@/components/CounterItem";
+import ScrollToTop from "@/components/ScrollToTop";
 import { getPayload } from 'payload';
 import config from '@payload-config';
 
@@ -46,6 +47,7 @@ export default async function Home() {
 
   return (
     <main className="min-h-screen bg-apple-canvas-parchment font-apple-text text-apple-ink overflow-x-hidden selection:bg-apple-primary selection:text-white">
+      <ScrollToTop />
       
       {/* ─── 1. HERO SECTION (Parallax) ─── */}
       <section className="relative w-full h-[85vh] min-h-[700px] flex flex-col justify-center items-center bg-apple-surface-black pt-20 overflow-hidden">
