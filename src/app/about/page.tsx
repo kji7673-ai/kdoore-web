@@ -4,6 +4,7 @@ import { Building2, ShieldCheck, MapPin, Phone, Mail, Clock, CheckCircle2 } from
 import { getPayload } from 'payload';
 import config from '@payload-config';
 import TimelineSection from "@/components/TimelineSection";
+import CertificationsGallery from "@/components/CertificationsGallery";
 
 export default async function AboutPage() {
   let cmsData: any = null;
@@ -47,8 +48,7 @@ export default async function AboutPage() {
             <h2 className="text-3xl font-bold text-gray-900">보유 인증 및 허가</h2>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {(cmsData?.items?.length > 0 ? cmsData.items : [
+          <CertificationsGallery items={cmsData?.items?.length > 0 ? cmsData.items : [
               { id: '8.png', name: '대통령 표창' },
               { id: '2.png', name: '사회적가치 측정 우수' },
               { id: '3.png', name: '장애인 표준사업장' },
@@ -57,19 +57,7 @@ export default async function AboutPage() {
               { id: '6.png', name: '영업신고증' },
               { id: '7.png', name: '허가증' },
               { id: '9.jpg', name: '기타 인증' },
-            ]).map((cert: any, idx: number) => {
-              const cName = cert.title || cert.name;
-              const cImage = typeof cert.image === 'object' ? cert.image?.url : `/certifications/${cert.id}`;
-              return (
-                <div key={cert.id || idx} className="bg-white border border-gray-200 p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow flex flex-col items-center">
-                  <div className="relative w-full aspect-[3/4] mb-3">
-                    <Image src={cImage} alt={cName} fill className="object-contain" unoptimized />
-                  </div>
-                  <h4 className="text-sm font-bold text-gray-800 text-center leading-snug">{cName}</h4>
-                </div>
-              );
-            })}
-          </div>
+            ]} />
         </div>
       </section>
 
