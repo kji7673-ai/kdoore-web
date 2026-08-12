@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useRouter, usePathname } from "next/navigation";
 
 const ROUTES = [
@@ -18,14 +18,18 @@ export default function SwipeNavigator() {
   const router = useRouter();
   const pathname = usePathname();
   
+  // pathname의 최신 상태를 유지하기 위한 ref
+  const pathnameRef = useRef(pathname);
+  useEffect(() => {
+    pathnameRef.current = pathname;
+  }, [pathname]);
+
   const [touchStart, setTouchStart] = useState<{ x: number, y: number } | null>(null);
 
   useEffect(() => {
-    // Only apply on mobile devices (simple heuristic)
     if (typeof window !== "undefined" && window.innerWidth > 768) return;
 
     const handleTouchStart = (e: TouchEvent) => {
-      // Ignore swipes if interacting with horizontal scrollable elements
       const target = e.target as HTMLElement;
       if (target.closest('.overflow-x-auto') || target.closest('.swiper-container') || target.closest('.no-swipe')) {
         return;
@@ -40,9 +44,10 @@ export default function SwipeNavigator() {
       const deltaX = touchEnd.x - touchStart.x;
       const deltaY = touchEnd.y - touchStart.y;
 
-      // Ensure it's a horizontal swipe, not a vertical scroll
-      if (Math.abs(deltaX) > 80 && Math.abs(deltaY) < 50) {
-        const currentIndex = ROUTES.indexOf(pathname);
+      // 스와이프 조건: 좌우 이동이 100px 이상이고, 상하 이동이 40px 미만일 때만 (수직 스크롤 오작동 방지)
+      if (Math.abs(deltaX) > 100 && Math.abs(deltaY) < 40) {
+        const currentPath = pathnameRef.current;
+        const currentIndex = ROUTES.indexOf(currentPath);
         if (currentIndex === -1) {
           setTouchStart(null);
           return;
