@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 
 const timelineData = [
   {
@@ -57,46 +57,41 @@ const timelineData = [
 ];
 
 export default function TimelineSection() {
-  const targetRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-  });
-
-  // X축 이동 (전체 카드 개수에 맞춰 화면 밖으로 스크롤)
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-85%"]);
+  // Duplicate data for seamless infinite scroll
+  const marqueeData = [...timelineData, ...timelineData];
 
   return (
-    <section ref={targetRef} className="relative h-[400vh] bg-apple-surface-tile-1">
-      <div className="sticky top-0 flex h-screen items-center overflow-hidden">
-        {/* 거대 타이포그래피 배경 (고정) */}
-        <div className="absolute inset-0 pointer-events-none flex items-center justify-center opacity-[0.03]">
-          <h2 className="text-[25vw] font-bold text-white whitespace-nowrap tracking-tighter">
-            HISTORY
-          </h2>
-        </div>
+    <section className="relative h-[80vh] min-h-[600px] bg-apple-surface-tile-1 overflow-hidden flex flex-col justify-center">
+      {/* 거대 타이포그래피 배경 (고정) */}
+      <div className="absolute inset-0 pointer-events-none flex items-center justify-center opacity-[0.03]">
+        <h2 className="text-[25vw] font-bold text-white whitespace-nowrap tracking-tighter">
+          HISTORY
+        </h2>
+      </div>
 
-        {/* 하단 진행 바 (Progress Bar) */}
-        <div className="absolute bottom-0 left-0 h-1 bg-apple-surface-tile-3 w-full">
-          <motion.div
-            className="h-full bg-apple-primary"
-            style={{ width: useTransform(scrollYProgress, [0, 1], ["0%", "100%"]) }}
-          />
-        </div>
+      {/* 상단 타이틀 */}
+      <div className="absolute top-20 left-12 md:left-24 z-10">
+        <h2 className="text-apple-display-lg font-bold text-white mb-2">끊임없는 성장의 발자취</h2>
+        <p className="text-apple-lead-airy text-apple-body-muted">케이두레가 걸어온 혁신과 상생의 기록</p>
+      </div>
 
-        {/* 상단 타이틀 */}
-        <div className="absolute top-24 left-12 md:left-24 z-10">
-          <h2 className="text-apple-display-lg font-bold text-white mb-2">끊임없는 성장의 발자취</h2>
-          <p className="text-apple-lead-airy text-apple-body-muted">케이두레가 걸어온 혁신과 상생의 기록</p>
-        </div>
-
-        {/* 가로 스크롤 영역 */}
-        <motion.div style={{ x }} className="flex gap-16 pl-12 md:pl-24 pr-[50vw] pt-24">
-          {timelineData.map((item, index) => (
+      {/* 가로 자동 스크롤 영역 (Marquee) */}
+      <div className="w-full mt-24">
+        <motion.div
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{
+            ease: "linear",
+            duration: 40, // 40초 동안 1사이클
+            repeat: Infinity,
+          }}
+          className="flex gap-16 w-max pl-12 md:pl-24"
+        >
+          {marqueeData.map((item, index) => (
             <div
               key={index}
-              className="relative w-[320px] md:w-[400px] shrink-0 group flex flex-col justify-center h-full"
+              className="relative w-[320px] md:w-[400px] shrink-0 group flex flex-col justify-center h-full py-12"
             >
-              <div className="absolute -left-8 top-1/2 -translate-y-1/2 h-[50%] w-[1px] bg-white/10" />
+              <div className="absolute -left-8 top-1/2 -translate-y-1/2 h-[70%] w-[1px] bg-white/10" />
               
               <div className="mb-6">
                 <span className="text-[70px] md:text-[100px] font-bold text-white/20 tracking-tighter group-hover:text-white/40 transition-colors duration-500 leading-none">
