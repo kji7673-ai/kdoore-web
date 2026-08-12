@@ -9,6 +9,7 @@ import CompanyTimeline from "@/components/CompanyTimeline";
 import SafetyFeedbackLoop from "@/components/SafetyFeedbackLoop";
 import CounterItem from "@/components/CounterItem";
 import ScrollToTop from "@/components/ScrollToTop";
+import FadeUp from "@/components/FadeUp";
 import { getPayload } from 'payload';
 import config from '@payload-config';
 
@@ -58,27 +59,41 @@ export default async function Home() {
         />
         <div className="absolute inset-0 bg-[#0A2540]/85" />
         
-        <div className="relative z-10 container mx-auto px-6 flex flex-col items-center text-center mt-10">
-          {/* Main Headline */}
-          <h1 
-            className="text-apple-hero-display text-white mb-8 leading-[1.1]"
-            dangerouslySetInnerHTML={{ __html: cmsData?.heroTitle || '공공기관·학교·대기업이 선택한<br /><span class="text-apple-primary-on-dark">시설관리 전문기업</span>' }}
-          />
-          
-          {/* Subheadline */}
-          <p className="text-apple-lead-airy text-apple-body-muted max-w-2xl mb-14">
-            {cmsData?.heroSubtitle || '대통령 표창 수상, 전문 임직원 720명, 전국 317개 현장 운영 경험. 케이두레는 공공기관·학교·기업시설의 운영 안정성과 관리 효율을 높이는 종합 시설관리 서비스를 제공합니다.'}
-          </p>
+        <div className="relative z-10 text-center container mx-auto px-6 mt-16">
+          <FadeUp delay={0.1}>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm font-medium mb-8 shadow-lg shadow-black/20">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-apple-primary-on-dark opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-apple-primary-on-dark"></span>
+              </span>
+              고객 만족을 향한 끝없는 집념
+            </div>
+          </FadeUp>
+
+          <FadeUp delay={0.3}>
+            <h1 className="text-apple-hero-display text-white mb-6 drop-shadow-lg tracking-tight max-w-4xl mx-auto">
+              공공기관·학교·대기업이 선택한<br/>
+              <span className="text-apple-primary-on-dark">시설관리 전문기업</span>
+            </h1>
+          </FadeUp>
+
+          <FadeUp delay={0.5}>
+            <p className="text-apple-lead text-white/90 mb-12 max-w-2xl mx-auto font-light drop-shadow-md">
+              대통령 표창 수상, 전문 임직원 720명, 전국 317개 현장 운영 경험. 케이두레는 공공기관·학교·기업시설의 운영 안정성과 관리 효율을 높이는 종합 시설관리 서비스를 제공합니다.
+            </p>
+          </FadeUp>
 
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-            <Link href="/services" className="inline-flex items-center gap-2 bg-apple-primary text-white hover:bg-apple-primary-focus px-6 py-2.5 rounded-full text-[15px] font-semibold transition-colors">
-              서비스 알아보기 <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link href="/about#contact" className="inline-flex items-center gap-1 text-white hover:text-apple-primary-on-dark hover:underline px-4 py-2.5 text-[15px] font-semibold transition-colors">
-              상담 문의하기 <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
+          <FadeUp delay={0.7}>
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+              <Link href="/services" className="inline-flex items-center gap-2 bg-apple-primary text-white hover:bg-apple-primary-focus px-6 py-2.5 rounded-full text-[15px] font-semibold transition-colors">
+                서비스 알아보기 <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link href="/about#contact" className="inline-flex items-center gap-1 text-white hover:text-apple-primary-on-dark hover:underline px-4 py-2.5 text-[15px] font-semibold transition-colors">
+                상담 문의하기 <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </FadeUp>
         </div>
       </section>
 
@@ -154,10 +169,12 @@ export default async function Home() {
       {/* ─── 2. TRUST & PARTNERS SECTION (신뢰 근거) ─── */}
       <section className="relative w-full py-48 bg-apple-canvas-parchment overflow-hidden">
         <div className="w-full text-center overflow-hidden">
-          <h2 className="text-apple-display-lg text-apple-ink font-bold mb-6">검증된 실적이 신뢰를 만듭니다</h2>
-          <p className="text-apple-lead-airy text-apple-ink-muted-80 max-w-3xl mx-auto mb-16">
-            공공기관과 대기업 현장에서 증명된 운영 경험
-          </p>
+          <FadeUp>
+            <h2 className="text-apple-display-lg text-apple-ink font-bold mb-6">검증된 실적이 신뢰를 만듭니다</h2>
+            <p className="text-apple-lead-airy text-apple-ink-muted-80 max-w-3xl mx-auto mb-16">
+              주요 공공기관 및 대기업과의 장기 파트너십이 케이두레의 안정적인 운영 능력을 증명합니다.
+            </p>
+          </FadeUp>
           
           <div className="relative w-full max-w-[100vw] overflow-hidden mb-16">
             <div className="flex w-max animate-marquee gap-8 items-center">
@@ -190,12 +207,12 @@ export default async function Home() {
       {/* ─── 3. PREMIUM SERVICES (서비스) ─── */}
       <section className="relative w-full py-48 bg-white">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="text-center mb-20">
+          <FadeUp className="text-center mb-20">
             <h2 className="text-apple-display-lg text-apple-ink font-bold mb-6">종합 관리 솔루션</h2>
             <p className="text-apple-lead-airy text-apple-ink-muted-80 max-w-3xl mx-auto">
-              보안, 유지관리, 위생 서비스를 통합 운영합니다
+              분산된 관리 업무를 하나로 통합하여<br/>비용은 절감하고 관리 품질은 높입니다.
             </p>
-          </div>
+          </FadeUp>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-apple-canvas-parchment p-10 rounded-apple-lg border border-apple-divider-soft flex flex-col justify-between group hover:shadow-lg transition-shadow duration-300">
@@ -251,25 +268,24 @@ export default async function Home() {
         <div className="container mx-auto px-6 lg:px-12">
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
             
-            {/* PR Video */}
-            <div className="w-full lg:w-3/5">
-              <div className="flex items-center gap-3 mb-8">
-                <Sparkles className="w-6 h-6 text-apple-primary" />
-                <h2 className="text-apple-display-md text-apple-ink font-bold tracking-tight">케이두레 스토리</h2>
+            {/* Left: PR Video (Optional) */}
+            <FadeUp className="w-full lg:w-1/2 flex flex-col justify-center">
+              <span className="section-badge mb-4 w-fit">Corporate Video</span>
+              <h2 className="text-apple-display-md text-apple-ink font-bold mb-6">케이두레의 기업가치를 영상으로 만나보세요</h2>
+              <p className="text-apple-body text-apple-ink-muted-80 mb-8">
+                사람과 공간을 잇는 종합 시설관리 전문기업 케이두레의 철학과 비전, 그리고 생생한 현장의 이야기를 소개합니다.
+              </p>
+              <div className="aspect-video w-full bg-apple-surface-pearl rounded-[20px] overflow-hidden border border-apple-divider-soft flex items-center justify-center relative group cursor-pointer shadow-lg">
+                <Image src="/images/legacy/about1.jpg" alt="Video Thumbnail" fill className="object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+                <div className="w-16 h-16 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center shadow-lg z-10 group-hover:scale-110 transition-transform">
+                  <div className="w-0 h-0 border-t-8 border-t-transparent border-l-[14px] border-l-apple-primary border-b-8 border-b-transparent ml-1"></div>
+                </div>
               </div>
-              <div className="relative w-full aspect-video rounded-apple-lg overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
-                <iframe 
-                  className="absolute top-0 left-0 w-full h-full"
-                  src="https://www.youtube.com/embed/DKPkOXFlY10?rel=0&autoplay=0&controls=1&modestbranding=1" 
-                  title="케이두레 홍보 영상"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                  allowFullScreen
-                />
-              </div>
-            </div>
+            </FadeUp>
 
             {/* Recent News */}
-            <div className="w-full lg:w-2/5 flex flex-col">
+            <div className="w-full lg:w-1/2 flex flex-col">
               <div className="flex items-center justify-between mb-8">
                 <h2 className="text-apple-display-md text-apple-ink font-bold tracking-tight">케이두레 뉴스</h2>
                 <Link href="/news" className="text-sm font-medium text-apple-primary hover:text-apple-primary-focus flex items-center transition-colors">
@@ -311,10 +327,12 @@ export default async function Home() {
       {/* ─── 5. PROCESS SECTION (프로세스) ─── */}
       <section className="relative w-full py-48 bg-white">
         <div className="container mx-auto px-6 lg:px-12 text-center">
-          <h2 className="text-apple-display-lg text-apple-ink font-bold mb-6">체계적인 업무 프로세스</h2>
-          <p className="text-apple-lead-airy text-apple-ink-muted-80 max-w-3xl mx-auto mb-20">
-            상담부터 실행·보고까지 일관되게 관리합니다
-          </p>
+          <FadeUp>
+            <h2 className="text-apple-display-lg text-apple-ink font-bold mb-6">체계적인 업무 프로세스</h2>
+            <p className="text-apple-lead-airy text-apple-ink-muted-80 max-w-3xl mx-auto mb-20">
+              상담부터 사후 관리까지, 고객의 불편을 최소화하는 원스톱 솔루션을 제공합니다.
+            </p>
+          </FadeUp>
           
           <div className="relative flex flex-col md:flex-row justify-between items-start md:items-center max-w-5xl mx-auto mb-16">
             {/* Background Line */}
@@ -346,10 +364,12 @@ export default async function Home() {
       {/* ─── 6. KPI DASHBOARD SECTION (성과/증빙) ─── */}
       <section className="relative w-full py-48 bg-apple-canvas-parchment">
         <div className="container mx-auto px-6 lg:px-12 text-center">
-          <h2 className="text-apple-display-lg text-apple-ink font-bold mb-6">숫자와 인증으로 증명하는 운영 역량</h2>
-          <p className="text-apple-lead-airy text-apple-ink-muted-80 max-w-3xl mx-auto mb-16">
-            수상, 인증, 현장 경험으로 검증된 관리 체계
-          </p>
+          <FadeUp>
+            <h2 className="text-apple-display-lg text-apple-ink font-bold mb-6">숫자와 인증으로 증명하는 운영 역량</h2>
+            <p className="text-apple-lead-airy text-apple-ink-muted-80 max-w-3xl mx-auto mb-16">
+              투명한 KPI 관리와 엄격한 국내외 인증을 통해 서비스 품질을 객관적으로 입증합니다.
+            </p>
+          </FadeUp>
           
           <div className="mb-24">
             <KPIDashboard />
