@@ -1,4 +1,6 @@
 import React from 'react';
+import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 export default function RealWorldShowcase() {
   return (
@@ -20,13 +22,13 @@ export default function RealWorldShowcase() {
           보이지 않는 곳의 먼지 하나까지 국제 표준의 잣대로 통제하며 현장의 안전과 위생을 책임집니다.
         </p>
         
-        <div className="mt-12 flex flex-col sm:flex-row items-center gap-4">
-          <a href="/about" className="bg-apple-primary hover:bg-apple-primary-focus text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-apple-primary/30">
-            품질 관리 시스템 보기
-          </a>
-          <a href="/contact" className="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/20 px-8 py-3 rounded-full font-semibold transition-all duration-300">
-            상담 문의하기
-          </a>
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <Link href="/about" className="inline-flex items-center gap-2 bg-apple-primary hover:bg-apple-primary-focus text-white px-5 py-2.5 rounded-full text-[14px] font-semibold transition-all duration-300">
+            품질 관리 시스템 보기 <ArrowRight className="w-4 h-4" />
+          </Link>
+          <Link href="/contact" className="inline-flex items-center gap-1 text-white hover:underline px-4 py-2 text-[14px] font-semibold transition-all duration-300">
+            상담 문의하기 <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
       </div>
     </section>

@@ -69,12 +69,12 @@ export default async function Home() {
           </p>
 
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row justify-center gap-5">
-            <Link href="/services" className="bg-apple-primary text-white hover:bg-apple-primary-focus px-8 py-4 rounded-full text-[17px] font-medium transition-colors shadow-md">
-              서비스 알아보기
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+            <Link href="/services" className="inline-flex items-center gap-2 bg-apple-primary text-white hover:bg-apple-primary-focus px-6 py-2.5 rounded-full text-[15px] font-semibold transition-colors">
+              서비스 알아보기 <ArrowRight className="w-4 h-4" />
             </Link>
-            <Link href="/about#contact" className="bg-apple-surface-tile-2 text-white hover:bg-apple-surface-tile-1 border border-white/10 px-8 py-4 rounded-full text-[17px] font-medium transition-colors">
-              상담 문의하기
+            <Link href="/about#contact" className="inline-flex items-center gap-1 text-white hover:text-apple-primary-on-dark hover:underline px-4 py-2.5 text-[15px] font-semibold transition-colors">
+              상담 문의하기 <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>
