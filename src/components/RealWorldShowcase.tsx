@@ -5,9 +5,9 @@ import Link from 'next/link';
 export default function RealWorldShowcase() {
   return (
     <section className="relative w-full h-[80vh] min-h-[600px] flex items-center justify-center bg-apple-surface-black overflow-hidden my-32">
-      {/* Background Image with Parallax effect and dark overlay */}
+      {/* Background Image with Parallax effect (disabled on mobile due to iOS Safari bg-fixed bug) and dark overlay */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed transform scale-105 transition-transform duration-[10000ms] hover:scale-100" 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-scroll md:bg-fixed transform scale-105 transition-transform duration-[10000ms] hover:scale-100" 
         style={{ backgroundImage: "url('/images/realworld_bg.jpg')" }}
       />
       <div className="absolute inset-0 bg-black/60" />
