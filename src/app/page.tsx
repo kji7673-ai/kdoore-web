@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Shield, Building, Sparkles, Phone, BarChart } from "lucide-react";
 import KPIDashboard from "@/components/KPIDashboard";
 import PromotionalFeatures from "@/components/PromotionalFeatures";
+import RealWorldShowcase from "@/components/RealWorldShowcase";
 import DiagramBrandIdentity from "@/components/DiagramBrandIdentity";
 import CompanyTimeline from "@/components/CompanyTimeline";
 import SafetyFeedbackLoop from "@/components/SafetyFeedbackLoop";
@@ -292,9 +293,12 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* ─── 4. CORE COMPETENCIES SECTION (차별점) ─── */}
-      <section className="relative w-full py-32 bg-apple-canvas-parchment">
-        <div className="container mx-auto px-6 lg:px-12">
+      {/* ─── NEW: RealWorld Showcase (Background Image) ─── */}
+      <RealWorldShowcase />
+
+      {/* ─── 4. PROMOTIONAL FEATURES ─── */}
+      <section className="py-20 bg-apple-surface-pearl">
+        <div className="container mx-auto px-6">
           <PromotionalFeatures />
         </div>
       </section>
