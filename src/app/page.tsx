@@ -103,8 +103,8 @@ export default async function Home() {
             <div className="group relative bg-apple-canvas-parchment p-10 rounded-[24px] border border-apple-divider-soft overflow-hidden transition-all duration-300 hover:shadow-[0_10px_40px_rgba(0,102,204,0.1)] hover:-translate-y-2">
               <div className="absolute inset-0 bg-gradient-to-br from-apple-canvas-parchment to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative z-10 flex flex-col items-center text-center">
-                <div className="w-16 h-16 bg-apple-primary/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-apple-primary group-hover:scale-110 transition-all duration-300">
-                  <Shield className="w-8 h-8 text-apple-primary group-hover:text-white transition-colors duration-300" />
+                <div className="w-20 h-20 bg-emerald-100 rounded-[20px] flex items-center justify-center mb-6 group-hover:bg-emerald-500 group-hover:-translate-y-2 group-hover:shadow-lg group-hover:shadow-emerald-500/30 transition-all duration-500">
+                  <Shield className="w-10 h-10 text-emerald-600 group-hover:text-white transition-colors duration-500" />
                 </div>
                 <h3 className="text-apple-display-md font-bold mb-3 text-apple-ink">안전 (Safety)</h3>
                 <p className="text-apple-body text-apple-ink-muted-80">
@@ -117,8 +117,8 @@ export default async function Home() {
             <div className="group relative bg-apple-canvas-parchment p-10 rounded-[24px] border border-apple-divider-soft overflow-hidden transition-all duration-300 hover:shadow-[0_10px_40px_rgba(0,102,204,0.1)] hover:-translate-y-2">
               <div className="absolute inset-0 bg-gradient-to-br from-apple-canvas-parchment to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative z-10 flex flex-col items-center text-center">
-                <div className="w-16 h-16 bg-apple-primary/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-apple-primary group-hover:scale-110 transition-all duration-300">
-                  <Building className="w-8 h-8 text-apple-primary group-hover:text-white transition-colors duration-300" />
+                <div className="w-20 h-20 bg-amber-100 rounded-[20px] flex items-center justify-center mb-6 group-hover:bg-amber-500 group-hover:-translate-y-2 group-hover:shadow-lg group-hover:shadow-amber-500/30 transition-all duration-500">
+                  <Building className="w-10 h-10 text-amber-600 group-hover:text-white transition-colors duration-500" />
                 </div>
                 <h3 className="text-apple-display-md font-bold mb-3 text-apple-ink">상생 (Coexistence)</h3>
                 <p className="text-apple-body text-apple-ink-muted-80">
@@ -131,8 +131,8 @@ export default async function Home() {
             <div className="group relative bg-apple-canvas-parchment p-10 rounded-[24px] border border-apple-divider-soft overflow-hidden transition-all duration-300 hover:shadow-[0_10px_40px_rgba(0,102,204,0.1)] hover:-translate-y-2">
               <div className="absolute inset-0 bg-gradient-to-br from-apple-canvas-parchment to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative z-10 flex flex-col items-center text-center">
-                <div className="w-16 h-16 bg-apple-primary/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-apple-primary group-hover:scale-110 transition-all duration-300">
-                  <Sparkles className="w-8 h-8 text-apple-primary group-hover:text-white transition-colors duration-300" />
+                <div className="w-20 h-20 bg-purple-100 rounded-[20px] flex items-center justify-center mb-6 group-hover:bg-purple-600 group-hover:-translate-y-2 group-hover:shadow-lg group-hover:shadow-purple-600/30 transition-all duration-500">
+                  <Sparkles className="w-10 h-10 text-purple-600 group-hover:text-white transition-colors duration-500" />
                 </div>
                 <h3 className="text-apple-display-md font-bold mb-3 text-apple-ink">전문성 (Professional)</h3>
                 <p className="text-apple-body text-apple-ink-muted-80">
