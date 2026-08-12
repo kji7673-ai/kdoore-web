@@ -40,8 +40,10 @@ export default async function AboutPage() {
       {/* 3. 인증 및 허가 갤러리 */}
       <section id="certifications" className="py-20 bg-gray-100">
         <div className="container mx-auto px-4 max-w-6xl">
-          <div className="flex items-center justify-center gap-3 mb-12">
-            <ShieldCheck className="w-8 h-8 text-blue-600" />
+          <div className="flex items-center justify-center gap-4 mb-12">
+            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center shadow-sm">
+              <ShieldCheck className="w-8 h-8 text-blue-600" />
+            </div>
             <h2 className="text-3xl font-bold text-gray-900">보유 인증 및 허가</h2>
           </div>
 
@@ -74,8 +76,10 @@ export default async function AboutPage() {
       {/* 4. 오시는 길 */}
       <section id="contact" className="py-20 bg-white">
         <div className="container mx-auto px-4 max-w-5xl">
-          <div className="flex items-center justify-center gap-3 mb-12">
-            <MapPin className="w-8 h-8 text-blue-600" />
+          <div className="flex items-center justify-center gap-4 mb-12">
+            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center shadow-sm">
+              <MapPin className="w-8 h-8 text-blue-600" />
+            </div>
             <h2 className="text-3xl font-bold text-gray-900">오시는 길</h2>
           </div>
 
@@ -85,19 +89,25 @@ export default async function AboutPage() {
                 <h3 className="text-xl font-bold mb-4">본사 (케이두레빌딩)</h3>
                 <div className="space-y-4">
                   <div className="flex items-start">
-                    <MapPin className="w-5 h-5 text-blue-600 mr-3 mt-1" />
+                    <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center mr-4 shrink-0">
+                      <MapPin className="w-5 h-5 text-gray-600" />
+                    </div>
                     <div>
                       <p className="font-medium text-gray-900">서울특별시 강서구 등촌로 51바길 14</p>
                       <p className="text-gray-500 text-sm">(등촌동 566-5)</p>
                     </div>
                   </div>
                   <div className="flex items-center">
-                    <Phone className="w-5 h-5 text-blue-600 mr-3" />
-                    <p className="text-gray-900">02-2668-0311</p>
+                    <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-4 shrink-0">
+                      <Phone className="w-5 h-5 text-green-600" />
+                    </div>
+                    <p className="text-gray-900 font-medium">02-2668-0311</p>
                   </div>
                   <div className="flex items-center">
-                    <Mail className="w-5 h-5 text-blue-600 mr-3" />
-                    <p className="text-gray-900">kedure@hanmail.net</p>
+                    <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mr-4 shrink-0">
+                      <Mail className="w-5 h-5 text-purple-600" />
+                    </div>
+                    <p className="text-gray-900 font-medium">kedure@hanmail.net</p>
                   </div>
                   <div className="flex items-center">
                     <Clock className="w-5 h-5 text-blue-600 mr-3" />

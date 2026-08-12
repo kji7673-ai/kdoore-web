@@ -192,12 +192,14 @@ export default async function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-apple-canvas-parchment p-10 rounded-apple-lg border border-apple-divider-soft flex flex-col justify-between">
+            <div className="bg-apple-canvas-parchment p-10 rounded-apple-lg border border-apple-divider-soft flex flex-col justify-between group hover:shadow-lg transition-shadow duration-300">
               <div>
-                <Shield className="w-12 h-12 text-apple-primary mb-8" />
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-8 group-hover:bg-apple-primary transition-colors duration-300">
+                  <Shield className="w-8 h-8 text-apple-primary group-hover:text-white transition-colors duration-300" />
+                </div>
                 <h3 className="text-apple-display-md font-bold mb-4">경비 및 보안</h3>
                 <p className="text-apple-body text-apple-ink-muted-80 mb-8">
-                  출입 통제와 방범 운영으로 시설 안전 리스크를 줄입니다
+                  철저한 <strong className="text-apple-ink font-bold">출입 통제</strong>와 24시간 <strong className="text-apple-ink font-bold">방범 운영</strong>으로 시설의 보안 리스크를 원천 차단합니다.
                 </p>
               </div>
               <Link href="/services" className="text-apple-primary text-apple-body-strong flex items-center mt-auto hover:text-apple-primary-focus">
@@ -205,28 +207,32 @@ export default async function Home() {
               </Link>
             </div>
 
-            <div className="bg-apple-canvas-parchment p-10 rounded-apple-lg border border-apple-divider-soft flex flex-col justify-between">
+            <div className="bg-apple-canvas-parchment p-10 rounded-apple-lg border border-apple-divider-soft flex flex-col justify-between group hover:shadow-lg transition-shadow duration-300">
               <div>
-                <Building className="w-12 h-12 text-apple-primary mb-8" />
+                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-8 group-hover:bg-orange-500 transition-colors duration-300">
+                  <Building className="w-8 h-8 text-orange-600 group-hover:text-white transition-colors duration-300" />
+                </div>
                 <h3 className="text-apple-display-md font-bold mb-4">건축물 유지관리</h3>
                 <p className="text-apple-body text-apple-ink-muted-80 mb-8">
-                  예방 점검과 신속 대응으로 운영 중단 위험을 낮춥니다
+                  전문가의 <strong className="text-apple-ink font-bold">예방 점검</strong>과 <strong className="text-apple-ink font-bold">신속 대응</strong>으로 운영 중단 위험을 낮추고 자산 가치를 보존합니다.
                 </p>
               </div>
-              <Link href="/services" className="text-apple-primary text-apple-body-strong flex items-center mt-auto hover:text-apple-primary-focus">
+              <Link href="/services" className="text-orange-600 text-apple-body-strong flex items-center mt-auto hover:text-orange-700">
                 운영 방식 보기 <ArrowRight className="ml-2 w-4 h-4" />
               </Link>
             </div>
 
-            <div className="bg-apple-canvas-parchment p-10 rounded-apple-lg border border-apple-divider-soft flex flex-col justify-between">
+            <div className="bg-apple-canvas-parchment p-10 rounded-apple-lg border border-apple-divider-soft flex flex-col justify-between group hover:shadow-lg transition-shadow duration-300">
               <div>
-                <Sparkles className="w-12 h-12 text-apple-primary mb-8" />
+                <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mb-8 group-hover:bg-emerald-500 transition-colors duration-300">
+                  <Sparkles className="w-8 h-8 text-emerald-600 group-hover:text-white transition-colors duration-300" />
+                </div>
                 <h3 className="text-apple-display-md font-bold mb-4">위생 및 환경 미화</h3>
                 <p className="text-apple-body text-apple-ink-muted-80 mb-8">
-                  공간 특성에 맞춘 미화와 방역으로 쾌적함을 유지합니다
+                  공간 특성에 맞춘 <strong className="text-apple-ink font-bold">프리미엄 미화</strong>와 철저한 <strong className="text-apple-ink font-bold">방역 솔루션</strong>으로 쾌적함을 극대화합니다.
                 </p>
               </div>
-              <Link href="/services" className="text-apple-primary text-apple-body-strong flex items-center mt-auto hover:text-apple-primary-focus">
+              <Link href="/services" className="text-emerald-600 text-apple-body-strong flex items-center mt-auto hover:text-emerald-700">
                 서비스 자세히 보기 <ArrowRight className="ml-2 w-4 h-4" />
               </Link>
             </div>

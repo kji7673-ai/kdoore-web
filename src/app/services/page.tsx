@@ -117,9 +117,9 @@ export default function ServicesPage() {
                 </div>
 
                 {/* Content Side */}
-                <div className="w-full lg:w-[55%] flex flex-col pt-4">
-                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-white border border-apple-divider-soft text-apple-primary mb-6 shadow-sm">
-                    <svc.icon className="w-7 h-7" />
+                <div className="w-full lg:w-[55%] flex flex-col pt-4 group-hover:opacity-100">
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-50 border border-blue-100 text-apple-primary mb-6 shadow-sm group-hover:bg-apple-primary group-hover:text-white transition-colors duration-500">
+                    <svc.icon className="w-8 h-8 transition-colors duration-500" />
                   </div>
                   <h2 className="text-apple-display-md font-bold text-apple-ink mb-4">{svc.title}</h2>
                   <p className="text-apple-lead text-apple-primary font-medium mb-6">{svc.desc}</p>
