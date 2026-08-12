@@ -108,8 +108,9 @@ export default async function Home() {
                   <Shield className="w-10 h-10 text-emerald-600 group-hover:text-white transition-colors duration-500" />
                 </div>
                 <h3 className="text-apple-display-md font-bold mb-3 text-apple-ink">안전 (Safety)</h3>
+                <p className="text-apple-body text-apple-ink font-semibold mb-2">타협 불가능한 최우선 원칙.</p>
                 <p className="text-apple-body text-apple-ink-muted-80">
-                  중대재해를 예방하는 체계적인 관리와 철저한 현장 안전 수칙 준수로 생명과 자산을 보호합니다.
+                  사고 제로(0)를 향한 집념. 철저한 예방 시스템과 빈틈없는 현장 통제로 가장 완벽한 안전을 약속합니다.
                 </p>
               </div>
             </div>
@@ -122,8 +123,9 @@ export default async function Home() {
                   <Building className="w-10 h-10 text-amber-600 group-hover:text-white transition-colors duration-500" />
                 </div>
                 <h3 className="text-apple-display-md font-bold mb-3 text-apple-ink">상생 (Coexistence)</h3>
+                <p className="text-apple-body text-apple-ink font-semibold mb-2">함께 만드는 사회적 가치.</p>
                 <p className="text-apple-body text-apple-ink-muted-80">
-                  장애인 표준사업장으로서 취약계층 일자리를 창출하며, 파트너사와 함께 동반 성장합니다.
+                  장애인 표준사업장으로서의 확고한 책임감. 차별 없는 일자리 창출로 동반 성장의 길을 증명합니다.
                 </p>
               </div>
             </div>
@@ -135,9 +137,10 @@ export default async function Home() {
                 <div className="w-20 h-20 bg-purple-100 rounded-[20px] flex items-center justify-center mb-6 group-hover:bg-purple-600 group-hover:-translate-y-2 group-hover:shadow-lg group-hover:shadow-purple-600/30 transition-all duration-500">
                   <Sparkles className="w-10 h-10 text-purple-600 group-hover:text-white transition-colors duration-500" />
                 </div>
-                <h3 className="text-apple-display-md font-bold mb-3 text-apple-ink">전문성 (Professional)</h3>
+                <h3 className="text-apple-display-md font-bold mb-3 text-apple-ink">전문성 (Expertise)</h3>
+                <p className="text-apple-body text-apple-ink font-semibold mb-2">시간이 증명한 압도적 차이.</p>
                 <p className="text-apple-body text-apple-ink-muted-80">
-                  오랜 업력을 바탕으로 한 현장 노하우와 분야별 매뉴얼을 통해 프리미엄 관리 서비스를 제공합니다.
+                  10년 이상의 축적된 노하우와 300명 이상의 맨파워. 공간의 품격을 결정짓는 프리미엄 스탠다드를 제시합니다.
                 </p>
               </div>
             </div>

@@ -8,25 +8,25 @@ export default function PromotionalFeatures() {
       colorName: "blue",
       icon: <Clock className="w-8 h-8 text-blue-600 group-hover:text-white transition-colors duration-500" />,
       title: "10분 Rule 신속 대응",
-      desc: "현장 이슈 발생 시 빠르게 초기 대응합니다"
+      desc: "발생 즉시 해결로 이어지는 골든타임. 어떤 현장 이슈에도 지연 없이 즉각적으로 대응합니다."
     },
     {
       colorName: "emerald",
       icon: <Shield className="w-8 h-8 text-emerald-600 group-hover:text-white transition-colors duration-500" />,
       title: "ISO 인증 품질관리",
-      desc: "국제 기준 기반으로 운영 품질을 유지합니다"
+      desc: "세계가 인정한 무결점 스탠다드. 눈에 보이지 않는 디테일까지 국제 기준으로 엄격하게 관리합니다."
     },
     {
       colorName: "rose",
       icon: <AlertTriangle className="w-8 h-8 text-rose-600 group-hover:text-white transition-colors duration-500" />,
       title: "Daily TBM 운영",
-      desc: "위험요소를 사전에 점검하고 대응합니다"
+      desc: "사고를 허용하지 않는 매일의 점검. 단 1%의 잠재적 위험 요소까지 사전에 완벽히 차단합니다."
     },
     {
       colorName: "amber",
       icon: <Building className="w-8 h-8 text-amber-600 group-hover:text-white transition-colors duration-500" />,
       title: "맞춤형 현장 운영 경험",
-      desc: "공공기관과 기업시설에 맞는 운영 전략을 제안합니다"
+      desc: "공간의 특성을 꿰뚫는 운영 마스터플랜. 공공기관부터 대기업까지 각 현장에 최적화된 전략을 실행합니다."
     }
   ];
 
