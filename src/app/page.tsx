@@ -81,7 +81,7 @@ export default async function Home() {
       </section>
 
       {/* ─── 1.5 HIGHLIGHT NUMBERS & CORE VALUES ─── */}
-      <section className="relative w-full py-24 bg-white border-b border-apple-hairline">
+      <section className="relative w-full py-40 bg-white border-b border-apple-hairline">
         <div className="container mx-auto px-6 lg:px-12">
           
           {/* Number Counters */}
@@ -150,7 +150,7 @@ export default async function Home() {
       </section>
 
       {/* ─── 2. TRUST & PARTNERS SECTION (신뢰 근거) ─── */}
-      <section className="relative w-full py-32 bg-apple-canvas-parchment overflow-hidden">
+      <section className="relative w-full py-48 bg-apple-canvas-parchment overflow-hidden">
         <div className="w-full text-center overflow-hidden">
           <h2 className="text-apple-display-lg text-apple-ink font-bold mb-6">검증된 실적이 신뢰를 만듭니다</h2>
           <p className="text-apple-lead-airy text-apple-ink-muted-80 max-w-3xl mx-auto mb-16">
@@ -186,7 +186,7 @@ export default async function Home() {
       </section>
 
       {/* ─── 3. PREMIUM SERVICES (서비스) ─── */}
-      <section className="relative w-full py-32 bg-white">
+      <section className="relative w-full py-48 bg-white">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="text-center mb-20">
             <h2 className="text-apple-display-lg text-apple-ink font-bold mb-6">종합 관리 솔루션</h2>
@@ -245,7 +245,7 @@ export default async function Home() {
       </section>
 
       {/* ─── 3.5 PR VIDEO & NEWS SECTION (홍보 영상 및 뉴스) ─── */}
-      <section className="relative w-full py-32 bg-white border-t border-apple-hairline">
+      <section className="relative w-full py-48 bg-white border-t border-apple-hairline">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
             
@@ -300,14 +300,14 @@ export default async function Home() {
       <RealWorldShowcase />
 
       {/* ─── 4. PROMOTIONAL FEATURES ─── */}
-      <section className="py-20 bg-apple-surface-pearl">
+      <section className="py-40 bg-apple-surface-pearl">
         <div className="container mx-auto px-6">
           <PromotionalFeatures />
         </div>
       </section>
 
       {/* ─── 5. PROCESS SECTION (프로세스) ─── */}
-      <section className="relative w-full py-32 bg-white">
+      <section className="relative w-full py-48 bg-white">
         <div className="container mx-auto px-6 lg:px-12 text-center">
           <h2 className="text-apple-display-lg text-apple-ink font-bold mb-6">체계적인 업무 프로세스</h2>
           <p className="text-apple-lead-airy text-apple-ink-muted-80 max-w-3xl mx-auto mb-20">
@@ -342,7 +342,7 @@ export default async function Home() {
       </section>
 
       {/* ─── 6. KPI DASHBOARD SECTION (성과/증빙) ─── */}
-      <section className="relative w-full py-32 bg-apple-canvas-parchment">
+      <section className="relative w-full py-48 bg-apple-canvas-parchment">
         <div className="container mx-auto px-6 lg:px-12 text-center">
           <h2 className="text-apple-display-lg text-apple-ink font-bold mb-6">숫자와 인증으로 증명하는 운영 역량</h2>
           <p className="text-apple-lead-airy text-apple-ink-muted-80 max-w-3xl mx-auto mb-16">
@@ -400,7 +400,7 @@ export default async function Home() {
       </section>
 
       {/* ─── 7. VISION QUOTE & CONVERSION CTA SECTION (최종 CTA) ─── */}
-      <section className="relative w-full py-32 bg-[#1A365D] flex flex-col items-center">
+      <section className="relative w-full py-48 bg-[#1A365D] flex flex-col items-center">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-apple-display-lg text-white font-bold mb-6">검증된 시설관리 파트너가 필요하신가요?</h2>
           <p className="text-apple-lead text-[#a0aec0] mb-12 max-w-2xl mx-auto">
@@ -418,7 +418,7 @@ export default async function Home() {
       </section>
 
       {/* ─── 8. BRAND IDENTITY SECTION (Moved to Bottom) ─── */}
-      <section className="relative w-full py-24 bg-apple-canvas-parchment border-t border-apple-divider-soft">
+      <section className="relative w-full py-32 bg-apple-canvas-parchment border-t border-apple-divider-soft">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="text-center mb-16">
             <h2 className="text-apple-display-lg text-apple-ink font-bold mb-4">함께 오래 가는 운영 파트너</h2>
@@ -429,7 +429,7 @@ export default async function Home() {
       </section>
 
       {/* ─── 9. COMPANY TIMELINE SECTION ─── */}
-      <section className="relative w-full pb-32 pt-16 bg-apple-canvas-parchment">
+      <section className="relative w-full pb-48 pt-24 bg-apple-canvas-parchment">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="text-center mb-16">
             <h2 className="text-apple-display-lg text-apple-ink font-bold mb-4">끊임없는 성장의 발자취</h2>
