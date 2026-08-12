@@ -84,7 +84,7 @@ export default function ServicesPage() {
               
               <div className="w-full md:w-1/2 relative">
                 <div className="relative aspect-[4/3] rounded-[24px] overflow-hidden shadow-lg border border-apple-hairline group">
-                  <Image src={svc.image} alt={svc.title} fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                  <Image src={svc.image} alt={svc.title} fill className="object-cover group-hover:scale-105 transition-transform duration-700" unoptimized />
                   <div className="absolute inset-0 bg-apple-surface-tile-1/5 group-hover:bg-transparent transition-colors duration-500"></div>
                 </div>
               </div>
