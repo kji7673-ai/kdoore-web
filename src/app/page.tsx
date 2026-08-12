@@ -85,9 +85,9 @@ export default async function Home() {
           
           {/* Number Counters */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
-            <CounterItem value={10} suffix="+" title="업력" desc="축적된 전문 관리 노하우" duration={2} />
+            <CounterItem value={new Date().getFullYear() - 2014} suffix="+" title="업력" desc="축적된 전문 관리 노하우" duration={2} />
             <CounterItem value={60} suffix="%" title="감면 혜택" desc="장애인고용부담금 최대 감면율" duration={2} />
-            <CounterItem value={317} suffix="개" title="운영 현장" desc="전국 공공기관 및 대기업 파트너십" duration={2.5} />
+            <CounterItem value={300} suffix="+명" title="함께하는 전문 인력" desc="전국 각지에서 활약하는 케이두레인" duration={2.5} />
             <CounterItem value={100} suffix="%" title="고객 만족" desc="신뢰 기반의 책임 운영제" duration={2} />
           </div>
 
