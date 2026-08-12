@@ -6,8 +6,20 @@ import PromotionalFeatures from "@/components/PromotionalFeatures";
 import DiagramBrandIdentity from "@/components/DiagramBrandIdentity";
 import CompanyTimeline from "@/components/CompanyTimeline";
 import SafetyFeedbackLoop from "@/components/SafetyFeedbackLoop";
+import { getPayload } from 'payload';
+import config from '@payload-config';
 
 export default async function Home() {
+  let cmsData: any = null;
+  const dbUrl = process.env.POSTGRES_URL;
+  if (dbUrl && !dbUrl.includes('placeholder')) {
+    try {
+      const payload = await getPayload({ config });
+      cmsData = await payload.findGlobal({ slug: 'homepage' });
+    } catch (e) {
+      console.warn("Payload DB connection failed, using fallbacks.", e);
+    }
+  }
   const partners = [
     { id: '1625722183', name: '서울특별시교육청' },
     { id: '1625722188', name: '사회적경제지원센터' },
@@ -33,14 +45,14 @@ export default async function Home() {
         
         <div className="relative z-10 container mx-auto px-6 flex flex-col items-center text-center mt-10">
           {/* Main Headline */}
-          <h1 className="text-apple-hero-display text-white mb-8 leading-[1.1]">
-            공공기관·학교·대기업이 선택한<br />
-            <span className="text-apple-primary-on-dark">시설관리 전문기업</span>
-          </h1>
+          <h1 
+            className="text-apple-hero-display text-white mb-8 leading-[1.1]"
+            dangerouslySetInnerHTML={{ __html: cmsData?.heroTitle || '공공기관·학교·대기업이 선택한<br /><span class="text-apple-primary-on-dark">시설관리 전문기업</span>' }}
+          />
           
           {/* Subheadline */}
           <p className="text-apple-lead-airy text-apple-body-muted max-w-2xl mb-14">
-            대통령 표창 수상, 전문 임직원 720명, 전국 317개 현장 운영 경험. 케이두레는 공공기관·학교·기업시설의 운영 안정성과 관리 효율을 높이는 종합 시설관리 서비스를 제공합니다.
+            {cmsData?.heroSubtitle || '대통령 표창 수상, 전문 임직원 720명, 전국 317개 현장 운영 경험. 케이두레는 공공기관·학교·기업시설의 운영 안정성과 관리 효율을 높이는 종합 시설관리 서비스를 제공합니다.'}
           </p>
 
           {/* Action Buttons */}
@@ -65,16 +77,23 @@ export default async function Home() {
           
           <div className="relative w-full max-w-[100vw] overflow-hidden mb-16">
             <div className="flex w-max animate-marquee gap-8 items-center">
-              {[...partners, ...partners, ...partners].map((partner, idx) => (
-                <div key={`top-${idx}`} className="flex flex-col items-center justify-center py-8 bg-white rounded-apple-lg border border-apple-hairline shadow-sm w-56 md:w-72 flex-shrink-0">
-                  <div className="relative w-40 h-20 md:w-56 md:h-28 mb-2">
-                    <Image src={`/partners/gallery_${partner.id}.jpg`} alt={partner.name} fill className="object-contain" />
+              {[...partners, ...partners, ...partners].map((partner, idx) => {
+                // If CMS has custom partners, use them. Otherwise fallback to static
+                const cmsPartner = cmsData?.partners?.[idx % partners.length];
+                const pName = cmsPartner?.name || partner.name;
+                const pImage = cmsPartner?.logo?.url || `/partners/gallery_${partner.id}.jpg`;
+                
+                return (
+                  <div key={`top-${idx}`} className="flex flex-col items-center justify-center py-8 bg-white rounded-apple-lg border border-apple-hairline shadow-sm w-56 md:w-72 flex-shrink-0">
+                    <div className="relative w-40 h-20 md:w-56 md:h-28 mb-2">
+                      <Image src={pImage} alt={pName} fill className="object-contain" unoptimized />
+                    </div>
+                    <span className="text-[14px] md:text-[16px] text-apple-ink-muted-80 font-bold tracking-wide">
+                      {pName}
+                    </span>
                   </div>
-                  <span className="text-[14px] md:text-[16px] text-apple-ink-muted-80 font-bold tracking-wide">
-                    {partner.name}
-                  </span>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
 

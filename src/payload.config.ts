@@ -138,6 +138,64 @@ export default buildConfig({
       ],
     },
   ],
+  globals: [
+    {
+      slug: 'homepage',
+      label: '메인 페이지 관리',
+      access: {
+        read: () => true,
+      },
+      fields: [
+        {
+          name: 'heroTitle',
+          label: '메인 배너 제목',
+          type: 'text',
+        },
+        {
+          name: 'heroSubtitle',
+          label: '메인 배너 서브타이틀',
+          type: 'textarea',
+        },
+        {
+          name: 'partners',
+          label: '고객사 로고 관리',
+          type: 'array',
+          fields: [
+            { name: 'name', label: '고객사명', type: 'text' },
+            { name: 'logo', label: '로고 이미지', type: 'upload', relationTo: 'media' },
+          ],
+        },
+        {
+          name: 'services',
+          label: '주요 서비스 관리',
+          type: 'array',
+          fields: [
+            { name: 'title', label: '서비스명', type: 'text' },
+            { name: 'description', label: '서비스 설명', type: 'textarea' },
+            { name: 'image', label: '대표 이미지', type: 'upload', relationTo: 'media' },
+          ],
+        },
+      ],
+    },
+    {
+      slug: 'certifications',
+      label: '인증서 및 허가증 관리',
+      access: {
+        read: () => true,
+      },
+      fields: [
+        {
+          name: 'items',
+          label: '인증서 목록',
+          type: 'array',
+          fields: [
+            { name: 'title', label: '인증서명', type: 'text' },
+            { name: 'image', label: '인증서 이미지', type: 'upload', relationTo: 'media' },
+          ],
+        },
+      ],
+    },
+  ],
   editor: lexicalEditor({}),
   secret: process.env.PAYLOAD_SECRET || 'fallback-secret-for-kdoore-dev',
   db: postgresAdapter({
