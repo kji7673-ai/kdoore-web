@@ -9,6 +9,18 @@
   --color-accent: #4A5568;         /* Cool Gray instead of Gold */
   --color-accent-light: #F7FAFC;
 
+  /* ─── Emphasized Value Colors ───────────────────────────────── */
+  --color-emerald-100: #d1fae5;
+  --color-emerald-500: #10b981;
+  --color-emerald-600: #059669;
+  
+  --color-amber-100: #fef3c7;
+  --color-amber-500: #f59e0b;
+  --color-amber-600: #d97706;
+  
+  --color-purple-100: #f3e8ff;
+  --color-purple-600: #9333ea;
+
   /* ─── Text Colors ───────────────────────────────────────────── */
   --color-ink: #1A202C;            /* Near black for high contrast */
   --color-ink-muted: #4A5568;
