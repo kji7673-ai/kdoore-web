@@ -20,6 +20,14 @@
   
   --color-purple-100: #f3e8ff;
   --color-purple-600: #9333ea;
+  
+  --color-rose-100: #ffe4e6;
+  --color-rose-500: #f43f5e;
+  --color-rose-600: #e11d48;
+  
+  --color-blue-100: #dbeafe;
+  --color-blue-500: #3b82f6;
+  --color-blue-600: #2563eb;
 
   /* ─── Text Colors ───────────────────────────────────────────── */
   --color-ink: #1A202C;            /* Near black for high contrast */
