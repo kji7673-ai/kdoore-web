@@ -6,6 +6,7 @@ import PromotionalFeatures from "@/components/PromotionalFeatures";
 import DiagramBrandIdentity from "@/components/DiagramBrandIdentity";
 import CompanyTimeline from "@/components/CompanyTimeline";
 import SafetyFeedbackLoop from "@/components/SafetyFeedbackLoop";
+import CounterItem from "@/components/CounterItem";
 import { getPayload } from 'payload';
 import config from '@payload-config';
 
@@ -45,11 +46,11 @@ export default async function Home() {
   return (
     <main className="min-h-screen bg-apple-canvas-parchment font-apple-text text-apple-ink overflow-x-hidden selection:bg-apple-primary selection:text-white">
       
-      {/* ─── 1. HERO SECTION ─── */}
+      {/* ─── 1. HERO SECTION (Parallax) ─── */}
       <section className="relative w-full h-[85vh] min-h-[700px] flex flex-col justify-center items-center bg-apple-surface-black pt-20 overflow-hidden">
-        {/* Impactful Background Image with Overlay */}
+        {/* Impactful Background Image with Overlay and Parallax (bg-fixed) */}
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed" 
           style={{ backgroundImage: "url('/images/legacy/main_banner_1.jpg')" }}
         />
         <div className="absolute inset-0 bg-[#0A2540]/85" />
@@ -75,6 +76,72 @@ export default async function Home() {
               상담 문의하기
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* ─── 1.5 HIGHLIGHT NUMBERS & CORE VALUES ─── */}
+      <section className="relative w-full py-24 bg-white border-b border-apple-hairline">
+        <div className="container mx-auto px-6 lg:px-12">
+          
+          {/* Number Counters */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
+            <CounterItem value={10} suffix="+" title="업력" desc="축적된 전문 관리 노하우" duration={2} />
+            <CounterItem value={60} suffix="%" title="감면 혜택" desc="장애인고용부담금 최대 감면율" duration={2} />
+            <CounterItem value={317} suffix="개" title="운영 현장" desc="전국 공공기관 및 대기업 파트너십" duration={2.5} />
+            <CounterItem value={100} suffix="%" title="고객 만족" desc="신뢰 기반의 책임 운영제" duration={2} />
+          </div>
+
+          {/* Core Values */}
+          <div className="text-center mb-16">
+            <h2 className="text-apple-display-lg text-apple-ink font-bold mb-4">케이두레의 3대 핵심 가치</h2>
+            <p className="text-apple-lead-airy text-apple-ink-muted-80 max-w-2xl mx-auto">
+              안전, 상생, 전문성을 바탕으로 더 나은 사회적 가치를 실현합니다.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Core Value Card 1 */}
+            <div className="group relative bg-apple-canvas-parchment p-10 rounded-[24px] border border-apple-divider-soft overflow-hidden transition-all duration-300 hover:shadow-[0_10px_40px_rgba(0,102,204,0.1)] hover:-translate-y-2">
+              <div className="absolute inset-0 bg-gradient-to-br from-apple-canvas-parchment to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="relative z-10 flex flex-col items-center text-center">
+                <div className="w-16 h-16 bg-apple-primary/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-apple-primary group-hover:scale-110 transition-all duration-300">
+                  <Shield className="w-8 h-8 text-apple-primary group-hover:text-white transition-colors duration-300" />
+                </div>
+                <h3 className="text-apple-display-md font-bold mb-3 text-apple-ink">안전 (Safety)</h3>
+                <p className="text-apple-body text-apple-ink-muted-80">
+                  중대재해를 예방하는 체계적인 관리와 철저한 현장 안전 수칙 준수로 생명과 자산을 보호합니다.
+                </p>
+              </div>
+            </div>
+
+            {/* Core Value Card 2 */}
+            <div className="group relative bg-apple-canvas-parchment p-10 rounded-[24px] border border-apple-divider-soft overflow-hidden transition-all duration-300 hover:shadow-[0_10px_40px_rgba(0,102,204,0.1)] hover:-translate-y-2">
+              <div className="absolute inset-0 bg-gradient-to-br from-apple-canvas-parchment to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="relative z-10 flex flex-col items-center text-center">
+                <div className="w-16 h-16 bg-apple-primary/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-apple-primary group-hover:scale-110 transition-all duration-300">
+                  <Building className="w-8 h-8 text-apple-primary group-hover:text-white transition-colors duration-300" />
+                </div>
+                <h3 className="text-apple-display-md font-bold mb-3 text-apple-ink">상생 (Coexistence)</h3>
+                <p className="text-apple-body text-apple-ink-muted-80">
+                  장애인 표준사업장으로서 취약계층 일자리를 창출하며, 파트너사와 함께 동반 성장합니다.
+                </p>
+              </div>
+            </div>
+
+            {/* Core Value Card 3 */}
+            <div className="group relative bg-apple-canvas-parchment p-10 rounded-[24px] border border-apple-divider-soft overflow-hidden transition-all duration-300 hover:shadow-[0_10px_40px_rgba(0,102,204,0.1)] hover:-translate-y-2">
+              <div className="absolute inset-0 bg-gradient-to-br from-apple-canvas-parchment to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="relative z-10 flex flex-col items-center text-center">
+                <div className="w-16 h-16 bg-apple-primary/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-apple-primary group-hover:scale-110 transition-all duration-300">
+                  <Sparkles className="w-8 h-8 text-apple-primary group-hover:text-white transition-colors duration-300" />
+                </div>
+                <h3 className="text-apple-display-md font-bold mb-3 text-apple-ink">전문성 (Professional)</h3>
+                <p className="text-apple-body text-apple-ink-muted-80">
+                  오랜 업력을 바탕으로 한 현장 노하우와 분야별 매뉴얼을 통해 프리미엄 관리 서비스를 제공합니다.
+                </p>
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
 
