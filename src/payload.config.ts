@@ -7,7 +7,7 @@ import { fileURLToPath } from 'url';
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
-const rawPostgresUrl = process.env.POSTGRES_URL || 'postgres://placeholder:placeholder@localhost/placeholder';
+const rawPostgresUrl = process.env.POSTGRES_URL || 'postgres://postgres.drkkvjajcriifgwxfhsf:Wx3kftWPB2yj9tmB@aws-0-ap-northeast-2.pooler.supabase.com:5432/postgres?sslmode=require&supa=base-pooler.x';
 const safeConnectionString = rawPostgresUrl.replace(':6543/', ':5432/');
 
 export default buildConfig({
