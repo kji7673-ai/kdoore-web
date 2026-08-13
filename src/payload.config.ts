@@ -200,7 +200,7 @@ export default buildConfig({
   secret: process.env.PAYLOAD_SECRET || 'fallback-secret-for-kdoore-dev',
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.POSTGRES_URL || 'postgres://placeholder:placeholder@localhost/placeholder',
+      connectionString: (process.env.POSTGRES_URL || 'postgres://placeholder:placeholder@localhost/placeholder').replace(':6543/', ':5432/'),
     },
   }),
   typescript: {
