@@ -13,9 +13,7 @@ type Args = {
 export const generateMetadata = ({ params, searchParams }: Args) =>
   generatePageMetadata({ config, params, searchParams })
 
-const dummyImportMap = {} as any;
-
 const Page = ({ params, searchParams }: Args) =>
-  RootPage({ config, params, searchParams, importMap: dummyImportMap })
+  RootPage({ config, params, searchParams })
 
 export default Page
