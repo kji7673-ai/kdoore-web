@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --webpack",
-    "build": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap && next build --webpack",
+    "build": "next build",
     "start": "next start",
     "lint": "eslint",
     "payload": "cross-env NODE_OPTIONS=--no-deprecation payload"
