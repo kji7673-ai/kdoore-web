@@ -1,14 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 
 interface VideoPlayerProps {
   videoId: string;
-  thumbnailSrc: string;
 }
 
-export default function VideoPlayer({ videoId, thumbnailSrc }: VideoPlayerProps) {
+export default function VideoPlayer({ videoId }: VideoPlayerProps) {
   const [isPlaying, setIsPlaying] = useState(false);
 
   if (isPlaying) {
@@ -25,16 +23,18 @@ export default function VideoPlayer({ videoId, thumbnailSrc }: VideoPlayerProps)
     );
   }
 
+  // Use YouTube's high-res thumbnail
+  const thumbnailSrc = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+
   return (
     <div 
       className="aspect-video w-full bg-apple-surface-pearl rounded-[20px] overflow-hidden border border-apple-divider-soft flex items-center justify-center relative group cursor-pointer shadow-lg"
       onClick={() => setIsPlaying(true)}
     >
-      <Image 
+      <img 
         src={thumbnailSrc} 
         alt="Video Thumbnail" 
-        fill 
-        className="object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" 
+        className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" 
       />
       <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
       

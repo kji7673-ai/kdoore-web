@@ -276,10 +276,7 @@ export default async function Home() {
               <p className="text-apple-body text-apple-ink-muted-80 mb-8">
                 사람과 공간을 잇는 종합 시설관리 전문기업 케이두레의 철학과 비전, 그리고 생생한 현장의 이야기를 소개합니다.
               </p>
-              <VideoPlayer 
-                videoId="DKPkOXFlY10" 
-                thumbnailSrc="/images/legacy/about1.jpg" 
-              />
+              <VideoPlayer videoId="DKPkOXFlY10" />
             </FadeUp>
 
             {/* Recent News */}
