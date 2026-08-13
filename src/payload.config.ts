@@ -11,11 +11,15 @@ const rawPostgresUrl = process.env.POSTGRES_URL || 'postgres://postgres.drkkvjaj
 let safeConnectionString = rawPostgresUrl;
 try {
   const url = new URL(rawPostgresUrl);
-  url.searchParams.delete('sslmode');
+  // Force no-verify to prevent SELF_SIGNED_CERT_IN_CHAIN errors on Vercel
+  url.searchParams.set('sslmode', 'no-verify');
   safeConnectionString = url.toString();
 } catch (e) {
   console.error('Failed to parse POSTGRES_URL', e);
 }
+
+// Ensure pg driver uses no-verify even if Vercel injects PGSSLMODE=require
+process.env.PGSSLMODE = 'no-verify';
 
 export default buildConfig({
   admin: {
