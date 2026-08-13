@@ -206,6 +206,7 @@ export default buildConfig({
       connectionString: safeConnectionString,
       ssl: { rejectUnauthorized: false },
     },
+    push: true,
   }),
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
