@@ -10,6 +10,7 @@ import SafetyFeedbackLoop from "@/components/SafetyFeedbackLoop";
 import CounterItem from "@/components/CounterItem";
 import ScrollToTop from "@/components/ScrollToTop";
 import FadeUp from "@/components/FadeUp";
+import VideoPlayer from "@/components/VideoPlayer";
 import { getPayload } from 'payload';
 import config from '@payload-config';
 
@@ -275,13 +276,10 @@ export default async function Home() {
               <p className="text-apple-body text-apple-ink-muted-80 mb-8">
                 사람과 공간을 잇는 종합 시설관리 전문기업 케이두레의 철학과 비전, 그리고 생생한 현장의 이야기를 소개합니다.
               </p>
-              <div className="aspect-video w-full bg-apple-surface-pearl rounded-[20px] overflow-hidden border border-apple-divider-soft flex items-center justify-center relative group cursor-pointer shadow-lg">
-                <Image src="/images/legacy/about1.jpg" alt="Video Thumbnail" fill className="object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
-                <div className="w-16 h-16 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center shadow-lg z-10 group-hover:scale-110 transition-transform">
-                  <div className="w-0 h-0 border-t-8 border-t-transparent border-l-[14px] border-l-apple-primary border-b-8 border-b-transparent ml-1"></div>
-                </div>
-              </div>
+              <VideoPlayer 
+                videoId="DKPkOXFlY10" 
+                thumbnailSrc="/images/legacy/about1.jpg" 
+              />
             </FadeUp>
 
             {/* Recent News */}
