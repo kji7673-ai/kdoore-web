@@ -7,13 +7,10 @@ import { fileURLToPath } from 'url';
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
-const rawPostgresUrl = process.env.POSTGRES_URL || 'postgres://postgres.drkkvjajcriifgwxfhsf:Wx3kftWPB2yj9tmB@aws-0-ap-northeast-2.pooler.supabase.com:5432/postgres?supa=base-pooler.x';
+const rawPostgresUrl = process.env.POSTGRES_URL || 'postgres://postgres.drkkvjajcriifgwxfhsf:Wx3kftWPB2yj9tmB@aws-0-ap-northeast-2.pooler.supabase.com:6543/postgres?supa=base-pooler.x';
 let safeConnectionString = rawPostgresUrl;
 try {
   const url = new URL(rawPostgresUrl);
-  if (url.port === '6543') {
-    url.port = '5432';
-  }
   url.searchParams.delete('sslmode');
   safeConnectionString = url.toString();
 } catch (e) {
