@@ -18,9 +18,7 @@ try {
   console.error('Failed to parse POSTGRES_URL', e);
 }
 
-// Ensure pg driver uses no-verify even if Vercel injects PGSSLMODE=require
-process.env.PGSSLMODE = 'no-verify';
-
+// Removed invalid process.env assignment that caused Webpack Syntax Errors
 export default buildConfig({
   admin: {
     user: 'users',
