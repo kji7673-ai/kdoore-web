@@ -7,7 +7,10 @@ import { fileURLToPath } from 'url';
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
-const rawPostgresUrl = process.env.POSTGRES_URL || 'postgres://postgres.drkkvjajcriifgwxfhsf:Wx3kftWPB2yj9tmB@aws-0-ap-northeast-2.pooler.supabase.com:6543/postgres?supa=base-pooler.x';
+const rawEnvUrl = process.env.POSTGRES_URL || 'postgres://postgres.drkkvjajcriifgwxfhsf:Wx3kftWPB2yj9tmB@aws-0-ap-northeast-2.pooler.supabase.com:6543/postgres?supa=base-pooler.x';
+// Strip surrounding quotes and whitespace in case it was incorrectly set in Vercel
+const rawPostgresUrl = rawEnvUrl.replace(/^["']|["']$/g, '').trim();
+
 let safeConnectionString = rawPostgresUrl;
 try {
   const url = new URL(rawPostgresUrl);
