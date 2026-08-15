@@ -1,6 +1,7 @@
 import { buildConfig } from 'payload';
 import { postgresAdapter } from '@payloadcms/db-postgres';
 import { lexicalEditor } from '@payloadcms/richtext-lexical';
+import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -8,17 +9,19 @@ const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
 const rawEnvUrl = process.env.POSTGRES_URL || 'postgres://postgres.drkkvjajcriifgwxfhsf:Wx3kftWPB2yj9tmB@aws-0-ap-northeast-2.pooler.supabase.com:6543/postgres?supa=base-pooler.x';
-// Strip surrounding quotes and whitespace in case it was incorrectly set in Vercel
 const rawPostgresUrl = rawEnvUrl.replace(/^["']|["']$/g, '').trim();
 
 let safeConnectionString = rawPostgresUrl;
 try {
   const url = new URL(rawPostgresUrl);
-  // Force no-verify to prevent SELF_SIGNED_CERT_IN_CHAIN errors on Vercel
   url.searchParams.set('sslmode', 'no-verify');
   safeConnectionString = url.toString();
 } catch (e) {
-  console.error('Failed to parse POSTGRES_URL', e);
+  console.error('Failed to parse POSTGRES_URL, using fallback');
+  const fallback = 'postgres://postgres.drkkvjajcriifgwxfhsf:Wx3kftWPB2yj9tmB@aws-0-ap-northeast-2.pooler.supabase.com:6543/postgres?supa=base-pooler.x';
+  const url = new URL(fallback);
+  url.searchParams.set('sslmode', 'no-verify');
+  safeConnectionString = url.toString();
 }
 
 // Removed invalid process.env assignment that caused Webpack Syntax Errors
@@ -223,5 +226,14 @@ export default buildConfig({
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
+  plugins: [
+    vercelBlobStorage({
+      enabled: true,
+      collections: {
+        media: true,
+      },
+      token: process.env.BLOB_READ_WRITE_TOKEN,
+    }),
+  ],
 });
 
