@@ -26,6 +26,7 @@ try {
 
 // Removed invalid process.env assignment that caused Webpack Syntax Errors
 export default buildConfig({
+  serverURL: process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : process.env.NEXT_PUBLIC_SERVER_URL || 'https://kdoore-web-2.vercel.app',
   admin: {
     user: 'users',
   },
