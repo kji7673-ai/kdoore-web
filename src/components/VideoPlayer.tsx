@@ -23,8 +23,8 @@ export default function VideoPlayer({ videoId }: VideoPlayerProps) {
     );
   }
 
-  // Use YouTube's high-res thumbnail
-  const thumbnailSrc = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+  // Use YouTube's high-res thumbnail (fallback to hqdefault if maxres isn't available)
+  const thumbnailSrc = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
 
   return (
     <div 

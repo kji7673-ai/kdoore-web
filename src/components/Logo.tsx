@@ -15,7 +15,7 @@ export default function Logo({ className = '', isLight = true }: LogoProps) {
   return (
     <svg 
       className={className} 
-      viewBox="0 0 400 120" 
+      viewBox="0 0 500 120" 
       fill="none" 
       xmlns="http://www.w3.org/2000/svg"
       style={{ minWidth: '160px', height: 'auto' }}
