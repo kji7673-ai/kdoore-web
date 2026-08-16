@@ -33,11 +33,14 @@ export default buildConfig({
       url: ({ data, req, collection, global }) => {
         const serverURL = process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : process.env.NEXT_PUBLIC_SERVER_URL || 'https://kdoore-web-2.vercel.app';
         if (global === 'homepage') return `${serverURL}/`;
+        if (global === 'certifications') return `${serverURL}/about`;
         if (collection === 'pages') return `${serverURL}/${data?.slug || ''}`;
+        if (collection === 'news') return `${serverURL}/news/${data?.id || ''}`;
+        if (collection === 'recruitment') return `${serverURL}/`;
         return `${serverURL}/`;
       },
-      collections: ['pages'],
-      globals: ['homepage'],
+      collections: ['pages', 'news', 'recruitment'],
+      globals: ['homepage', 'certifications'],
     }
   },
   collections: [
