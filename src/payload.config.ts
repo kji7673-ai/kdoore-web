@@ -541,8 +541,7 @@ export default buildConfig({
           ]
         }
       ]
-    }
-
+    },
     {
       slug: 'prcenter',
       label: '홍보센터 페이지 관리',

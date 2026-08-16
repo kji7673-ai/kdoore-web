@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { Key } from "lucide-react";
 
 export default function Footer() {
   const router = useRouter();
@@ -175,11 +176,10 @@ export default function Footer() {
               onClick={() => router.push("/admin")}
               title="Admin Portal"
               aria-label="Open admin portal"
-              style={{ background: "none", border: "none", cursor: "pointer", color: "#c6c6cc", padding: "2px" }}
+              className="hover:text-blue-500 transition-colors"
+              style={{ background: "none", border: "none", cursor: "pointer", color: "#c6c6cc", padding: "4px", display: "flex", alignItems: "center", justifyContent: "center" }}
             >
-              <span className="material-symbols-outlined" style={{ fontSize: "14px" }} aria-hidden="true">
-                key
-              </span>
+              <Key className="w-4 h-4" />
             </button>
           </div>
         </div>
