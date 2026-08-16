@@ -5,7 +5,7 @@ export async function GET() {
   try {
     // 1. Force environment to development to bypass Payload production guards
     const originalEnv = process.env.NODE_ENV
-    Object.defineProperty(process.env, 'NODE_ENV', { value: 'development', writable: true })
+    process.env.NODE_ENV = 'development'
 
     // 2. Import Payload and Config dynamically so they read the new NODE_ENV
     const { getPayload } = await import('payload')
@@ -23,7 +23,7 @@ export async function GET() {
     const payload = await getPayload({ config })
     
     // 4. Restore environment
-    Object.defineProperty(process.env, 'NODE_ENV', { value: originalEnv, writable: true })
+    process.env.NODE_ENV = originalEnv
 
     return NextResponse.json({ success: true, message: 'Schema forcefully pushed via API!' })
   } catch (error: any) {
