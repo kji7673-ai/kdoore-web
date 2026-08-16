@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import TopNavBar from "@/components/TopNavBar";
 import Footer from "@/components/Footer";
+import LivePreviewComponent from "@/components/LivePreviewComponent";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -32,6 +33,7 @@ export default function RootLayout({
         />
       </head>
       <body style={{ margin: 0, padding: 0 }}>
+        <LivePreviewComponent />
         <TopNavBar />
         <main style={{ flex: 1 }}>{children}</main>
         <Footer />

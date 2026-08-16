@@ -29,6 +29,16 @@ export default buildConfig({
   serverURL: process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : process.env.NEXT_PUBLIC_SERVER_URL || 'https://kdoore-web-2.vercel.app',
   admin: {
     user: 'users',
+    livePreview: {
+      url: ({ data, req, collection, global }) => {
+        const serverURL = process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : process.env.NEXT_PUBLIC_SERVER_URL || 'https://kdoore-web-2.vercel.app';
+        if (global === 'homepage') return `${serverURL}/`;
+        if (collection === 'pages') return `${serverURL}/${data?.slug || ''}`;
+        return `${serverURL}/`;
+      },
+      collections: ['pages'],
+      globals: ['homepage'],
+    }
   },
   collections: [
     {
