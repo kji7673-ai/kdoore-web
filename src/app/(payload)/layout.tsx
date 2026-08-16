@@ -32,3 +32,4 @@ const Layout = ({ children }: Args) => (
 )
 
 export default Layout
+export const dynamic = 'force-dynamic';
