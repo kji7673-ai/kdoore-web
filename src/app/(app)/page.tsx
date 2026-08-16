@@ -14,6 +14,16 @@ import VideoPlayer from "@/components/VideoPlayer";
 import { getPayload } from 'payload';
 import config from '@payload-config';
 
+// Icon Map for dynamic components
+const IconMap: Record<string, any> = {
+  Safety: Shield,
+  Coexistence: Building,
+  Innovation: Sparkles,
+  Security: Shield,
+  Maintenance: Building,
+  Cleaning: Sparkles,
+};
+
 export default async function Home() {
   let cmsData: any = null;
   let newsDocs: any[] = [];
@@ -36,7 +46,33 @@ export default async function Home() {
       { id: '3', title: '2022년도 제대군인 고용 우수기업 선정', date: '2022-12-01T00:00:00.000Z' },
     ];
   }
-  const partners = [
+
+  // --- Fallbacks for CMS Data ---
+  const heroBadge = cmsData?.heroBadge || '고객 만족을 향한 끝없는 집념';
+  const heroTitle = cmsData?.heroTitle || '도약과 혁신을 넘어, K-Doore';
+  const heroSubtitle = cmsData?.heroSubtitle || '케이두레는 최고의 서비스와 완벽한 신뢰를 바탕으로,\n당신의 비즈니스가 더 높은 곳으로 도약할 수 있도록 최선을 다합니다.';
+  const heroBgImage = cmsData?.heroBgImage?.url || '/images/legacy/main_banner_1.jpg';
+
+  const defaultHighlights = [
+    { value: new Date().getFullYear() - 2014, suffix: '+', title: '업력', description: '축적된 전문 관리 노하우' },
+    { value: 60, suffix: '%', title: '감면 혜택', description: '장애인고용부담금 최대 감면율' },
+    { value: 300, suffix: '+명', title: '함께하는 전문 인력', description: '전국 각지에서 활약하는 케이두레인' },
+    { value: 100, suffix: '%', title: '고객 만족', description: '신뢰 기반의 책임 운영제' },
+  ];
+  const highlights = cmsData?.highlights?.length === 4 ? cmsData.highlights : defaultHighlights;
+
+  const coreValuesTitle = cmsData?.coreValuesTitle || '케이두레의 3대 핵심 가치';
+  const coreValuesSubtitle = cmsData?.coreValuesSubtitle || '안전, 상생, 전문성을 바탕으로 더 나은 사회적 가치를 실현합니다.';
+  const defaultCoreValues = [
+    { icon: 'Safety', title: '안전 (Safety)', description: '사고 제로(0)를 향한 집념. 철저한 예방 시스템과 빈틈없는 현장 통제로 가장 완벽한 안전을 약속합니다.' },
+    { icon: 'Coexistence', title: '상생 (Coexistence)', description: '장애인 표준사업장으로서의 확고한 책임감. 차별 없는 일자리 창출로 동반 성장의 길을 증명합니다.' },
+    { icon: 'Innovation', title: '전문성 (Expertise)', description: '10년 이상의 축적된 노하우와 300명 이상의 맨파워. 공간의 품격을 결정짓는 프리미엄 스탠다드를 제시합니다.' },
+  ];
+  const coreValues = cmsData?.coreValues?.length === 3 ? cmsData.coreValues : defaultCoreValues;
+
+  const partnersTitle = cmsData?.partnersTitle || '검증된 실적이 신뢰를 만듭니다';
+  const partnersSubtitle = cmsData?.partnersSubtitle || '주요 공공기관 및 대기업과의 장기 파트너십이 케이두레의 안정적인 운영 능력을 증명합니다.';
+  const defaultPartners = [
     { id: '1625722183', name: '서울특별시교육청' },
     { id: '1625722188', name: '사회적경제지원센터' },
     { id: '1625722194', name: '한국공항공사' },
@@ -46,6 +82,35 @@ export default async function Home() {
     { id: '1625722219', name: '한국장애인고용공단' },
     { id: '1625722227', name: '삼성바이오로직스' } 
   ];
+  const partners = cmsData?.partners?.length > 0 ? cmsData.partners : defaultPartners;
+
+  const servicesTitle = cmsData?.servicesTitle || '종합 관리 솔루션';
+  const servicesSubtitle = cmsData?.servicesSubtitle || '분산된 관리 업무를 하나로 통합하여\n비용은 절감하고 관리 품질은 높입니다.';
+  const defaultServices = [
+    { icon: 'Security', title: '경비 및 보안', description: '철저한 출입 통제와 24시간 방범 운영으로 시설의 보안 리스크를 원천 차단합니다.', link: '/services' },
+    { icon: 'Maintenance', title: '건축물 유지관리', description: '전문가의 예방 점검과 신속 대응으로 운영 중단 위험을 낮추고 자산 가치를 보존합니다.', link: '/services' },
+    { icon: 'Cleaning', title: '위생 및 환경 미화', description: '공간 특성에 맞춘 프리미엄 미화와 철저한 방역 솔루션으로 쾌적함을 극대화합니다.', link: '/services' },
+  ];
+  const services = cmsData?.services?.length > 0 ? cmsData.services : defaultServices;
+
+  const prTitle = cmsData?.prTitle || '케이두레의 기업가치를 영상으로 만나보세요';
+  const prDescription = cmsData?.prDescription || '사람과 공간을 잇는 종합 시설관리 전문기업 케이두레의 철학과 비전, 그리고 생생한 현장의 이야기를 소개합니다.';
+  const prVideoId = cmsData?.prVideoId || 'DKPkOXFlY10';
+
+  const processTitle = cmsData?.processTitle || '체계적인 업무 프로세스';
+  const processSubtitle = cmsData?.processSubtitle || '상담부터 사후 관리까지, 고객의 불편을 최소화하는 원스톱 솔루션을 제공합니다.';
+  const defaultProcess = [
+    { stepNumber: '01', title: '전문가 상담', description: '요구사항과 시설 특성을 파악합니다' },
+    { stepNumber: '02', title: '현장 정밀 진단', description: '리스크와 운영 범위를 점검합니다' },
+    { stepNumber: '03', title: '운영 계획 수립', description: '인력, 장비, 예산을 최적화합니다' },
+    { stepNumber: '04', title: '실행 및 관리', description: '매뉴얼 기반으로 현장을 운영합니다' },
+    { stepNumber: '05', title: '정기 품질 보고', description: '성과와 개선 사항을 공유합니다' },
+  ];
+  const processSteps = cmsData?.processSteps?.length > 0 ? cmsData.processSteps : defaultProcess;
+
+  const ctaTitle = cmsData?.ctaTitle || '검증된 시설관리 파트너가 필요하신가요?';
+  const ctaSubtitle = cmsData?.ctaSubtitle || '귀사에 맞는 시설관리 체계를 제안드립니다';
+  const ctaPhone = cmsData?.ctaPhone || '02-2668-0311';
 
   return (
     <main className="min-h-screen bg-apple-canvas-parchment font-apple-text text-apple-ink overflow-x-hidden selection:bg-apple-primary selection:text-white">
@@ -53,10 +118,9 @@ export default async function Home() {
       
       {/* ─── 1. HERO SECTION (Parallax) ─── */}
       <section className="relative w-full h-[85vh] min-h-[700px] flex flex-col justify-center items-center bg-apple-surface-black pt-20 overflow-hidden">
-        {/* Impactful Background Image with Overlay and Parallax (bg-fixed) */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed" 
-          style={{ backgroundImage: "url('/images/legacy/main_banner_1.jpg')" }}
+          style={{ backgroundImage: `url('${heroBgImage}')` }}
         />
         <div className="absolute inset-0 bg-[#0A2540]/85" />
         
@@ -67,24 +131,21 @@ export default async function Home() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-apple-primary-on-dark opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-apple-primary-on-dark"></span>
               </span>
-              고객 만족을 향한 끝없는 집념
+              {heroBadge}
             </div>
           </FadeUp>
 
           <FadeUp delay={0.3}>
-            <h1 className="text-apple-hero-display text-white mb-6 drop-shadow-lg tracking-tight max-w-4xl mx-auto">
-              공공기관·학교·대기업이 선택한<br/>
-              <span className="text-apple-primary-on-dark">시설관리 전문기업</span>
+            <h1 className="text-apple-hero-display text-white mb-6 drop-shadow-lg tracking-tight max-w-4xl mx-auto" dangerouslySetInnerHTML={{ __html: heroTitle.replace(/\n/g, '<br/>') }}>
             </h1>
           </FadeUp>
 
           <FadeUp delay={0.5}>
-            <p className="text-apple-lead text-white/90 mb-12 max-w-2xl mx-auto font-light drop-shadow-md">
-              대통령 표창 수상, 전문 임직원 720명, 전국 317개 현장 운영 경험. 케이두레는 공공기관·학교·기업시설의 운영 안정성과 관리 효율을 높이는 종합 시설관리 서비스를 제공합니다.
+            <p className="text-apple-lead text-white/90 mb-12 max-w-2xl mx-auto font-light drop-shadow-md whitespace-pre-line">
+              {heroSubtitle}
             </p>
           </FadeUp>
 
-          {/* Action Buttons */}
           <FadeUp delay={0.7}>
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
               <Link href="/services" className="inline-flex items-center gap-2 bg-apple-primary text-white hover:bg-apple-primary-focus px-6 py-2.5 rounded-full text-[15px] font-semibold transition-colors">
@@ -102,89 +163,60 @@ export default async function Home() {
       <section className="relative w-full py-40 bg-white border-b border-apple-hairline">
         <div className="container mx-auto px-6 lg:px-12">
           
-          {/* Number Counters */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
-            <CounterItem value={new Date().getFullYear() - 2014} suffix="+" title="업력" desc="축적된 전문 관리 노하우" duration={2} />
-            <CounterItem value={60} suffix="%" title="감면 혜택" desc="장애인고용부담금 최대 감면율" duration={2} />
-            <CounterItem value={300} suffix="+명" title="함께하는 전문 인력" desc="전국 각지에서 활약하는 케이두레인" duration={2.5} />
-            <CounterItem value={100} suffix="%" title="고객 만족" desc="신뢰 기반의 책임 운영제" duration={2} />
+            {highlights.map((h: any, idx: number) => (
+              <CounterItem key={idx} value={h.value} suffix={h.suffix} title={h.title} desc={h.description} duration={2 + (idx * 0.2)} />
+            ))}
           </div>
 
-          {/* Core Values */}
           <div className="text-center mb-16">
-            <h2 className="text-apple-display-lg text-apple-ink font-bold mb-4">케이두레의 3대 핵심 가치</h2>
-            <p className="text-apple-lead-airy text-apple-ink-muted-80 max-w-2xl mx-auto">
-              안전, 상생, 전문성을 바탕으로 더 나은 사회적 가치를 실현합니다.
+            <h2 className="text-apple-display-lg text-apple-ink font-bold mb-4">{coreValuesTitle}</h2>
+            <p className="text-apple-lead-airy text-apple-ink-muted-80 max-w-2xl mx-auto whitespace-pre-line">
+              {coreValuesSubtitle}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Core Value Card 1 */}
-            <div className="group relative bg-apple-canvas-parchment p-10 rounded-[24px] border border-apple-divider-soft overflow-hidden transition-all duration-300 hover:shadow-[0_10px_40px_rgba(0,102,204,0.1)] hover:-translate-y-2">
-              <div className="absolute inset-0 bg-gradient-to-br from-apple-canvas-parchment to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative z-10 flex flex-col items-center text-center">
-                <div className="w-20 h-20 bg-emerald-100 rounded-[20px] flex items-center justify-center mb-6 group-hover:bg-emerald-500 group-hover:-translate-y-2 group-hover:shadow-lg group-hover:shadow-emerald-500/30 transition-all duration-500">
-                  <Shield className="w-10 h-10 text-emerald-600 group-hover:text-white transition-colors duration-500" />
+            {coreValues.map((cv: any, idx: number) => {
+              const IconComp = IconMap[cv.icon] || Shield;
+              const bgColors = ['bg-emerald-100', 'bg-amber-100', 'bg-purple-100'];
+              const textColors = ['text-emerald-600', 'text-amber-600', 'text-purple-600'];
+              const hoverBgs = ['group-hover:bg-emerald-500', 'group-hover:bg-amber-500', 'group-hover:bg-purple-600'];
+              const shadowColors = ['group-hover:shadow-emerald-500/30', 'group-hover:shadow-amber-500/30', 'group-hover:shadow-purple-600/30'];
+              return (
+                <div key={idx} className="group relative bg-apple-canvas-parchment p-10 rounded-[24px] border border-apple-divider-soft overflow-hidden transition-all duration-300 hover:shadow-[0_10px_40px_rgba(0,102,204,0.1)] hover:-translate-y-2">
+                  <div className="absolute inset-0 bg-gradient-to-br from-apple-canvas-parchment to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="relative z-10 flex flex-col items-center text-center">
+                    <div className={`w-20 h-20 ${bgColors[idx]} rounded-[20px] flex items-center justify-center mb-6 ${hoverBgs[idx]} group-hover:-translate-y-2 group-hover:shadow-lg ${shadowColors[idx]} transition-all duration-500`}>
+                      <IconComp className={`w-10 h-10 ${textColors[idx]} group-hover:text-white transition-colors duration-500`} />
+                    </div>
+                    <h3 className="text-apple-display-md font-bold mb-3 text-apple-ink">{cv.title}</h3>
+                    <p className="text-apple-body text-apple-ink-muted-80 whitespace-pre-line">
+                      {cv.description}
+                    </p>
+                  </div>
                 </div>
-                <h3 className="text-apple-display-md font-bold mb-3 text-apple-ink">안전 (Safety)</h3>
-                <p className="text-apple-body text-apple-ink font-semibold mb-2">타협 불가능한 최우선 원칙.</p>
-                <p className="text-apple-body text-apple-ink-muted-80">
-                  사고 제로(0)를 향한 집념. 철저한 예방 시스템과 빈틈없는 현장 통제로 가장 완벽한 안전을 약속합니다.
-                </p>
-              </div>
-            </div>
-
-            {/* Core Value Card 2 */}
-            <div className="group relative bg-apple-canvas-parchment p-10 rounded-[24px] border border-apple-divider-soft overflow-hidden transition-all duration-300 hover:shadow-[0_10px_40px_rgba(0,102,204,0.1)] hover:-translate-y-2">
-              <div className="absolute inset-0 bg-gradient-to-br from-apple-canvas-parchment to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative z-10 flex flex-col items-center text-center">
-                <div className="w-20 h-20 bg-amber-100 rounded-[20px] flex items-center justify-center mb-6 group-hover:bg-amber-500 group-hover:-translate-y-2 group-hover:shadow-lg group-hover:shadow-amber-500/30 transition-all duration-500">
-                  <Building className="w-10 h-10 text-amber-600 group-hover:text-white transition-colors duration-500" />
-                </div>
-                <h3 className="text-apple-display-md font-bold mb-3 text-apple-ink">상생 (Coexistence)</h3>
-                <p className="text-apple-body text-apple-ink font-semibold mb-2">함께 만드는 사회적 가치.</p>
-                <p className="text-apple-body text-apple-ink-muted-80">
-                  장애인 표준사업장으로서의 확고한 책임감. 차별 없는 일자리 창출로 동반 성장의 길을 증명합니다.
-                </p>
-              </div>
-            </div>
-
-            {/* Core Value Card 3 */}
-            <div className="group relative bg-apple-canvas-parchment p-10 rounded-[24px] border border-apple-divider-soft overflow-hidden transition-all duration-300 hover:shadow-[0_10px_40px_rgba(0,102,204,0.1)] hover:-translate-y-2">
-              <div className="absolute inset-0 bg-gradient-to-br from-apple-canvas-parchment to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative z-10 flex flex-col items-center text-center">
-                <div className="w-20 h-20 bg-purple-100 rounded-[20px] flex items-center justify-center mb-6 group-hover:bg-purple-600 group-hover:-translate-y-2 group-hover:shadow-lg group-hover:shadow-purple-600/30 transition-all duration-500">
-                  <Sparkles className="w-10 h-10 text-purple-600 group-hover:text-white transition-colors duration-500" />
-                </div>
-                <h3 className="text-apple-display-md font-bold mb-3 text-apple-ink">전문성 (Expertise)</h3>
-                <p className="text-apple-body text-apple-ink font-semibold mb-2">시간이 증명한 압도적 차이.</p>
-                <p className="text-apple-body text-apple-ink-muted-80">
-                  10년 이상의 축적된 노하우와 300명 이상의 맨파워. 공간의 품격을 결정짓는 프리미엄 스탠다드를 제시합니다.
-                </p>
-              </div>
-            </div>
+              );
+            })}
           </div>
 
         </div>
       </section>
 
-      {/* ─── 2. TRUST & PARTNERS SECTION (신뢰 근거) ─── */}
+      {/* ─── 2. TRUST & PARTNERS SECTION ─── */}
       <section className="relative w-full py-48 bg-apple-canvas-parchment overflow-hidden">
         <div className="w-full text-center overflow-hidden">
           <FadeUp>
-            <h2 className="text-apple-display-lg text-apple-ink font-bold mb-6">검증된 실적이 신뢰를 만듭니다</h2>
-            <p className="text-apple-lead-airy text-apple-ink-muted-80 max-w-3xl mx-auto mb-16">
-              주요 공공기관 및 대기업과의 장기 파트너십이 케이두레의 안정적인 운영 능력을 증명합니다.
+            <h2 className="text-apple-display-lg text-apple-ink font-bold mb-6">{partnersTitle}</h2>
+            <p className="text-apple-lead-airy text-apple-ink-muted-80 max-w-3xl mx-auto mb-16 whitespace-pre-line">
+              {partnersSubtitle}
             </p>
           </FadeUp>
           
           <div className="relative w-full max-w-[100vw] overflow-hidden mb-16">
             <div className="flex w-max animate-marquee gap-8 items-center">
-              {[...partners, ...partners, ...partners].map((partner, idx) => {
-                // If CMS has custom partners, use them. Otherwise fallback to static
-                const cmsPartner = cmsData?.partners?.[idx % partners.length];
-                const pName = cmsPartner?.name || partner.name;
-                const pImage = cmsPartner?.logo?.url || `/partners/gallery_${partner.id}.jpg`;
-                
+              {[...partners, ...partners, ...partners].map((partner: any, idx: number) => {
+                const pName = partner.name;
+                const pImage = partner.logo?.url || partner.logo || `/partners/gallery_${partner.id}.jpg`;
                 return (
                   <div key={`top-${idx}`} className="flex flex-col items-center justify-center py-8 bg-white rounded-apple-lg border border-apple-hairline shadow-sm w-56 md:w-72 flex-shrink-0">
                     <div className="relative w-40 h-20 md:w-56 md:h-28 mb-2">
@@ -205,81 +237,58 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* ─── 3. PREMIUM SERVICES (서비스) ─── */}
+      {/* ─── 3. PREMIUM SERVICES ─── */}
       <section className="relative w-full py-48 bg-white">
         <div className="container mx-auto px-6 lg:px-12">
           <FadeUp className="text-center mb-20">
-            <h2 className="text-apple-display-lg text-apple-ink font-bold mb-6">종합 관리 솔루션</h2>
-            <p className="text-apple-lead-airy text-apple-ink-muted-80 max-w-3xl mx-auto">
-              분산된 관리 업무를 하나로 통합하여<br/>비용은 절감하고 관리 품질은 높입니다.
+            <h2 className="text-apple-display-lg text-apple-ink font-bold mb-6">{servicesTitle}</h2>
+            <p className="text-apple-lead-airy text-apple-ink-muted-80 max-w-3xl mx-auto whitespace-pre-line">
+              {servicesSubtitle}
             </p>
           </FadeUp>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-apple-canvas-parchment p-10 rounded-apple-lg border border-apple-divider-soft flex flex-col justify-between group hover:shadow-lg transition-shadow duration-300">
-              <div>
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-8 group-hover:bg-apple-primary transition-colors duration-300">
-                  <Shield className="w-8 h-8 text-apple-primary group-hover:text-white transition-colors duration-300" />
+            {services.map((svc: any, idx: number) => {
+              const IconComp = IconMap[svc.icon] || Shield;
+              const bgColors = ['bg-blue-100', 'bg-orange-100', 'bg-emerald-100'];
+              const textColors = ['text-apple-primary', 'text-orange-600', 'text-emerald-600'];
+              const hoverBgs = ['group-hover:bg-apple-primary', 'group-hover:bg-orange-500', 'group-hover:bg-emerald-500'];
+              const linkColors = ['text-apple-primary hover:text-apple-primary-focus', 'text-orange-600 hover:text-orange-700', 'text-emerald-600 hover:text-emerald-700'];
+              return (
+                <div key={idx} className="bg-apple-canvas-parchment p-10 rounded-apple-lg border border-apple-divider-soft flex flex-col justify-between group hover:shadow-lg transition-shadow duration-300">
+                  <div>
+                    <div className={`w-16 h-16 ${bgColors[idx%3]} rounded-full flex items-center justify-center mb-8 ${hoverBgs[idx%3]} transition-colors duration-300`}>
+                      <IconComp className={`w-8 h-8 ${textColors[idx%3]} group-hover:text-white transition-colors duration-300`} />
+                    </div>
+                    <h3 className="text-apple-display-md font-bold mb-4">{svc.title}</h3>
+                    <p className="text-apple-body text-apple-ink-muted-80 mb-8 whitespace-pre-line">
+                      {svc.description}
+                    </p>
+                  </div>
+                  <Link href={svc.link || '/services'} className={`${linkColors[idx%3]} text-apple-body-strong flex items-center mt-auto`}>
+                    서비스 자세히 보기 <ArrowRight className="ml-2 w-4 h-4" />
+                  </Link>
                 </div>
-                <h3 className="text-apple-display-md font-bold mb-4">경비 및 보안</h3>
-                <p className="text-apple-body text-apple-ink-muted-80 mb-8">
-                  철저한 <strong className="text-apple-ink font-bold">출입 통제</strong>와 24시간 <strong className="text-apple-ink font-bold">방범 운영</strong>으로 시설의 보안 리스크를 원천 차단합니다.
-                </p>
-              </div>
-              <Link href="/services" className="text-apple-primary text-apple-body-strong flex items-center mt-auto hover:text-apple-primary-focus">
-                서비스 자세히 보기 <ArrowRight className="ml-2 w-4 h-4" />
-              </Link>
-            </div>
-
-            <div className="bg-apple-canvas-parchment p-10 rounded-apple-lg border border-apple-divider-soft flex flex-col justify-between group hover:shadow-lg transition-shadow duration-300">
-              <div>
-                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-8 group-hover:bg-orange-500 transition-colors duration-300">
-                  <Building className="w-8 h-8 text-orange-600 group-hover:text-white transition-colors duration-300" />
-                </div>
-                <h3 className="text-apple-display-md font-bold mb-4">건축물 유지관리</h3>
-                <p className="text-apple-body text-apple-ink-muted-80 mb-8">
-                  전문가의 <strong className="text-apple-ink font-bold">예방 점검</strong>과 <strong className="text-apple-ink font-bold">신속 대응</strong>으로 운영 중단 위험을 낮추고 자산 가치를 보존합니다.
-                </p>
-              </div>
-              <Link href="/services" className="text-orange-600 text-apple-body-strong flex items-center mt-auto hover:text-orange-700">
-                운영 방식 보기 <ArrowRight className="ml-2 w-4 h-4" />
-              </Link>
-            </div>
-
-            <div className="bg-apple-canvas-parchment p-10 rounded-apple-lg border border-apple-divider-soft flex flex-col justify-between group hover:shadow-lg transition-shadow duration-300">
-              <div>
-                <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mb-8 group-hover:bg-emerald-500 transition-colors duration-300">
-                  <Sparkles className="w-8 h-8 text-emerald-600 group-hover:text-white transition-colors duration-300" />
-                </div>
-                <h3 className="text-apple-display-md font-bold mb-4">위생 및 환경 미화</h3>
-                <p className="text-apple-body text-apple-ink-muted-80 mb-8">
-                  공간 특성에 맞춘 <strong className="text-apple-ink font-bold">프리미엄 미화</strong>와 철저한 <strong className="text-apple-ink font-bold">방역 솔루션</strong>으로 쾌적함을 극대화합니다.
-                </p>
-              </div>
-              <Link href="/services" className="text-emerald-600 text-apple-body-strong flex items-center mt-auto hover:text-emerald-700">
-                서비스 자세히 보기 <ArrowRight className="ml-2 w-4 h-4" />
-              </Link>
-            </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* ─── 3.5 PR VIDEO & NEWS SECTION (홍보 영상 및 뉴스) ─── */}
+      {/* ─── 3.5 PR VIDEO & NEWS SECTION ─── */}
       <section className="relative w-full py-48 bg-white border-t border-apple-hairline">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
             
-            {/* Left: PR Video (Optional) */}
             <FadeUp className="w-full lg:w-1/2 flex flex-col justify-center">
               <span className="section-badge mb-4 w-fit">Corporate Video</span>
-              <h2 className="text-apple-display-md text-apple-ink font-bold mb-6">케이두레의 기업가치를 영상으로 만나보세요</h2>
-              <p className="text-apple-body text-apple-ink-muted-80 mb-8">
-                사람과 공간을 잇는 종합 시설관리 전문기업 케이두레의 철학과 비전, 그리고 생생한 현장의 이야기를 소개합니다.
+              <h2 className="text-apple-display-md text-apple-ink font-bold mb-6">{prTitle}</h2>
+              <p className="text-apple-body text-apple-ink-muted-80 mb-8 whitespace-pre-line">
+                {prDescription}
               </p>
-              <VideoPlayer videoId="DKPkOXFlY10" />
+              <VideoPlayer videoId={prVideoId} />
             </FadeUp>
 
-            {/* Recent News */}
             <div className="w-full lg:w-1/2 flex flex-col">
               <div className="flex items-center justify-between mb-8">
                 <h2 className="text-apple-display-md text-apple-ink font-bold tracking-tight">케이두레 뉴스</h2>
@@ -309,7 +318,7 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* ─── NEW: RealWorld Showcase (Background Image) ─── */}
+      {/* ─── NEW: RealWorld Showcase ─── */}
       <RealWorldShowcase />
 
       {/* ─── 4. PROMOTIONAL FEATURES ─── */}
@@ -319,33 +328,26 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* ─── 5. PROCESS SECTION (프로세스) ─── */}
+      {/* ─── 5. PROCESS SECTION ─── */}
       <section className="relative w-full py-48 bg-white">
         <div className="container mx-auto px-6 lg:px-12 text-center">
           <FadeUp>
-            <h2 className="text-apple-display-lg text-apple-ink font-bold mb-6">체계적인 업무 프로세스</h2>
-            <p className="text-apple-lead-airy text-apple-ink-muted-80 max-w-3xl mx-auto mb-20">
-              상담부터 사후 관리까지, 고객의 불편을 최소화하는 원스톱 솔루션을 제공합니다.
+            <h2 className="text-apple-display-lg text-apple-ink font-bold mb-6">{processTitle}</h2>
+            <p className="text-apple-lead-airy text-apple-ink-muted-80 max-w-3xl mx-auto mb-20 whitespace-pre-line">
+              {processSubtitle}
             </p>
           </FadeUp>
           
           <div className="relative flex flex-col md:flex-row justify-between items-start md:items-center max-w-5xl mx-auto mb-16">
-            {/* Background Line */}
             <div className="hidden md:block absolute top-8 left-12 right-12 h-0.5 bg-apple-divider-soft z-0" />
 
-            {[
-              { step: '01', title: '전문가 상담', desc: '요구사항과 시설 특성을 파악합니다' },
-              { step: '02', title: '현장 정밀 진단', desc: '리스크와 운영 범위를 점검합니다' },
-              { step: '03', title: '운영 계획 수립', desc: '인력, 장비, 예산을 최적화합니다' },
-              { step: '04', title: '실행 및 관리', desc: '매뉴얼 기반으로 현장을 운영합니다' },
-              { step: '05', title: '정기 품질 보고', desc: '성과와 개선 사항을 공유합니다' },
-            ].map((item, idx) => (
+            {processSteps.map((item: any, idx: number) => (
               <div key={idx} className="relative z-10 flex flex-col items-center text-center w-full md:w-48 mb-12 md:mb-0">
                 <div className="w-16 h-16 rounded-full bg-apple-primary text-white flex items-center justify-center text-apple-title-lg font-bold shadow-[0_4px_16px_rgba(10,37,64,0.2)] mb-6 ring-4 ring-white">
-                  {item.step}
+                  {item.stepNumber}
                 </div>
                 <h4 className="text-apple-body-strong text-apple-ink mb-2">{item.title}</h4>
-                <p className="text-apple-caption text-apple-ink-muted-80 leading-relaxed">{item.desc}</p>
+                <p className="text-apple-caption text-apple-ink-muted-80 leading-relaxed whitespace-pre-line">{item.description}</p>
               </div>
             ))}
           </div>
@@ -356,7 +358,7 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* ─── 6. KPI DASHBOARD SECTION (성과/증빙) ─── */}
+      {/* ─── 6. KPI DASHBOARD SECTION ─── */}
       <section className="relative w-full py-48 bg-apple-canvas-parchment">
         <div className="container mx-auto px-6 lg:px-12 text-center">
           <FadeUp>
@@ -416,25 +418,25 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* ─── 7. VISION QUOTE & CONVERSION CTA SECTION (최종 CTA) ─── */}
+      {/* ─── 7. VISION QUOTE & CONVERSION CTA ─── */}
       <section className="relative w-full py-48 bg-[#1A365D] flex flex-col items-center">
         <div className="container mx-auto px-6 text-center">
-          <h2 className="text-apple-display-lg text-white font-bold mb-6">검증된 시설관리 파트너가 필요하신가요?</h2>
-          <p className="text-apple-lead text-[#a0aec0] mb-12 max-w-2xl mx-auto">
-            귀사에 맞는 시설관리 체계를 제안드립니다
+          <h2 className="text-apple-display-lg text-white font-bold mb-6">{ctaTitle}</h2>
+          <p className="text-apple-lead text-[#a0aec0] mb-12 max-w-2xl mx-auto whitespace-pre-line">
+            {ctaSubtitle}
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/about#contact" className="bg-apple-primary text-white hover:bg-apple-primary-focus px-10 py-4 rounded-apple-sm text-apple-body-strong transition-colors flex items-center justify-center gap-2">
               <BarChart className="w-5 h-5" /> 상담 문의하기
             </Link>
-            <a href="tel:02-2668-0311" className="bg-apple-surface-tile-2 text-white border border-apple-surface-tile-3 hover:bg-apple-surface-tile-3 px-10 py-4 rounded-apple-sm text-apple-body-strong transition-colors flex items-center justify-center gap-2">
-              <Phone className="w-5 h-5" /> 대표전화 02-2668-0311
+            <a href={`tel:${ctaPhone}`} className="bg-apple-surface-tile-2 text-white border border-apple-surface-tile-3 hover:bg-apple-surface-tile-3 px-10 py-4 rounded-apple-sm text-apple-body-strong transition-colors flex items-center justify-center gap-2">
+              <Phone className="w-5 h-5" /> 대표전화 {ctaPhone}
             </a>
           </div>
         </div>
       </section>
 
-      {/* ─── 8. BRAND IDENTITY SECTION (Moved to Bottom) ─── */}
+      {/* ─── 8. BRAND IDENTITY ─── */}
       <section className="relative w-full py-32 bg-apple-canvas-parchment border-t border-apple-divider-soft">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="text-center mb-16">
@@ -445,7 +447,7 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* ─── 9. COMPANY TIMELINE SECTION ─── */}
+      {/* ─── 9. COMPANY TIMELINE ─── */}
       <section className="relative w-full pb-48 pt-24 bg-apple-canvas-parchment">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="text-center mb-16">
