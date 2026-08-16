@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { motion } from "framer-motion";
 
-const timelineData = [
+const fallbackTimelineData = [
   {
     year: "2014",
     title: "설립 및 기반 조성",
@@ -56,9 +56,22 @@ const timelineData = [
   },
 ];
 
-export default function TimelineSection() {
+interface TimelineSectionProps {
+  timelineData?: { year: string; title: string; events: { event: string }[] }[];
+}
+
+export default function TimelineSection({ timelineData: cmsTimeline }: TimelineSectionProps) {
+  // Use CMS data if valid, otherwise fallback
+  const finalData = cmsTimeline && cmsTimeline.length > 0 
+    ? cmsTimeline.map(item => ({
+        year: item.year,
+        title: item.title,
+        events: item.events?.map(e => e.event) || []
+      }))
+    : fallbackTimelineData;
+
   // Duplicate data for seamless infinite scroll
-  const marqueeData = [...timelineData, ...timelineData];
+  const marqueeData = [...finalData, ...finalData];
 
   return (
     <section className="relative h-[80vh] min-h-[600px] bg-apple-surface-tile-1 overflow-hidden flex flex-col justify-center">
