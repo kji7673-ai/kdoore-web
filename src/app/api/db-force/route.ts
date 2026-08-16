@@ -266,6 +266,28 @@ CREATE TABLE IF NOT EXISTS "prcenter" (
 );
 
 INSERT INTO "prcenter" ("id") VALUES (1) ON CONFLICT ("id") DO NOTHING;
+
+-- 7. FIX ENUM TYPES FOR PAYLOAD SELECT FIELDS
+DO $$ BEGIN
+  CREATE TYPE enum_homepage_core_values_icon AS ENUM ('Safety', 'Coexistence', 'Innovation');
+EXCEPTION WHEN duplicate_object THEN null; END $$;
+
+DO $$ BEGIN
+  CREATE TYPE enum_homepage_services_icon AS ENUM ('Security', 'Maintenance', 'Cleaning');
+EXCEPTION WHEN duplicate_object THEN null; END $$;
+
+DO $$ BEGIN
+  CREATE TYPE enum_services_services_list_icon AS ENUM ('Shield', 'Wrench', 'SprayCan', 'Users2', 'ShieldCheck', 'Droplets');
+EXCEPTION WHEN duplicate_object THEN null; END $$;
+
+DO $$ BEGIN
+  CREATE TYPE enum_dooremall_benefits_icon AS ENUM ('ShieldCheck', 'Package', 'Truck');
+EXCEPTION WHEN duplicate_object THEN null; END $$;
+
+ALTER TABLE "homepage_core_values" ALTER COLUMN "icon" TYPE enum_homepage_core_values_icon USING "icon"::text::enum_homepage_core_values_icon;
+ALTER TABLE "homepage_services" ALTER COLUMN "icon" TYPE enum_homepage_services_icon USING "icon"::text::enum_homepage_services_icon;
+ALTER TABLE "services_services_list" ALTER COLUMN "icon" TYPE enum_services_services_list_icon USING "icon"::text::enum_services_services_list_icon;
+ALTER TABLE "dooremall_benefits" ALTER COLUMN "icon" TYPE enum_dooremall_benefits_icon USING "icon"::text::enum_dooremall_benefits_icon;
 `;
 
 export async function GET() {
