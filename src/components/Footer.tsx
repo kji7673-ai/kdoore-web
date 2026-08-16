@@ -177,9 +177,9 @@ export default function Footer() {
               title="Admin Portal"
               aria-label="Open admin portal"
               className="hover:text-blue-500 transition-colors"
-              style={{ background: "none", border: "none", cursor: "pointer", color: "#c6c6cc", padding: "4px", display: "flex", alignItems: "center", justifyContent: "center" }}
+              style={{ background: "none", border: "none", cursor: "pointer", color: "#6e6e73", padding: "4px", display: "flex", alignItems: "center", justifyContent: "center" }}
             >
-              <Key className="w-4 h-4" />
+              <Key className="w-5 h-5" />
             </button>
           </div>
         </div>
