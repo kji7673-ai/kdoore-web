@@ -5,8 +5,13 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 const sqlCommands = `
--- Drop existing incorrectly-configured homepage table if it exists
+-- Drop existing incorrectly-configured homepage tables if they exist
 DROP TABLE IF EXISTS "homepage" CASCADE;
+DROP TABLE IF EXISTS "homepage_highlights" CASCADE;
+DROP TABLE IF EXISTS "homepage_core_values" CASCADE;
+DROP TABLE IF EXISTS "homepage_partners" CASCADE;
+DROP TABLE IF EXISTS "homepage_services" CASCADE;
+DROP TABLE IF EXISTS "homepage_process_steps" CASCADE;
 
 -- 1. HOMEPAGE
 CREATE TABLE IF NOT EXISTS "homepage" (
@@ -37,7 +42,7 @@ CREATE TABLE IF NOT EXISTS "homepage_highlights" (
 	"_order" integer NOT NULL,
 	"_parent_id" integer NOT NULL,
 	"id" varchar PRIMARY KEY NOT NULL,
-	"value" numeric,
+	"value" double precision,
 	"suffix" varchar,
 	"title" varchar,
 	"description" varchar

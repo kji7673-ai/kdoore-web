@@ -6,7 +6,7 @@ const client = new Client({
 });
 async function run() {
   await client.connect();
-  const res = await client.query("SELECT column_name, data_type FROM information_schema.columns WHERE table_name = 'homepage_highlights'");
+  const res = await client.query("SELECT column_name, data_type FROM information_schema.columns WHERE table_name = 'payload_preferences'");
   console.log(res.rows);
   await client.end();
 }
