@@ -178,7 +178,7 @@ export default buildConfig({
     {
       slug: 'homepage',
       label: '메인 페이지 관리',
-      access: { read: () => true },
+      access: { read: () => true, update: () => true },
       fields: [
         {
           type: 'tabs',
@@ -300,7 +300,7 @@ export default buildConfig({
     {
       slug: 'about',
       label: '회사소개 페이지 관리',
-      access: { read: () => true },
+      access: { read: () => true, update: () => true },
       fields: [
         {
           type: 'tabs',
@@ -367,7 +367,7 @@ export default buildConfig({
     {
       slug: 'services',
       label: '사업분야 페이지 관리',
-      access: { read: () => true },
+      access: { read: () => true, update: () => true },
       fields: [
         {
           type: 'tabs',
@@ -429,7 +429,7 @@ export default buildConfig({
     {
       slug: 'govSupport',
       label: '정부지원안내 페이지 관리',
-      access: { read: () => true },
+      access: { read: () => true, update: () => true },
       fields: [
         {
           type: 'tabs',
@@ -489,7 +489,7 @@ export default buildConfig({
     {
       slug: 'dooremall',
       label: '두레몰 페이지 관리',
-      access: { read: () => true },
+      access: { read: () => true, update: () => true },
       fields: [
         {
           type: 'tabs',
@@ -545,7 +545,7 @@ export default buildConfig({
     {
       slug: 'prcenter',
       label: '홍보센터 페이지 관리',
-      access: { read: () => true },
+      access: { read: () => true, update: () => true },
       fields: [
         { name: 'heroTitle', label: '배너 제목', type: 'text', defaultValue: '홍보센터' },
         { name: 'heroSubtitle', label: '배너 서브타이틀', type: 'textarea', defaultValue: '케이두레의 새로운 소식과 채용 정보를 알려드립니다' },
