@@ -579,6 +579,7 @@ export default buildConfig({
     pool: {
       connectionString: safeConnectionString,
       ssl: { rejectUnauthorized: false },
+      connectionTimeoutMillis: 5000,
     },
     push: true,
   }),
