@@ -130,7 +130,7 @@ export default function Footer() {
             </h3>
             <p style={{ fontSize: "12px", color: "#6e6e73", lineHeight: 1.8 }}>
               사업자등록번호: 107-88-37994<br />
-              대표이사: 임준길
+              대표이사: 안언숙
             </p>
             <button
               onClick={() =>
