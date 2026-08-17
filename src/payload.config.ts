@@ -193,10 +193,19 @@ export default buildConfig({
             {
               label: 'Hero 배너',
               fields: [
-                { name: 'heroBadge', label: '메인 배너 뱃지 텍스트', type: 'text', defaultValue: '고객 만족을 향한 끝없는 집념' },
+                { name: 'heroBadge', label: '상단 뱃지 텍스트 (예: 고객 만족을 향한 끝없는 집념)', type: 'text', defaultValue: '고객 만족을 향한 끝없는 집념' },
                 { name: 'heroTitle', label: '메인 배너 제목', type: 'text', defaultValue: '도약과 혁신을 넘어, K-Doore' },
                 { name: 'heroSubtitle', label: '메인 배너 서브타이틀', type: 'textarea', defaultValue: '케이두레는 최고의 서비스와 완벽한 신뢰를 바탕으로,\n당신의 비즈니스가 더 높은 곳으로 도약할 수 있도록 최선을 다합니다.' },
                 { name: 'heroBgImage', label: '배경 이미지', type: 'upload', relationTo: 'media' },
+                {
+                  name: 'heroAwards',
+                  label: '메인 성과/인증 뱃지 (Hero 섹션 표시)',
+                  type: 'array',
+                  fields: [
+                    { name: 'text', label: '뱃지 내용 (예: 대통령 표창 수상)', type: 'text' },
+                    { name: 'icon', label: '아이콘 타입', type: 'select', options: [{label: '트로피 (Trophy)', value: 'Trophy'}, {label: '체크 (CheckCircle)', value: 'CheckCircle'}, {label: '스타 (Star)', value: 'Star'}] }
+                  ]
+                }
               ]
             },
             {

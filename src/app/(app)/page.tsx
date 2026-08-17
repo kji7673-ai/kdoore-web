@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Shield, Building, Sparkles, Phone, BarChart } from "lucide-react";
+import { ArrowRight, Shield, Building, Sparkles, Phone, BarChart, Trophy, CheckCircle, Star } from "lucide-react";
 import KPIDashboard from "@/components/KPIDashboard";
 import PromotionalFeatures from "@/components/PromotionalFeatures";
 import RealWorldShowcase from "@/components/RealWorldShowcase";
@@ -8,6 +8,7 @@ import DiagramBrandIdentity from "@/components/DiagramBrandIdentity";
 import CompanyTimeline from "@/components/CompanyTimeline";
 import SafetyFeedbackLoop from "@/components/SafetyFeedbackLoop";
 import CounterItem from "@/components/CounterItem";
+import HeroCounterItem from "@/components/HeroCounterItem";
 import ScrollToTop from "@/components/ScrollToTop";
 import FadeUp from "@/components/FadeUp";
 import VideoPlayer from "@/components/VideoPlayer";
@@ -22,6 +23,9 @@ const IconMap: Record<string, any> = {
   Security: Shield,
   Maintenance: Building,
   Cleaning: Sparkles,
+  Trophy: Trophy,
+  CheckCircle: CheckCircle,
+  Star: Star,
 };
 
 export const revalidate = 60;
@@ -61,7 +65,13 @@ export default async function Home() {
     { value: 300, suffix: '+명', title: '함께하는 전문 인력', description: '전국 각지에서 활약하는 케이두레인' },
     { value: 100, suffix: '%', title: '고객 만족', description: '신뢰 기반의 책임 운영제' },
   ];
-  const highlights = cmsData?.highlights?.length === 4 ? cmsData.highlights : defaultHighlights;
+  const highlights = cmsData?.highlights?.length > 0 ? cmsData.highlights : defaultHighlights;
+
+  const defaultHeroAwards = [
+    { text: '대통령 표창 우수기업', icon: 'Trophy' },
+    { text: '삼성바이오로직스 협력사 평가 우수', icon: 'Star' }
+  ];
+  const heroAwards = cmsData?.heroAwards?.length > 0 ? cmsData.heroAwards : defaultHeroAwards;
 
   const coreValuesTitle = cmsData?.coreValuesTitle || '케이두레의 3대 핵심 가치';
   const coreValuesSubtitle = cmsData?.coreValuesSubtitle || '안전, 상생, 전문성을 바탕으로 더 나은 사회적 가치를 실현합니다.';
@@ -143,9 +153,24 @@ export default async function Home() {
           </FadeUp>
 
           <FadeUp delay={0.5}>
-            <p className="text-apple-lead text-white/90 mb-12 max-w-2xl mx-auto font-light drop-shadow-md whitespace-pre-line">
+            <p className="text-apple-lead text-white/90 mb-8 max-w-2xl mx-auto font-light drop-shadow-md whitespace-pre-line">
               {heroSubtitle}
             </p>
+          </FadeUp>
+
+          {/* Core Badges on Hero */}
+          <FadeUp delay={0.7}>
+            <div className="flex flex-wrap justify-center gap-3 mb-12">
+              {heroAwards.map((award: any, idx: number) => {
+                const IconComponent = IconMap[award.icon] || Trophy;
+                return (
+                  <div key={idx} className="flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full text-white/90 text-sm shadow-sm">
+                    <IconComponent className="w-4 h-4 text-amber-300" />
+                    <span>{award.text}</span>
+                  </div>
+                );
+              })}
+            </div>
           </FadeUp>
 
           <FadeUp delay={0.7}>
@@ -158,14 +183,28 @@ export default async function Home() {
               </Link>
             </div>
           </FadeUp>
+
+          {/* Floating Stats Bar */}
+          <FadeUp delay={0.9}>
+            <div className="mt-20 -mb-32 relative z-20 w-full max-w-6xl mx-auto hidden md:block">
+              <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-2 shadow-2xl">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 divide-y md:divide-y-0 md:divide-x divide-white/20">
+                  {highlights.map((h: any, idx: number) => (
+                    <HeroCounterItem key={idx} value={h.value} suffix={h.suffix} title={h.title} desc={h.description} duration={2 + (idx * 0.2)} />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </FadeUp>
         </div>
       </section>
 
-      {/* ─── 1.5 HIGHLIGHT NUMBERS & CORE VALUES ─── */}
-      <section className="relative w-full py-40 bg-white border-b border-apple-hairline">
+      {/* ─── 1.5 CORE VALUES ─── */}
+      <section className="relative w-full py-40 md:pt-48 bg-white border-b border-apple-hairline">
         <div className="container mx-auto px-6 lg:px-12">
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
+          {/* Mobile Only Stats */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-24 md:hidden">
             {highlights.map((h: any, idx: number) => (
               <CounterItem key={idx} value={h.value} suffix={h.suffix} title={h.title} desc={h.description} duration={2 + (idx * 0.2)} />
             ))}
@@ -218,7 +257,7 @@ export default async function Home() {
             <div className="flex w-max animate-marquee gap-8 items-center">
               {[...partners, ...partners, ...partners].map((partner: any, idx: number) => {
                 const pName = partner.name;
-                const pImage = partner.logo?.url || partner.logo || `/partners/gallery_${partner.id}.jpg`;
+                const pImage = partner.logo?.url || partner.logo || `/images/legacy/gallery_${partner.id}.jpg`;
                 return (
                   <div key={`top-${idx}`} className="flex flex-col items-center justify-center py-8 bg-white rounded-apple-lg border border-apple-hairline shadow-sm w-56 md:w-72 flex-shrink-0">
                     <div className="relative w-40 h-20 md:w-56 md:h-28 mb-2">
