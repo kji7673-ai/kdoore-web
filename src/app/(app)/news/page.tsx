@@ -8,6 +8,8 @@ export const metadata = {
   description: '케이두레의 새로운 소식과 주요 활동을 전해드립니다.',
 };
 
+export const revalidate = 60;
+
 // Using a server component to fetch news from Payload
 export default async function NewsPage() {
   let newsDocs: any[] = [];

@@ -3,6 +3,8 @@ import config from '@payload-config';
 import Link from 'next/link';
 import { ArrowLeft, Calendar } from 'lucide-react';
 
+export const revalidate = 60;
+
 export default async function NewsDetailPage({ params }: { params: { id: string } }) {
   let newsItem: any = null;
   const dbUrl = process.env.POSTGRES_URL;
