@@ -147,7 +147,7 @@ export default async function ServicesPage() {
                   <div className="w-full lg:w-[45%] lg:sticky lg:top-32">
                     <div className="relative aspect-[4/3] rounded-apple-lg overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-apple-hairline group">
                       <Image 
-                        src={svc.image?.url || ''} 
+                        src={svc.image?.url || svc.image || `/images/services/service-${index}.jpg`} 
                         alt={svc.title} 
                         fill 
                         className="object-cover group-hover:scale-105 transition-transform duration-700" 
