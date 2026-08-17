@@ -5,6 +5,7 @@ import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { Inquiries } from './collections/Inquiries';
+import { revalidateCollectionHook, revalidateGlobalHook } from './lib/revalidateHook';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -76,6 +77,7 @@ export default buildConfig({
     },
     {
       slug: 'pages',
+      hooks: { afterChange: [revalidateCollectionHook] },
       admin: {
         useAsTitle: 'title',
         defaultColumns: ['title', 'slug', 'updatedAt'],
@@ -133,6 +135,7 @@ export default buildConfig({
     },
     {
       slug: 'news',
+      hooks: { afterChange: [revalidateCollectionHook] },
       admin: {
         useAsTitle: 'title',
       },
@@ -155,6 +158,7 @@ export default buildConfig({
     },
     {
       slug: 'recruitment',
+      hooks: { afterChange: [revalidateCollectionHook] },
       admin: {
         useAsTitle: 'title',
       },
@@ -179,6 +183,7 @@ export default buildConfig({
   globals: [
     {
       slug: 'homepage',
+      hooks: { afterChange: [revalidateGlobalHook] },
       label: '메인 페이지 관리',
       access: { read: () => true, update: ({ req: { user } }) => Boolean(user) },
       fields: [
@@ -301,6 +306,7 @@ export default buildConfig({
     },
     {
       slug: 'about',
+      hooks: { afterChange: [revalidateGlobalHook] },
       label: '회사소개 페이지 관리',
       access: { read: () => true, update: ({ req: { user } }) => Boolean(user) },
       fields: [
@@ -368,6 +374,7 @@ export default buildConfig({
     },
     {
       slug: 'services',
+      hooks: { afterChange: [revalidateGlobalHook] },
       label: '사업분야 페이지 관리',
       access: { read: () => true, update: ({ req: { user } }) => Boolean(user) },
       fields: [
@@ -430,6 +437,7 @@ export default buildConfig({
     },
     {
       slug: 'govSupport',
+      hooks: { afterChange: [revalidateGlobalHook] },
       label: '정부지원안내 페이지 관리',
       access: { read: () => true, update: ({ req: { user } }) => Boolean(user) },
       fields: [
@@ -490,6 +498,7 @@ export default buildConfig({
     },
     {
       slug: 'dooremall',
+      hooks: { afterChange: [revalidateGlobalHook] },
       label: '두레몰 페이지 관리',
       access: { read: () => true, update: ({ req: { user } }) => Boolean(user) },
       fields: [
@@ -546,6 +555,7 @@ export default buildConfig({
     },
     {
       slug: 'prcenter',
+      hooks: { afterChange: [revalidateGlobalHook] },
       label: '홍보센터 페이지 관리',
       access: { read: () => true, update: ({ req: { user } }) => Boolean(user) },
       fields: [

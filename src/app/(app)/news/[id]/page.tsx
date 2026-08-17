@@ -2,6 +2,7 @@ import { getPayload } from 'payload';
 import config from '@payload-config';
 import Link from 'next/link';
 import { ArrowLeft, Calendar } from 'lucide-react';
+import { RichTextRenderer } from '@/components/RichTextRenderer';
 
 export const revalidate = 60;
 
@@ -96,18 +97,9 @@ export default async function NewsDetailPage({ params }: { params: { id: string 
         </div>
 
         <div className="bg-white p-8 md:p-12 rounded-apple-lg border border-apple-hairline shadow-sm min-h-[400px] prose prose-blue max-w-none">
-          {/* Render RichText content. 
-              Since Payload RichText rendering can be complex (Lexical), 
-              we do a simple fallback text render or tell users it's a preview. */}
           {newsItem.content ? (
             <div className="text-apple-body text-apple-ink leading-relaxed">
-              {/* Very basic render of Lexical AST for demonstration. 
-                  In a full production, you would use a dedicated Lexical to HTML renderer. */}
-              {JSON.stringify(newsItem.content).includes('text') ? (
-                <p>관리자 모드에서 작성한 내용이 이곳에 표시됩니다.</p>
-              ) : (
-                <p>내용이 없습니다.</p>
-              )}
+              <RichTextRenderer content={newsItem.content} />
             </div>
           ) : (
             <div className="text-apple-body text-apple-ink leading-relaxed">
