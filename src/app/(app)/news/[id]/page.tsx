@@ -5,6 +5,48 @@ import { ArrowLeft, Calendar } from 'lucide-react';
 
 export const revalidate = 60;
 
+export async function generateMetadata({ params }: { params: { id: string } }) {
+  let title = "새로운 소식 | 케이두레";
+  let description = "케이두레의 새로운 소식을 확인하세요.";
+  let imageUrl = "/api/og";
+
+  try {
+    const payload = await getPayload({ config });
+    const newsItem = await payload.findByID({
+      collection: 'news',
+      id: params.id,
+    });
+    
+    if (newsItem) {
+      title = `${newsItem.title} | 케이두레`;
+      if (newsItem.content) {
+        description = String(newsItem.content).substring(0, 160);
+      }
+      if (newsItem.image && typeof newsItem.image === 'object' && newsItem.image.url) {
+        imageUrl = newsItem.image.url;
+      }
+    }
+  } catch (e) {
+    // Ignore errors for metadata generation
+  }
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      images: [imageUrl],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [imageUrl],
+    },
+  };
+}
+
 export default async function NewsDetailPage({ params }: { params: { id: string } }) {
   let newsItem: any = null;
   const dbUrl = process.env.POSTGRES_URL;

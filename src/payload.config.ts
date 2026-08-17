@@ -4,6 +4,7 @@ import { lexicalEditor } from '@payloadcms/richtext-lexical';
 import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { Inquiries } from './collections/Inquiries';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -48,6 +49,7 @@ export default buildConfig({
     }
   },
   collections: [
+    Inquiries,
     {
       slug: 'users',
       auth: true,
