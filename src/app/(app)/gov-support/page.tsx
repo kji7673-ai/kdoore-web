@@ -9,6 +9,8 @@ export const metadata = {
   title: '정부지원기업안내 | K-Doore',
 };
 
+export const revalidate = 60;
+
 export default async function GovSupportPage() {
   let cmsData: any = null;
   const dbUrl = process.env.POSTGRES_URL;

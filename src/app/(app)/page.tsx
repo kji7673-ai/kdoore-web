@@ -24,6 +24,8 @@ const IconMap: Record<string, any> = {
   Cleaning: Sparkles,
 };
 
+export const revalidate = 60;
+
 export default async function Home() {
   let cmsData: any = null;
   let newsDocs: any[] = [];

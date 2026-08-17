@@ -15,6 +15,8 @@ const ICON_MAP: Record<string, any> = {
   'Truck': Truck,
 };
 
+export const revalidate = 60;
+
 export default async function DooremallPage() {
   let cmsData: any = null;
   const dbUrl = process.env.POSTGRES_URL;

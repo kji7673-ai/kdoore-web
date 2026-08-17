@@ -13,6 +13,8 @@ const ICON_MAP: Record<string, any> = {
   'Droplets': Droplets,
 };
 
+export const revalidate = 60;
+
 export default async function ServicesPage() {
   let cmsData: any = null;
   const dbUrl = process.env.POSTGRES_URL;

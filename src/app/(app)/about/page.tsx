@@ -6,6 +6,8 @@ import config from '@payload-config';
 import TimelineSection from "@/components/TimelineSection";
 import CertificationsGallery from "@/components/CertificationsGallery";
 
+export const revalidate = 60;
+
 export default async function AboutPage() {
   let cmsData: any = null;
   const dbUrl = process.env.POSTGRES_URL;

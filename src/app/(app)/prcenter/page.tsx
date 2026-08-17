@@ -3,6 +3,8 @@ import Link from "next/link";
 import { getPayload } from 'payload';
 import config from '@payload-config';
 
+export const revalidate = 60;
+
 export default async function PRCenterPage() {
   let cmsData: any = null;
   let allNewsItems: any[] = [];
