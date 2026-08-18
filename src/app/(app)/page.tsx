@@ -12,6 +12,9 @@ import HeroCounterItem from "@/components/HeroCounterItem";
 import ScrollToTop from "@/components/ScrollToTop";
 import FadeUp from "@/components/FadeUp";
 import VideoPlayer from "@/components/VideoPlayer";
+import HeroParallaxBackground from "@/components/HeroParallaxBackground";
+import Magnetic from "@/components/Magnetic";
+import TiltWrapper from "@/components/TiltWrapper";
 import { getPayload } from 'payload';
 import config from '@payload-config';
 
@@ -130,11 +133,8 @@ export default async function Home() {
       
       {/* ─── 1. HERO SECTION (Parallax) ─── */}
       <section className="relative z-10 w-full h-[85vh] min-h-[700px] flex flex-col justify-center items-center bg-apple-surface-black pt-20">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed" 
-          style={{ backgroundImage: `url('${heroBgImage}')` }}
-        />
-        <div className="absolute inset-0 bg-[#0A2540]/85" />
+        <HeroParallaxBackground bgImage={heroBgImage} />
+        <div className="absolute inset-0 bg-[#0A2540]/85 pointer-events-none" />
         
         <div className="relative z-10 text-center container mx-auto px-6 mt-16">
           <FadeUp delay={0.1}>
@@ -175,12 +175,16 @@ export default async function Home() {
 
           <FadeUp delay={0.7}>
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-              <Link href="/services" className="inline-flex items-center gap-2 bg-apple-primary text-white hover:bg-apple-primary-focus px-6 py-2.5 rounded-full text-[15px] font-semibold transition-colors">
-                서비스 알아보기 <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link href="/about#contact" className="inline-flex items-center gap-1 text-white hover:text-apple-primary-on-dark hover:underline px-4 py-2.5 text-[15px] font-semibold transition-colors">
-                상담 문의하기 <ArrowRight className="w-4 h-4" />
-              </Link>
+              <Magnetic>
+                <Link href="/services" className="inline-flex items-center gap-2 bg-apple-primary text-white hover:bg-apple-primary-focus px-6 py-2.5 rounded-full text-[15px] font-semibold transition-colors">
+                  서비스 알아보기 <ArrowRight className="w-4 h-4" />
+                </Link>
+              </Magnetic>
+              <Magnetic>
+                <Link href="/about#contact" className="inline-flex items-center gap-1 text-white hover:text-apple-primary-on-dark hover:underline px-4 py-2.5 text-[15px] font-semibold transition-colors">
+                  상담 문의하기 <ArrowRight className="w-4 h-4" />
+                </Link>
+              </Magnetic>
             </div>
           </FadeUp>
 
@@ -224,7 +228,7 @@ export default async function Home() {
               const hoverBgs = ['group-hover:bg-emerald-500', 'group-hover:bg-amber-500', 'group-hover:bg-purple-600'];
               const shadowColors = ['group-hover:shadow-emerald-500/30', 'group-hover:shadow-amber-500/30', 'group-hover:shadow-purple-600/30'];
               return (
-                <div key={idx} className="group relative bg-apple-canvas-parchment p-10 rounded-[24px] border border-apple-divider-soft overflow-hidden transition-all duration-300 hover:shadow-[0_10px_40px_rgba(0,102,204,0.1)] hover:-translate-y-2">
+                <TiltWrapper key={idx} className="group relative bg-apple-canvas-parchment p-10 rounded-[24px] border border-apple-divider-soft overflow-hidden transition-all duration-300 hover:shadow-[0_10px_40px_rgba(0,102,204,0.1)]">
                   <div className="absolute inset-0 bg-gradient-to-br from-apple-canvas-parchment to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="relative z-10 flex flex-col items-center text-center">
                     <div className={`w-20 h-20 ${bgColors[idx]} rounded-[20px] flex items-center justify-center mb-6 ${hoverBgs[idx]} group-hover:-translate-y-2 group-hover:shadow-lg ${shadowColors[idx]} transition-all duration-500`}>
@@ -235,7 +239,7 @@ export default async function Home() {
                       {cv.description}
                     </p>
                   </div>
-                </div>
+                </TiltWrapper>
               );
             })}
           </div>
@@ -449,12 +453,16 @@ export default async function Home() {
           </div>
 
           <div className="flex flex-col sm:flex-row justify-center gap-5">
-            <Link href="/about#history" className="bg-white text-apple-primary border border-apple-hairline hover:bg-apple-surface-pearl px-8 py-4 rounded-full text-[17px] font-medium transition-colors">
-              안전 운영 체계 보기
-            </Link>
-            <Link href="/about#contact" className="bg-apple-primary text-white hover:bg-apple-primary-focus px-8 py-4 rounded-full text-[17px] font-medium transition-colors">
-              현장 운영 문의하기
-            </Link>
+            <Magnetic>
+              <Link href="/about#history" className="bg-white text-apple-primary border border-apple-hairline hover:bg-apple-surface-pearl px-8 py-4 rounded-full text-[17px] font-medium transition-colors">
+                안전 운영 체계 보기
+              </Link>
+            </Magnetic>
+            <Magnetic>
+              <Link href="/about#contact" className="bg-apple-primary text-white hover:bg-apple-primary-focus px-8 py-4 rounded-full text-[17px] font-medium transition-colors">
+                현장 운영 문의하기
+              </Link>
+            </Magnetic>
           </div>
         </div>
       </section>
@@ -467,12 +475,16 @@ export default async function Home() {
             {ctaSubtitle}
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link href="/about#contact" className="bg-apple-primary text-white hover:bg-apple-primary-focus px-10 py-4 rounded-apple-sm text-apple-body-strong transition-colors flex items-center justify-center gap-2">
-              <BarChart className="w-5 h-5" /> 상담 문의하기
-            </Link>
-            <a href={`tel:${ctaPhone}`} className="bg-apple-surface-tile-2 text-white border border-apple-surface-tile-3 hover:bg-apple-surface-tile-3 px-10 py-4 rounded-apple-sm text-apple-body-strong transition-colors flex items-center justify-center gap-2">
-              <Phone className="w-5 h-5" /> 대표전화 {ctaPhone}
-            </a>
+            <Magnetic>
+              <Link href="/about#contact" className="bg-apple-primary text-white hover:bg-apple-primary-focus px-10 py-4 rounded-apple-sm text-apple-body-strong transition-colors flex items-center justify-center gap-2">
+                <BarChart className="w-5 h-5" /> 상담 문의하기
+              </Link>
+            </Magnetic>
+            <Magnetic>
+              <a href={`tel:${ctaPhone}`} className="bg-apple-surface-tile-2 text-white border border-apple-surface-tile-3 hover:bg-apple-surface-tile-3 px-10 py-4 rounded-apple-sm text-apple-body-strong transition-colors flex items-center justify-center gap-2">
+                <Phone className="w-5 h-5" /> 대표전화 {ctaPhone}
+              </a>
+            </Magnetic>
           </div>
         </div>
       </section>

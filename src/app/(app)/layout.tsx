@@ -20,6 +20,7 @@ export const metadata: Metadata = {
 };
 
 import Script from "next/script";
+import SmoothScroll from "@/components/SmoothScroll";
 
 export default function RootLayout({
   children,
@@ -51,10 +52,12 @@ export default function RootLayout({
         )}
       </head>
       <body style={{ margin: 0, padding: 0 }}>
-        <LivePreviewComponent />
-        <TopNavBar />
-        <main style={{ flex: 1 }}>{children}</main>
-        <Footer />
+        <SmoothScroll>
+          <LivePreviewComponent />
+          <TopNavBar />
+          <main style={{ flex: 1 }}>{children}</main>
+          <Footer />
+        </SmoothScroll>
       </body>
     </html>
   );
