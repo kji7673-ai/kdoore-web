@@ -129,7 +129,7 @@ export default async function Home() {
       <ScrollToTop />
       
       {/* ─── 1. HERO SECTION (Parallax) ─── */}
-      <section className="relative w-full h-[85vh] min-h-[700px] flex flex-col justify-center items-center bg-apple-surface-black pt-20 overflow-hidden">
+      <section className="relative z-10 w-full h-[85vh] min-h-[700px] flex flex-col justify-center items-center bg-apple-surface-black pt-20">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed" 
           style={{ backgroundImage: `url('${heroBgImage}')` }}
