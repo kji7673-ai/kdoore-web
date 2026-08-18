@@ -187,8 +187,8 @@ export default async function Home() {
           {/* Floating Stats Bar */}
           <FadeUp delay={0.9}>
             <div className="mt-20 -mb-32 relative z-20 w-full max-w-6xl mx-auto hidden md:block">
-              <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-2 shadow-2xl">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 divide-y md:divide-y-0 md:divide-x divide-white/20">
+              <div className="bg-white rounded-[18px] p-2 shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-gray-100">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 divide-y md:divide-y-0 md:divide-x divide-gray-100">
                   {highlights.map((h: any, idx: number) => (
                     <HeroCounterItem key={idx} value={h.value} suffix={h.suffix} title={h.title} desc={h.description} duration={2 + (idx * 0.2)} />
                   ))}

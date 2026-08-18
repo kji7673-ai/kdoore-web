@@ -38,14 +38,14 @@ export default function HeroCounterItem({ value, suffix = "", title, desc, durat
 
   return (
     <div className="flex flex-col items-center justify-center p-6 text-center transition-transform hover:-translate-y-1 duration-300">
-      <div className="flex items-baseline mb-3 text-white">
-        <span ref={ref} className="text-[48px] md:text-[56px] font-bold tracking-tighter font-[family-name:var(--font-sf-display)] leading-none drop-shadow-md">
+      <div className="flex items-baseline mb-3 text-apple-primary">
+        <span ref={ref} className="text-[48px] md:text-[56px] font-bold tracking-tighter font-[family-name:var(--font-sf-display)] leading-none text-apple-ink">
           0
         </span>
-        <span className="text-2xl md:text-3xl font-bold ml-1 drop-shadow-md">{suffix}</span>
+        <span className="text-2xl md:text-3xl font-bold ml-1 text-apple-primary">{suffix}</span>
       </div>
-      <h3 className="text-[17px] font-bold text-white/90 mb-1">{title}</h3>
-      <p className="text-[14px] text-white/70 leading-snug">{desc}</p>
+      <h3 className="text-[17px] font-bold text-apple-ink mb-1">{title}</h3>
+      <p className="text-[14px] text-gray-500 leading-snug">{desc}</p>
     </div>
   );
 }
