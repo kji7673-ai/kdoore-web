@@ -54,9 +54,9 @@ export default async function Home() {
   }
 
   // --- Fallbacks for CMS Data ---
-  const heroBadge = cmsData?.heroBadge || '고객 만족을 향한 끝없는 집념';
-  const heroTitle = cmsData?.heroTitle || '도약과 혁신을 넘어, K-Doore';
-  const heroSubtitle = cmsData?.heroSubtitle || '케이두레는 최고의 서비스와 완벽한 신뢰를 바탕으로,\n당신의 비즈니스가 더 높은 곳으로 도약할 수 있도록 최선을 다합니다.';
+  const heroBadge = cmsData?.heroBadge || '전국 300+명 전문 인력 · 12년 업력';
+  const heroTitle = cmsData?.heroTitle || '숫자로 증명하는 완벽한 시설관리';
+  const heroSubtitle = cmsData?.heroSubtitle || '12년간 축적된 노하우와 100% 고객 만족 시스템으로\n장애인고용부담금 60% 감면 혜택과 프리미엄 관리 솔루션을 제공합니다.';
   const heroBgImage = cmsData?.heroBgImage?.url || '/images/legacy/main_banner_1.jpg';
 
   const defaultHighlights = [
@@ -148,7 +148,7 @@ export default async function Home() {
           </FadeUp>
 
           <FadeUp delay={0.3}>
-            <h1 className="text-apple-hero-display text-white mb-6 drop-shadow-lg tracking-tight max-w-4xl mx-auto" dangerouslySetInnerHTML={{ __html: heroTitle.replace(/\n/g, '<br/>') }}>
+            <h1 className="text-apple-display-lg md:text-[50px] text-white mb-6 drop-shadow-lg tracking-tight max-w-4xl mx-auto" dangerouslySetInnerHTML={{ __html: heroTitle.replace(/\n/g, '<br/>') }}>
             </h1>
           </FadeUp>
 
@@ -164,8 +164,8 @@ export default async function Home() {
               {heroAwards.map((award: any, idx: number) => {
                 const IconComponent = IconMap[award.icon] || Trophy;
                 return (
-                  <div key={idx} className="flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full text-white/90 text-sm shadow-sm">
-                    <IconComponent className="w-4 h-4 text-amber-300" />
+                  <div key={idx} className="flex items-center gap-3 bg-gradient-to-r from-amber-500/20 to-orange-500/20 backdrop-blur-md border border-amber-400/40 px-5 py-3 rounded-full text-white text-[15px] md:text-[17px] font-bold shadow-lg shadow-amber-500/20">
+                    <IconComponent className="w-5 h-5 text-amber-400" />
                     <span>{award.text}</span>
                   </div>
                 );
