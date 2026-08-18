@@ -17,8 +17,8 @@ export default function HeroCounterItem({ value, suffix = "", title, desc, durat
   
   const motionValue = useMotionValue(0);
   const springValue = useSpring(motionValue, {
-    damping: 40,
-    stiffness: 250,
+    damping: 50,
+    stiffness: 150,
     restDelta: 0.001
   });
 
